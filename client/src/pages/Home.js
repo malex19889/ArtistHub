@@ -1,7 +1,21 @@
 import React from "react";
+import NaviBar from "../components/Navibar";
+import Jumbotron from "../components/Jumbotron";
+import BioCard from "../components/BioCard";
 
-export default function Home(){
-    return(
-<div>Hi world</div>
-    );
+//import Footer from "../components/Footer";
+
+function Home() {
+    return (
+        <div>
+            <NaviBar />
+            <Jumbotron />
+            <BioCard
+                style={{ maxWidth: "300px" }} />
+        {/* Cards and images go here for site description, need backend code to display last 3 band pages created */}
+        </div>
+
+    )
 }
+
+export default Home;
