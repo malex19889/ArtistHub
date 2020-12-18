@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import BandHome from "./pages/BandHome";
 import NoMatch from "./pages/404";
+
 function App() {
   return (
     <Router>
