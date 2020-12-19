@@ -5,7 +5,7 @@ import BioCard from "../components/BioCard";
 
 import Footer from "../components/Footer";
 
-function Home() {
+export default function Home() {
     return (
         <div>
             <NaviBar />
@@ -17,5 +17,3 @@ function Home() {
 
     )
 }
-
-export default Home;
