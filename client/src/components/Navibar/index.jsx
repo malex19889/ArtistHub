@@ -11,7 +11,7 @@ function Navibar() {
             <Navbar.Brand>ArtistHub</Navbar.Brand>
             <Nav className="mr-auto">
                 <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="#RegisterModalGoesHere">Register</Nav.Link>
+                <Nav.Link href="/band/register">Register</Nav.Link>
                 <Nav.Link href="#LoginModalGoesHere">Login</Nav.Link>
                 {/* 
                 logic for if logged in as a band - 

@@ -1,12 +1,13 @@
 // import logo from './logo.svg';
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "holderjs";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 import BandHome from "./pages/BandHome";
-import NoMatch from "./pages/404";
+import NoMatch from "./pages/NoMatch";
 
 function App() {
   return (

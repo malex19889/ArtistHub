@@ -2,6 +2,7 @@ import React from "react";
 import NaviBar from "../components/Navibar";
 import Jumbotron from "../components/Jumbotron";
 import BioCard from "../components/BioCard";
+import ArtistCard from "../components/ArtistCard";
 
 import Footer from "../components/Footer";
 
@@ -11,7 +12,8 @@ export default function Home() {
             <NaviBar />
             <Jumbotron />
             <BioCard />
-            {/* Cards and images go here for site description, need backend code to display last 3 band pages created */}
+            {/* need backend code to display last 3 band pages created */}
+            <ArtistCard />
             <Footer />
         </div>
 
