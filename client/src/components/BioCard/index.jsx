@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card"
 
 function BioCard() {
     return (
-        <Card body className="col-lg-4" style={{ margin: "10px" }}>
+        <Card body className="col-lg-4" style={{marginLeft: "10px", marginRight: "10px", float: "left" }}>
             ArtistHub is a multifunctional platform that allows artists and content creators to create a simple platform for interacting
             with their fans! Not only can you post all of the information fans will need to find out what type of artist you are
             and the kind of content you produce, but you'll also be able to publish performance dates or other events in an
