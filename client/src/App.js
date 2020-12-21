@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import BandHome from "./pages/BandHome";
 import NoMatch from "./pages/NoMatch";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
           </Route>
           <Route exact path="/band/home/">
             <BandHome />
+          </Route>
+          <Route exact path="/login">
+            <Login />
           </Route>
           <Route>
             <NoMatch />
