@@ -1,51 +1,30 @@
-// COME BACK TO THIS AFTER TUTORING
+import React from 'react'
 
-import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
-
-class Register extends Component {
-  constructor(props, context) {
-    super(props, context);
-
-    this.handleShow = this.handleShow.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-
-    this.state = {
-      show: false,
-    };
-  }
-
-  handleClose() {
-    this.setState({ show: false });
-  }
-
-  handleShow() {
-    this.setState({ show: true });
-  }
-
-  render() {
-    return (
-      <>
-        <Button variant="primary" onClick={this.handleShow}>
-          Launch demo modal
-                </Button>
-
-        <Modal show={this.state.show} onHide={this.handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Login</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>...</Modal.Body>
-          <Modal.Footer>
-            <Button variant="danger" onClick={this.handleClose}>
-              Cancel
-                    </Button>
-          </Modal.Footer>
-        </Modal>
-      </>
-    );
-  }
+export default function Modal(props) {
+    const style = {
+        modal: {
+            display: props.open ? "block" : "none",
+            position: "fixed",
+            zIndex: 1,
+            left: 0,
+            top: 0,
+            width: "100%",
+            height: "100%",
+            overflow: "auto",
+            backgroundColor: "rgba(0,0,0,0.5)"
+        },
+        content: {
+            backgroundColor: "#fff",
+            margin: "15% auto",
+            padding: "20px",
+            border: "1px solid red",
+            width: "80%"
+        }
+    }
+    return <div style={style.modal}>
+        <div style={style.content}>
+            <button onClick={props.handleLoginModal}>X</button>
+            {props.children}
+        </div>
+    </div>
 }
-
-export default Register;

@@ -1,6 +1,5 @@
 import React from "react";
-import Navibar from "../components/Navibar";
-import Footer from "../components/Footer";
+
 import BandJumbotron from "../components/BandJumbotron";
 import BandBioCard from "../components/BandBioCard";
 import EventsCard from "../components/EventsCard";
@@ -14,7 +13,6 @@ import Col from "react-bootstrap/Col";
 export default function BandHome() {
     return (
         <div>
-            <Navibar />
             <BandJumbotron />
             <Container fluid>
                 <Row>
@@ -37,7 +35,6 @@ export default function BandHome() {
                 </Row>
             </Container>
 
-            <Footer />
         </div>
     );
 }
