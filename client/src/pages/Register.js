@@ -1,15 +1,22 @@
 import React from "react";
 import Navibar from "../components/Navibar";
 import Footer from "../components/Footer";
-
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-
+import API from "../utils/API";
 
 export default function BandRegister() {
+    function handleSubmit(event){
+        event.preventDefault();
+        console.log(event.target);
+        // API.register(event.target)
+        // .then(res => console.log(res))
+        // .catch(err=> console.log(err))
+    }
+
     return (
         <div>
             <Navibar />
@@ -17,7 +24,7 @@ export default function BandRegister() {
             <Container>
                 <Row className="justify-content-lg-center">
                     <Col style={{maxWidth:"500px", marginTop:"30px", marginBottom:"30px"}}>
-                        <Form className="bandregister">
+                        <Form className="bandregister" onSubmit={handleSubmit}>
 
                             <h1>Register</h1>
                             
