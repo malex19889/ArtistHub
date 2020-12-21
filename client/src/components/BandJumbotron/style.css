@@ -1,0 +1,12 @@
+.jumbo {
+    height: 300;
+    background-image: url(https://i.pinimg.com/originals/96/62/01/96620111406947070185c6fcc27249b9.jpg);
+    background-size: 100% 100%;
+    text-align: center;
+    color: #cbd4dd;
+}
+
+.jumbohead,
+.jumbop {
+    font-weight: bolder;
+}

@@ -6,7 +6,7 @@ function Footer() {
         <div>
             <div className="phantom" />
             <div className="style">
-                ArtistHub © HHRW 2020
+                ArtistHub © WRHH 2020
             </div>
         </div>
     )
