@@ -4,7 +4,7 @@
     height: 50px;
     width: 100%;
     /* this should be changed to 50px if the footer ever covers page content */
-    margin-top: 0px;
+    margin-top: 10px;
   }
 
 .style {
