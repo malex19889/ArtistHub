@@ -3,12 +3,11 @@ const session = require("express-session");
 const compression = require("compression");
 const passport = require("./config/passport");
 const path = require("path");
-
-
 const PORT = process.env.PORT || 3001;
 const app = express();
-const apiRoutes = require("./routes/apiRoutes");
 const db = require("./models");
+// require routes
+const apiRoutes = require("./routes/apiRoutes");
 // Define middleware here
 app.use(compression());
 app.use(express.urlencoded({ extended: true }));

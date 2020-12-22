@@ -5,35 +5,60 @@ import "holderjs";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
-import Register from "./pages/Register";
 import BandHome from "./pages/BandHome";
 import NoMatch from "./pages/NoMatch";
-import Login from "./pages/Login";
 
-function App() {
-  return (
-    <Router>
-      <div>
-        <Switch>
-          <Route exact path={["/", "/home"]}>
-            <Home />
-          </Route>
-          <Route exact path="/band/register">
-            <Register />
-          </Route>
-          <Route exact path="/band/home/">
-            <BandHome />
-          </Route>
-          <Route exact path="/login">
-            <Login />
-          </Route>
-          <Route>
-            <NoMatch />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-  );
+import Navibar from './components/Navibar';
+import Footer from "./components/Footer";
+
+import LoginModal from './components/LoginModal';
+import RegisterModal from "./components/RegisterModal";
+
+class App extends React.Component {
+  state = {
+    user: {},
+    loginModalIsOpen: false,
+    registerModalIsOpen: false
+  }
+
+  handleLoginModal = () => {
+    this.setState({ loginModalIsOpen: !this.state.loginModalIsOpen })
+  }
+  handleRegisterModal = () => {
+    this.setState({ registerModalIsOpen: !this.state.registerModalIsOpen })
+  }
+
+  render() {
+    return (
+      <Router>
+        <Navibar handleLoginModal={this.handleLoginModal} handleRegisterModal={this.handleRegisterModal} />
+
+        <LoginModal open={this.state.loginModalIsOpen} handleLoginModal={this.handleLoginModal} />
+        <RegisterModal open={this.state.registerModalIsOpen} handleRegisterModal={this.handleRegisterModal} />
+
+
+        <div>
+          <Switch>
+
+            <Route exact path={["/", "/home"]}>
+              <Home />
+            </Route>
+
+            <Route exact path="/band/home/">
+              <BandHome />
+            </Route>
+
+            <Route>
+              <NoMatch />
+            </Route>
+
+          </Switch>
+        </div>
+
+        <Footer />
+      </Router>
+    );
+  }
 }
 
 export default App;

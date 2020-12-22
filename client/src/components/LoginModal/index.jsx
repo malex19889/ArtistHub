@@ -1,51 +1,57 @@
-// COME BACK TO THIS AFTER TUTORING
+import React from 'react'
+import Form from "react-bootstrap/Form";
+import Container from "react-bootstrap/Container";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
 
-import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+export default function Modal(props) {
+    const style = {
+        modal: {
+            display: props.open ? "block" : "none",
+            position: "fixed",
+            zIndex: 1,
+            left: 0,
+            top: 0,
+            width: "100%",
+            height: "100%",
+            overflow: "auto",
+            backgroundColor: "rgba(0,0,0,0.5)"
+        },
+        content: {
+            backgroundColor: "#fff",
+            margin: "15% auto",
+            padding: "20px",
+            border: "1px solid red",
+            width: "80%"
+        }
+    }
+    return <div style={style.modal}>
+        <div style={style.content}>
+            <button onClick={props.handleLoginModal}>X</button>
+            <Container>
+            <Row className="justify-content-lg-center">
+              <Col style={{ maxWidth: "500px", marginTop: "30px", marginBottom: "30px" }}>
+                <Form className="bandregister">
 
-class Register extends Component {
-  constructor(props, context) {
-    super(props, context);
+                  <h1>Login</h1>
 
-    this.handleShow = this.handleShow.bind(this);
-    this.handleClose = this.handleClose.bind(this);
+                  <Form.Group controlId="formUsername">
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control type="username" placeholder="Enter username" />
+                  </Form.Group>
 
-    this.state = {
-      show: false,
-    };
-  }
-
-  handleClose() {
-    this.setState({ show: false });
-  }
-
-  handleShow() {
-    this.setState({ show: true });
-  }
-
-  render() {
-    return (
-      <>
-        <Button variant="primary" onClick={this.handleShow}>
-          Launch demo modal
-                </Button>
-
-        <Modal show={this.state.show} onHide={this.handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Login</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>...</Modal.Body>
-          <Modal.Footer>
-            <Button variant="danger" onClick={this.handleClose}>
-              Cancel
-                    </Button>
-          </Modal.Footer>
-        </Modal>
-      </>
-    );
-  }
+                  <Form.Group controlId="formBasicPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" placeholder="Password" />
+                  </Form.Group>
+                  <Button variant="primary" type="submit" href="/user/settings">
+                    Submit
+                  </Button>
+                </Form>
+              </Col>
+            </Row>
+          </Container>
+        </div>
+    </div>
 }
-
-export default Register;
