@@ -24,7 +24,7 @@ module.exports = function (sequelize, DataTypes) {
         len: [1]
       }
     },
-    position: {
+    bandRole: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: false,
