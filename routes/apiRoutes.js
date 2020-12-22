@@ -25,4 +25,16 @@ router.post("/register", function (req, res) {
     });
 });
 
+// post, delete, put route for creating new band
+
+// post route for adding band members
+
+// post route for adding favorites, boolean value
+// get route for favorites page, set of URLs for band homepages
+// delete route for favorites
+
+// post, get, delete route for tour dates
+
+
+
 module.exports = router;
