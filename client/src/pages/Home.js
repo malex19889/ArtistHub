@@ -10,6 +10,7 @@ import LoginModal from '../components/LoginModal';
 import RegisterModal from "../components/RegisterModal";
 
 export default function Home() {
+    // eslint-disable-next-line no-unused-vars
     const [user,setUserState] = useState({});
     const [loginModalIsOpen, setLoginModalIsOpen] = useState(false);
     const [registerModalIsOpen, setRegisterModalIsOpen] = useState(false);
@@ -20,12 +21,15 @@ export default function Home() {
       const handleRegisterModal = () => {
        setRegisterModalIsOpen(!registerModalIsOpen)
       }
-     
+     const handleSubmit = (event)=>{
+         event.preventDefault();
+         console.log(event.target);
+     }
     return (
         <div>
              <Navibar handleLoginModal={handleLoginModal} handleRegisterModal={handleRegisterModal} />
-            <LoginModal open={loginModalIsOpen} handleLoginModal={handleLoginModal} />
-            <RegisterModal open={registerModalIsOpen} handleRegisterModal={handleRegisterModal} />
+            <LoginModal handleSubmit={handleSubmit} open={loginModalIsOpen} handleLoginModal={handleLoginModal} />
+            <RegisterModal handleSubmit={handleSubmit} open={registerModalIsOpen} handleRegisterModal={handleRegisterModal} />
             <Jumbotron />
             <Container fluid>
                 <Row>

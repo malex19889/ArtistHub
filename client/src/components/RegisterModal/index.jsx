@@ -34,7 +34,7 @@ export default function Modal(props) {
             <h2>Normal user</h2>
             <Row className="justify-content-lg-center">
               <Col style={{ maxWidth: "500px", marginTop: "30px", marginBottom: "30px" }}>
-                <Form className="bandregister">
+                <Form className="bandregister" onSubmit={(e)=>props.handleSubmit(e)}>
 
                   <h1>Register</h1>
 
@@ -65,7 +65,7 @@ export default function Modal(props) {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" />
                   </Form.Group>
-                  <Button variant="primary" type="submit" href="/band/home/">
+                  <Button variant="primary" type="submit" >
                     Submit
                   </Button>
                 </Form>
