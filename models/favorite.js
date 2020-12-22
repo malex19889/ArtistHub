@@ -1,14 +1,13 @@
 module.exports = function (sequelize, DataTypes) {
   var Favorite = sequelize.define("Favorite", {
-    albumName: {
+    band: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     },
-    artist: {
+    url: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false
     }
-
   });
   Favorite.associate = (models) => {
     Favorite.belongsTo(models.User, {
