@@ -1,16 +1,27 @@
+const passport = require("../config/passport");
 const router = require("express").Router();
 const db = require("../models");
 
-router.get("/user", (req, res) => {
-  // Use a regular expression to search users for req.query.q
-  // using case insensitive match. https://docs.mongodb.com/manual/reference/operator/query/regex/index.html
-  db.User.find({
-    name: { $regex: new RegExp(req.query.q, "i") }
+// route for loging in user
+router.post("/login", passport.authenticate("local"), function(req, res) {
+  res.redirect("/");
+});
+
+// route for creating a new user
+router.post("/register", function (req, res) {
+  console.log(req.body);
+  db.User.create({
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    userName: req.body.userName,
+    email: req.body.email,
+    password: req.body.password
   })
-    .then(users => res.json(users))
-    .catch(err => {
-      console.log(err);
-      res.status(422).end();
+    .then(function() {
+      res.redirect("/");
+    })
+    .catch(function (err) {
+      res.redirect("/noMatch",err);
     });
 });
 
