@@ -31,6 +31,7 @@ export default function Modal(props) {
         <div style={style.content}>
             <button onClick={props.handleRegisterModal}>X</button>
             <Container>
+            <h2>Normal user</h2>
             <Row className="justify-content-lg-center">
               <Col style={{ maxWidth: "500px", marginTop: "30px", marginBottom: "30px" }}>
                 <Form className="bandregister">
@@ -70,6 +71,7 @@ export default function Modal(props) {
                 </Form>
               </Col>
             </Row>
+            <Button type="button" href="/band/register">Band Registration</Button>
           </Container>
         </div>
     </div>
