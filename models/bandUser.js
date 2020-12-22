@@ -16,6 +16,20 @@ module.exports = function (sequelize, DataTypes) {
         len: [1]
       }
     },
+    bandName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
+    },
+    bandBio: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+        len: [1, 800]
+      }
+    },
     userName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -64,6 +78,14 @@ module.exports = function (sequelize, DataTypes) {
       }
     },
     insta: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: true,
+      validate: {
+        len: [1]
+      }
+    },
+    twitter: {
       type: DataTypes.STRING,
       allowNull: true,
       unique: true,
