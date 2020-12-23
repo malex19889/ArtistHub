@@ -32,20 +32,20 @@ export default function Modal(props) {
             <Container>
             <Row className="justify-content-lg-center">
               <Col style={{ maxWidth: "500px", marginTop: "30px", marginBottom: "30px" }}>
-                <Form className="bandregister">
+                <Form className="bandregister" onSubmit={props.handleSubmit}>
 
                   <h1>Login</h1>
 
                   <Form.Group controlId="formUsername">
                     <Form.Label>Username</Form.Label>
-                    <Form.Control type="username" placeholder="Enter username" />
+                    <Form.Control type="username" name="userName" onChange={event => props.handleInputChange(event)} placeholder="Enter username" />
                   </Form.Group>
 
                   <Form.Group controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control type="password" name="password" onChange={event => props.handleInputChange(event)} placeholder="Password" />
                   </Form.Group>
-                  <Button variant="primary" type="submit" href="/user/settings">
+                  <Button variant="primary" type="submit" >
                     Submit
                   </Button>
                 </Form>
@@ -55,4 +55,3 @@ export default function Modal(props) {
         </div>
     </div>
 }
-
