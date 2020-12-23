@@ -40,7 +40,22 @@ module.exports = function (sequelize, DataTypes) {
         len: [1]
       }
     },
-
+    insta: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: true,
+      validate: {
+        len: [1]
+      }
+    },
+    twitter: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: true,
+      validate: {
+        len: [1]
+      }
+    }
   });
   BandMember.associate = (models) => {
     BandMember.belongsTo(models.BandUser, {
