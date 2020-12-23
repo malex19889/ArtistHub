@@ -33,7 +33,7 @@ router.post("/BandUser", function (req, res) {
   db.BandUser.create({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
-    bandName: req.body.bandname,
+    bandName: req.body.bandName,
     bandBio: req.body.bandBio,
     userName: req.body.userName,
     email: req.body.email,
@@ -43,7 +43,7 @@ router.post("/BandUser", function (req, res) {
     facebook: req.body.facebook,
     insta: req.body.insta,
     twitter: req.body.twitter,
-    password: req.body.password
+    password: req.body.password,
   })
     .then(function(dbBandUser) {
       res.json(dbBandUser);
@@ -87,7 +87,8 @@ router.post("/BandMember", function (req, res) {
     bandRole: req.body.bandRole,
     facebook: req.body.facebook,
     insta: req.body.insta,
-    twitter: req.body.twitter
+    twitter: req.body.twitter,
+    foreignKey: req.body.foreignKey
   })
     .then(function(dbBandMember) {
       res.json(dbBandMember);
