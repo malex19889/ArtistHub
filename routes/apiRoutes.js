@@ -88,7 +88,7 @@ router.post("/BandMember", function (req, res) {
     facebook: req.body.facebook,
     insta: req.body.insta,
     twitter: req.body.twitter,
-    foreignKey: req.body.foreignKey
+    BandUserId: req.body.BandUserId
   })
     .then(function(dbBandMember) {
       res.json(dbBandMember);
