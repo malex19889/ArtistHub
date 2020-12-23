@@ -1,25 +1,9 @@
 module.exports = function (sequelize, DataTypes) {
   var BandImages = sequelize.define("BandImages", {
-    images0: {
+    images: {
       type: DataTypes.BLOB,
       allowNull: false,
       unique: false,
-      validate: {
-        len: [1]
-      }
-    },
-    images1: {
-      type: DataTypes.BLOB,
-      allowNull: true,
-      unique: true,
-      validate: {
-        len: [1]
-      }
-    },
-    images2: {
-      type: DataTypes.BLOB,
-      allowNull: true,
-      unique: true,
       validate: {
         len: [1]
       }
