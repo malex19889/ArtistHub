@@ -19,7 +19,6 @@ module.exports = function (sequelize, DataTypes) {
     images2: {
       type: DataTypes.BLOB,
       allowNull: true,
-      allowNull: true,
       unique: true,
       validate: {
         len: [1]
