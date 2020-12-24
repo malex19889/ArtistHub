@@ -20,7 +20,7 @@ passport.authenticate("local"),
 );
 
 // post route for creating new band
-router.post("/BandUser", function (req, res) {
+router.post("/banduser", function (req, res) {
   console.log(req.body);
   db.BandUser.create({
     firstName: req.body.firstName,
