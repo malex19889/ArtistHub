@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Jumbotron from "../components/Jumbotron";
+
 import BioCard from "../components/BioCard";
 import ArtistCard from "../components/ArtistCard";
 import Container from "react-bootstrap/Container";
@@ -71,6 +72,7 @@ export default function Home() {
                 {/* need backend code to display last 3 band pages created */}
 
             </Container>
+
         </div>
 
     )
