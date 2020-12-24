@@ -113,7 +113,12 @@ module.exports = function (sequelize, DataTypes) {
     });
   };
   BandUser.associate = function (models) {
-    BandUser.hasMany(models.bandImage, {
+    BandUser.hasMany(models.BandImage, {
+      onDelete: "cascade"
+    });
+  };
+  BandUser.associate = function (models) {
+    BandUser.hasMany(models.TourDate, {
       onDelete: "cascade"
     });
   };
