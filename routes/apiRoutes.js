@@ -4,6 +4,21 @@ const db = require("../models");
 
 // get route for homepage - recently added bands, use sequelize timestamp
 
+router.post("/user/login",function (req, res, next) {
+  console.log("routes/user.js, login, req.body: ");
+  console.log(req.body);
+  next();
+},
+passport.authenticate("local"),
+(req, res) => {
+  console.log("logged in", req.user);
+  var userInfo = {
+    username: req.user.userName
+  };
+  res.send(userInfo);
+}
+);
+
 // post route for creating new band
 router.post("/BandUser", function (req, res) {
   console.log(req.body);
