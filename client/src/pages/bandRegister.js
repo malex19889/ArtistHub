@@ -13,19 +13,19 @@ import Col from "react-bootstrap/Col";
 
 export default function BandRegister() {
 
-    const [registerFirstname, setRegisterFirstname] = useState("")
-    const [registerLastname, setRegisterLastname] = useState("")
-    const [registerUsername, setRegisterUsername] = useState("")
-    const [registerEmail, setRegisterEmail] = useState("")
-    const [registerPassword, setRegisterPassword] = useState("")
-    const [registerBandname, setRegisterBandname] = useState("")
-    const [registerBandBio, setRegisterBandBio] = useState("")
-    const [registerGenre, setRegisterGenre] = useState("")
-    const [registerContact, setRegisterContact] = useState("")
-    const [registerYoutube, setRegisterYoutube] = useState("")
-    const [registerFacebook, setRegisterFacebook] = useState("")
-    const [registerInsta, setRegisterInsta] = useState("")
-    const [registerTwitter, setRegisterTwitter] = useState("")
+    const [registerFirstname, setRegisterFirstname] = useState("");
+    const [registerLastname, setRegisterLastname] = useState("");
+    const [registerUsername, setRegisterUsername] = useState("");
+    const [registerEmail, setRegisterEmail] = useState("");
+    const [registerPassword, setRegisterPassword] = useState("");
+    const [registerBandname, setRegisterBandname] = useState("");
+    const [registerBandBio, setRegisterBandBio] = useState("");
+    const [registerGenre, setRegisterGenre] = useState("");
+    const [registerContact, setRegisterContact] = useState("");
+    const [registerYoutube, setRegisterYoutube] = useState("");
+    const [registerFacebook, setRegisterFacebook] = useState("");
+    const [registerInsta, setRegisterInsta] = useState("");
+    const [registerTwitter, setRegisterTwitter] = useState("");
 
     const user = {
         firstName: registerFirstname,
