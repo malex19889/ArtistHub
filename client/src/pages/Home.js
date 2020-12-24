@@ -13,72 +13,50 @@ import API from "../utils/API";
 export default function Home() {
     const [loginModalIsOpen, setLoginModalIsOpen] = useState(false);
     const [registerModalIsOpen, setRegisterModalIsOpen] = useState(false);
-    const [registerFirstname, setRegisterFirstname] = useState("")
-    const [registerLastname, setRegisterLastname] = useState("")
-    const [registerUsername, setRegisterUsername] = useState("")
-    const [registerEmail, setRegisterEmail] = useState("")
-    const [registerPassword, setRegisterPassword] = useState("")
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
     const userLogin = {
-        userName:registerUsername,
-        password:registerPassword
+        userName: username,
+        password: password
     }
-    const user = {
-        firstName:registerFirstname,
-        lastName:registerLastname,
-        userName:registerUsername,
-        email:registerEmail,
-        password:registerPassword
-    };
+
     const handleLoginModal = () => {
-          setLoginModalIsOpen(!loginModalIsOpen)
-      }
-      const handleRegisterModal = () => {
-       setRegisterModalIsOpen(!registerModalIsOpen)
-      }
-      const handleRegisterSubmit = (event)=>{
-          event.preventDefault();
-          console.log(user)
-          API.register(user)
-          .then(res=> console.log(res))
-          .catch(err=> console.log(err))
-      }
-      const handleLogin =(event)=>{
-            event.preventDefault();
-            API.userLogin(userLogin)
-            .then(res=> console.log(res.data))
+        setLoginModalIsOpen(!loginModalIsOpen)
+    }
+    const handleRegisterModal = () => {
+        setRegisterModalIsOpen(!registerModalIsOpen)
+    }
+
+    const handleLogin = (event) => {
+        event.preventDefault();
+        API.userLogin(userLogin)
+            .then(res => console.log(res.data))
             .catch(err => console.log(err));
-            // console.log("Login");
-            // console.log(userLogin);
-      }
-     const handleInputChange = (event)=>{
-         switch (event.target.name) {
-             case "firstName":
-                setRegisterFirstname(event.target.value)
-                
-                 return;
-             case "userName":
-                setRegisterUsername(event.target.value)
-                 return;
-             case "lastName":
-                setRegisterLastname(event.target.value)
-                 return;
-             case "email":
-                setRegisterEmail(event.target.value)
-                 return;
-             case "password":
-                setRegisterPassword(event.target.value)
-                 return;
-         
-             default:
-                 break;
-     }
-         }
-         
+        console.log("Login");
+        console.log(userLogin);
+
+
+    }
+
+    const handleInputChange = (event) => {
+        switch (event.target.name) {
+            case "userName":
+                setUsername(event.target.value)
+                return;
+            case "password":
+                setPassword(event.target.value)
+                return;
+            default:
+                break;
+        }
+    }
+
     return (
         <div>
-             <Navibar handleLoginModal={handleLoginModal} handleRegisterModal={handleRegisterModal} />
-            <LoginModal open={loginModalIsOpen} handleLoginModal={handleLoginModal} handleInputChange={handleInputChange} handleSubmit={handleLogin}/>
-            <RegisterModal open={registerModalIsOpen} handleRegisterModal={handleRegisterModal} handleInputChange={handleInputChange} handleSubmit={handleRegisterSubmit}/>
+            <Navibar handleLoginModal={handleLoginModal} handleRegisterModal={handleRegisterModal} />
+            <LoginModal open={loginModalIsOpen} handleInputChange={handleInputChange} handleLoginModal={handleLoginModal} handleSubmit={handleLogin} />
+            <RegisterModal open={registerModalIsOpen} handleRegisterModal={handleRegisterModal} />
             <Jumbotron />
             <Container fluid>
                 <Row>
