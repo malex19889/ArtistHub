@@ -4,9 +4,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
-import Register from "./pages/Register";
+import BandRegister from "./pages/BandRegister";
+import UserRegister from "./pages/UserRegister";
 import BandHome from "./pages/BandHome";
 import NoMatch from "./pages/NoMatch";
+
+
 function App() {
   return (
     <Router>
@@ -15,15 +18,23 @@ function App() {
           <Route exact path={["/", "/home"]}>
             <Home />
           </Route>
-          <Route exact path="/band/register">
-            <Register />
+
+          <Route exact path="/user/register">
+            <UserRegister />
           </Route>
+
+          <Route exact path="/band/register">
+            <BandRegister />
+          </Route>
+
           <Route exact path="/band/home/">
             <BandHome />
           </Route>
+
           <Route>
             <NoMatch />
           </Route>
+
         </Switch>
       </div>
     </Router>
