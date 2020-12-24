@@ -13,11 +13,11 @@ import API from "../utils/API";
 
 export default function UserRegister() {
 
-    const [registerFirstname, setRegisterFirstname] = useState("")
-    const [registerLastname, setRegisterLastname] = useState("")
-    const [registerUsername, setRegisterUsername] = useState("")
-    const [registerEmail, setRegisterEmail] = useState("")
-    const [registerPassword, setRegisterPassword] = useState("")
+    const [registerFirstname, setRegisterFirstname] = useState("");
+    const [registerLastname, setRegisterLastname] = useState("");
+    const [registerUsername, setRegisterUsername] = useState("");
+    const [registerEmail, setRegisterEmail] = useState("");
+    const [registerPassword, setRegisterPassword] = useState("");
 
     const user = {
         firstName: registerFirstname,

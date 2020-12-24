@@ -2,6 +2,8 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import Footer from "./components/Footer"
+
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import BandRegister from "./pages/BandRegister";
@@ -36,6 +38,8 @@ function App() {
           </Route>
 
         </Switch>
+
+        <Footer />
       </div>
     </Router>
   );
