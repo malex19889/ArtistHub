@@ -2,7 +2,7 @@ const passport = require("../config/passport");
 const router = require("express").Router();
 const db = require("../models");
 
-/// route for loging in user
+//  route for loging in user
 router.post(
   "/login",
   function (req, res, next) {
