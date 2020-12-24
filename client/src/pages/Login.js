@@ -1,3 +1,8 @@
+/* This page needs to be split into band and fan login
+    from the register modal, add links to these pages on click either Band or Fan
+    move the modal registration form to band register page, create new registration form for fan based on model
+*/
+
 // import React from "react";
 
 // import Form from "react-bootstrap/Form";
