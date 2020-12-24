@@ -112,6 +112,11 @@ module.exports = function (sequelize, DataTypes) {
       onDelete: "cascade"
     });
   };
+  BandUser.associate = function (models) {
+    BandUser.hasMany(models.bandImage, {
+      onDelete: "cascade"
+    });
+  };
 
   return BandUser;
 };
