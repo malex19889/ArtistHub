@@ -2,23 +2,6 @@ const passport = require("../config/passport");
 const router = require("express").Router();
 const db = require("../models");
 
-// get route for homepage - recently added bands, use sequelize timestamp
-
-router.post("/user/login",function (req, res, next) {
-  console.log("routes/user.js, login, req.body: ");
-  console.log(req.body);
-  next();
-},
-passport.authenticate("local"),
-(req, res) => {
-  console.log("logged in", req.user);
-  var userInfo = {
-    username: req.user.userName
-  };
-  res.send(userInfo);
-}
-);
-
 // post route for creating new band
 router.post("/BandUser", function (req, res) {
   console.log(req.body);
@@ -41,6 +24,22 @@ router.post("/BandUser", function (req, res) {
       res.json(dbBandUser);
     });
 });
+
+// post route for loging in band user
+router.post("/user/login",function (req, res, next) {
+  console.log("routes/user.js, login, req.body: ");
+  console.log(req.body);
+  next();
+},
+passport.authenticate("local"),
+(req, res) => {
+  console.log("logged in", req.user);
+  var userInfo = {
+    username: req.user.userName
+  };
+  res.send(userInfo);
+}
+);
 
 // put route for updating band
 router.put("/BandUser", function (req, res) {
@@ -99,8 +98,6 @@ router.post("/Favorite", function (req, res) {
     });
 });
 
-// get route for favorites page, set of URLs for band homepages
-
 // delete route for favorites
 router.delete("/Favorite/:id", function (req, res) {
   console.log(req.body);
@@ -114,8 +111,61 @@ router.delete("/Favorite/:id", function (req, res) {
     });
 });
 
-// post, get, delete route for tour dates - this needs a model
+// post route for tourDate
+router.post("/TourDate", function (req, res) {
+  console.log(req.body);
+  db.TourDate.create({
+    date: req.body.date,
+    time: req.body.time,
+    city: req.body.city,
+    venue: req.body.venue,
+    price: req.body.price,
+    note: req.body.note,
+    BandUserId: req.body.BandUserId
+  })
+    .then(function(dbTourDate) {
+      res.json(dbTourDate);
+    });
+});
 
+// put route for updating tourDate
+router.put("/TourDate", function (req, res) {
+  console.log(req.body);
+  db.TourDate.update(req.body,
+    {
+      where: {
+        id: req.body.id
+      }
+    })
+    .then(function(dbTourDate) {
+      res.json(dbTourDate);
+    });
+});
 
+// delete route for tourDate
+router.delete("/TourDate/:id", function (req, res) {
+  console.log(req.body);
+  db.TourDate.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(function(dbTourDate) {
+      res.json(dbTourDate);
+    });
+});
+
+// get route for homepage - recently added bands, use sequelize timestamp
+// below is just a template
+router.get("/Home", function (req,res) {
+  console.log(req.body);
+  db.BandUser.findAll({
+    where: {
+      id: req.params.id
+    }
+  }).then(function(dbBandUser){
+    res.json(dbBandUser);
+  });
+});
 
 module.exports = router;
