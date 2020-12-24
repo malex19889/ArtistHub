@@ -34,38 +34,38 @@ export default function Modal(props) {
             <h2>Normal user</h2>
             <Row className="justify-content-lg-center">
               <Col style={{ maxWidth: "500px", marginTop: "30px", marginBottom: "30px" }}>
-                <Form className="bandregister" onSubmit={(e)=>props.handleSubmit(e)}>
+                <Form className="bandregister" onSubmit={props.handleSubmit}>
 
                   <h1>Register</h1>
 
-                  <Form.Group controlId="formFirstName">
+                  <Form.Group controlId="registerFirstName" >
                     <Form.Label>First Name</Form.Label>
-                    <Form.Control type="username" placeholder="Enter First Name" />
+                    <Form.Control type="input" name="firstName" onChange={event => props.handleInputChange(event)} placeholder="Enter First Name" />
                   </Form.Group>
 
-                  <Form.Group controlId="formLastName">
+                  <Form.Group controlId="registerLastName">
                     <Form.Label>Last Name</Form.Label>
-                    <Form.Control type="username" placeholder="Enter Last Name" />
+                    <Form.Control type="username" name="lastName" onChange={event => props.handleInputChange(event)} placeholder="Enter Last Name" />
                   </Form.Group>
 
-                  <Form.Group controlId="formUsername">
+                  <Form.Group controlId="registerUsername">
                     <Form.Label>Username</Form.Label>
-                    <Form.Control type="username" placeholder="Enter username" />
+                    <Form.Control type="username" name="userName" onChange={event => props.handleInputChange(event)} placeholder="Enter username" />
                   </Form.Group>
 
-                  <Form.Group controlId="formBasicEmail">
+                  <Form.Group controlId="registerBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Control type="email" name="email" onChange={event => props.handleInputChange(event)} placeholder="Enter email" />
                     <Form.Text className="text-muted">
                       We'll never share your email with anyone else.
                     </Form.Text>
                   </Form.Group>
 
-                  <Form.Group controlId="formBasicPassword">
+                  <Form.Group controlId="registerBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control type="password" name="password" onChange={event => props.handleInputChange(event)} placeholder="Password" />
                   </Form.Group>
-                  <Button variant="primary" type="submit" >
+                  <Button variant="primary" type="submit">
                     Submit
                   </Button>
                 </Form>
