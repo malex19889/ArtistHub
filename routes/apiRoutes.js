@@ -117,10 +117,9 @@ router.post("/TourDate", function (req, res) {
   db.TourDate.create({
     date: req.body.date,
     time: req.body.time,
-    city: req.body.city,
-    venue: req.body.venue,
-    price: req.body.price,
-    note: req.body.note,
+    location: req.body.location,
+    ticketPrice: req.body.ticketPrice,
+    notes: req.body.notes,
     BandUserId: req.body.BandUserId
   })
     .then(function(dbTourDate) {
