@@ -3,7 +3,6 @@ module.exports = function (sequelize, DataTypes) {
     date: {
       type: DataTypes.DATE,
       allowNull: false,
-      unique: false,
       validate: {
         len: [1]
       }
@@ -16,7 +15,7 @@ module.exports = function (sequelize, DataTypes) {
         len: [1]
       }
     },
-    city: {
+    location: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: false,
@@ -24,30 +23,14 @@ module.exports = function (sequelize, DataTypes) {
         len: [1]
       }
     },
-    venue: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: false,
-      validate: {
-        len: [1]
-      }
-    },
-    price: {
+    ticketPrice: {
       type: DataTypes.STRING,
       allowNull: true,
-      unique: true,
-      validate: {
-        len: [1]
-      }
     },
-    note: {
+    notes: {
       type: DataTypes.TEXT,
       allowNull: true,
-      unique: true,
-      validate: {
-        len: [1]
-      }
-    }
+    },
   });
   TourDate.associate = (models) => {
     TourDate.belongsTo(models.BandUser, {
