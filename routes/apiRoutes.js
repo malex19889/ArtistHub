@@ -87,7 +87,7 @@ router.post("/bandmember", function (req, res) {
 });
 
 // post route for adding favorites, boolean value
-router.post("/favorite", function (req, res) {
+router.post("/favorites", function (req, res) {
   console.log(req.body);
   db.Favorite.create({
     band: req.body.band,
@@ -99,7 +99,7 @@ router.post("/favorite", function (req, res) {
 });
 
 // delete route for favorites
-router.delete("/favorite/:id", function (req, res) {
+router.delete("/favorites/:id", function (req, res) {
   console.log(req.body);
   db.Favorite.destroy({
     where: {
