@@ -2,25 +2,8 @@ const passport = require("../config/passport");
 const router = require("express").Router();
 const db = require("../models");
 
-// get route for homepage - recently added bands, use sequelize timestamp
-
-router.post("/user/login",function (req, res, next) {
-  console.log("routes/user.js, login, req.body: ");
-  console.log(req.body);
-  next();
-},
-passport.authenticate("local"),
-(req, res) => {
-  console.log("logged in", req.user);
-  var userInfo = {
-    username: req.user.userName
-  };
-  res.send(userInfo);
-}
-);
-
 // post route for creating new band
-router.post("/BandUser", function (req, res) {
+router.post("/banduser", function (req, res) {
   console.log(req.body);
   db.BandUser.create({
     firstName: req.body.firstName,
@@ -42,8 +25,24 @@ router.post("/BandUser", function (req, res) {
     });
 });
 
+// post route for loging in band user
+router.post("/user/login",function (req, res, next) {
+  console.log("routes/user.js, login, req.body: ");
+  console.log(req.body);
+  next();
+},
+passport.authenticate("local"),
+(req, res) => {
+  console.log("logged in", req.user);
+  var userInfo = {
+    username: req.user.userName
+  };
+  res.send(userInfo);
+}
+);
+
 // put route for updating band
-router.put("/BandUser", function (req, res) {
+router.put("/banduser", function (req, res) {
   console.log(req.body);
   db.BandUser.update(req.body,
     {
@@ -57,7 +56,7 @@ router.put("/BandUser", function (req, res) {
 });
 
 // delete route for deleting band
-router.delete("/BandUser/:id", function (req, res) {
+router.delete("/banduser/:id", function (req, res) {
   console.log(req.body);
   db.BandUser.destroy({
     where: {
@@ -70,7 +69,7 @@ router.delete("/BandUser/:id", function (req, res) {
 });
 
 // post route for adding band members
-router.post("/BandMember", function (req, res) {
+router.post("/bandmember", function (req, res) {
   console.log(req.body);
   db.BandMember.create({
     firstName: req.body.firstName,
@@ -88,7 +87,7 @@ router.post("/BandMember", function (req, res) {
 });
 
 // post route for adding favorites, boolean value
-router.post("/Favorite", function (req, res) {
+router.post("/favorites", function (req, res) {
   console.log(req.body);
   db.Favorite.create({
     band: req.body.band,
@@ -99,10 +98,8 @@ router.post("/Favorite", function (req, res) {
     });
 });
 
-// get route for favorites page, set of URLs for band homepages
-
 // delete route for favorites
-router.delete("/Favorite/:id", function (req, res) {
+router.delete("/favorites/:id", function (req, res) {
   console.log(req.body);
   db.Favorite.destroy({
     where: {
@@ -114,8 +111,60 @@ router.delete("/Favorite/:id", function (req, res) {
     });
 });
 
-// post, get, delete route for tour dates - this needs a model
+// post route for tourDate
+router.post("/tourdate", function (req, res) {
+  console.log(req.body);
+  db.TourDate.create({
+    date: req.body.date,
+    time: req.body.time,
+    location: req.body.location,
+    ticketPrice: req.body.ticketPrice,
+    notes: req.body.notes,
+    BandUserId: req.body.BandUserId
+  })
+    .then(function(dbTourDate) {
+      res.json(dbTourDate);
+    });
+});
 
+// put route for updating tourDate
+router.put("/tourdate", function (req, res) {
+  console.log(req.body);
+  db.TourDate.update(req.body,
+    {
+      where: {
+        id: req.body.id
+      }
+    })
+    .then(function(dbTourDate) {
+      res.json(dbTourDate);
+    });
+});
 
+// delete route for tourDate
+router.delete("/tourdate/:id", function (req, res) {
+  console.log(req.body);
+  db.TourDate.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(function(dbTourDate) {
+      res.json(dbTourDate);
+    });
+});
+
+// get route for homepage - recently added bands, use sequelize timestamp
+// below is just a template
+router.get("/home", function (req,res) {
+  console.log(req.body);
+  db.BandUser.findAll({
+    where: {
+      id: req.params.id
+    }
+  }).then(function(dbBandUser){
+    res.json(dbBandUser);
+  });
+});
 
 module.exports = router;
