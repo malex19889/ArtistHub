@@ -3,7 +3,7 @@ const router = require("express").Router();
 const db = require("../models");
 
 // post route for creating new band
-router.post("/BandUser", function (req, res) {
+router.post("/banduser", function (req, res) {
   console.log(req.body);
   db.BandUser.create({
     firstName: req.body.firstName,
@@ -42,7 +42,7 @@ passport.authenticate("local"),
 );
 
 // put route for updating band
-router.put("/BandUser", function (req, res) {
+router.put("/banduser", function (req, res) {
   console.log(req.body);
   db.BandUser.update(req.body,
     {
@@ -56,7 +56,7 @@ router.put("/BandUser", function (req, res) {
 });
 
 // delete route for deleting band
-router.delete("/BandUser/:id", function (req, res) {
+router.delete("/banduser/:id", function (req, res) {
   console.log(req.body);
   db.BandUser.destroy({
     where: {
@@ -69,7 +69,7 @@ router.delete("/BandUser/:id", function (req, res) {
 });
 
 // post route for adding band members
-router.post("/BandMember", function (req, res) {
+router.post("/bandmember", function (req, res) {
   console.log(req.body);
   db.BandMember.create({
     firstName: req.body.firstName,
@@ -87,7 +87,7 @@ router.post("/BandMember", function (req, res) {
 });
 
 // post route for adding favorites, boolean value
-router.post("/Favorite", function (req, res) {
+router.post("/favorite", function (req, res) {
   console.log(req.body);
   db.Favorite.create({
     band: req.body.band,
@@ -99,7 +99,7 @@ router.post("/Favorite", function (req, res) {
 });
 
 // delete route for favorites
-router.delete("/Favorite/:id", function (req, res) {
+router.delete("/favorite/:id", function (req, res) {
   console.log(req.body);
   db.Favorite.destroy({
     where: {
@@ -112,7 +112,7 @@ router.delete("/Favorite/:id", function (req, res) {
 });
 
 // post route for tourDate
-router.post("/TourDate", function (req, res) {
+router.post("/tourdate", function (req, res) {
   console.log(req.body);
   db.TourDate.create({
     date: req.body.date,
@@ -128,7 +128,7 @@ router.post("/TourDate", function (req, res) {
 });
 
 // put route for updating tourDate
-router.put("/TourDate", function (req, res) {
+router.put("/tourdate", function (req, res) {
   console.log(req.body);
   db.TourDate.update(req.body,
     {
@@ -142,7 +142,7 @@ router.put("/TourDate", function (req, res) {
 });
 
 // delete route for tourDate
-router.delete("/TourDate/:id", function (req, res) {
+router.delete("/tourdate/:id", function (req, res) {
   console.log(req.body);
   db.TourDate.destroy({
     where: {
@@ -156,7 +156,7 @@ router.delete("/TourDate/:id", function (req, res) {
 
 // get route for homepage - recently added bands, use sequelize timestamp
 // below is just a template
-router.get("/Home", function (req,res) {
+router.get("/home", function (req,res) {
   console.log(req.body);
   db.BandUser.findAll({
     where: {
