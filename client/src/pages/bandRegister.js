@@ -127,7 +127,20 @@ export default function BandRegister() {
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control onChange={e => setRegisterPassword(e.target.value)} type="password" placeholder="Password" />
                             </Form.Group>
-                            <Button variant="primary" type="submit" handleRegisterSubmit={handleRegisterSubmit}>
+
+                            <Form.Group>
+                                {['checkbox'].map((type) => (
+                                    <div key={`default-${type}`} className="mb-3">
+                                        <Form.Check
+                                            type={type}
+                                            id={`default-${type}`}
+                                            label={`Please agree to our Terms and Conditions.`}
+                                        />
+                                    </div>
+                                ))}
+                            </Form.Group>
+                            
+                            <Button variant="dark" type="submit" handleRegisterSubmit={handleRegisterSubmit}>
                                 Submit
                             </Button>
                         </Form>
