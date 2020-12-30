@@ -1,20 +1,29 @@
-module.exports = function (sequelize, DataTypes) {
-  var Favorite = sequelize.define("Favorite", {
-    band: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    url: {
-      type: DataTypes.STRING,
-      allowNull: false
+"use strict";
+const {
+  Model
+} = require("sequelize");
+module.exports = (sequelize, DataTypes) => {
+  class favorite extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+      favorite.belongsTo(models.user, {
+        foreignKey: {
+          allowNull: false
+        }
+      });
     }
+  }
+  favorite.init({
+    band: DataTypes.STRING,
+    url: DataTypes.STRING
+  }, {
+    sequelize,
+    modelName: "favorite",
   });
-  Favorite.associate = (models) => {
-    Favorite.belongsTo(models.User, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  };
-  return Favorite;
+  return favorite;
 };
