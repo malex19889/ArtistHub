@@ -1,19 +1,28 @@
-module.exports = function (sequelize, DataTypes) {
-  var BandImage = sequelize.define("BandImage", {
-    images: {
-      type: DataTypes.BLOB,
-      allowNull: false,
-      unique: false,
-    },
+"use strict";
+const {
+  Model
+} = require("sequelize");
+module.exports = (sequelize, DataTypes) => {
+  class bandImage extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+      bandImage.belongsTo(models.bandUser, {
+        foreignKey: {
+          allowNull: false
+        }
+      });
+    }
+  }
+  bandImage.init({
+    images: DataTypes.BLOB
+  }, {
+    sequelize,
+    modelName: "bandImage",
   });
-  BandImage.associate = (models) => {
-    BandImage.belongsTo(models.BandUser, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  };
-
-
-  return BandImage;
+  return bandImage;
 };
