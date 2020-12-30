@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": process.env.MYSQLPW,
+    "password": null,
     "database": "ArtistHub",
     "host": "127.0.0.1",
     "dialect": "mysql"

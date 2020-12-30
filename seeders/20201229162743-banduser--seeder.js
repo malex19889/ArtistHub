@@ -15,7 +15,7 @@ module.exports = {
     },
     {
       bandName: "Bad at Codding",
-      
+
       // createAt: new Date(),
       // updatedAt: new Date()
     },{
