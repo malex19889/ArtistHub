@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      band: {
+      bandName: {
         type: Sequelize.STRING,
         allowNull: false,
       },

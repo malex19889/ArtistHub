@@ -8,14 +8,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      firstname: {
+      firstName: {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
           len: [1]
         }
       },
-      lastname: {
+      lastName: {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
@@ -36,7 +36,7 @@ module.exports = {
           len: [1, 800]
         }
       },
-      username: {
+      userName: {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {

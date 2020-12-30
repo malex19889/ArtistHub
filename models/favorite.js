@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   favorite.init({
-    band: DataTypes.STRING,
+    bandName: DataTypes.STRING,
     url: DataTypes.STRING
   }, {
     sequelize,

@@ -19,8 +19,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   bandMember.init({
-    firstname: DataTypes.STRING,
-    lastname: DataTypes.STRING,
+    firstName: DataTypes.STRING,
+    lastName: DataTypes.STRING,
     contact: DataTypes.STRING,
     bandRole: DataTypes.STRING,
     facebook: DataTypes.STRING,

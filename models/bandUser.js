@@ -15,11 +15,11 @@ module.exports = (sequelize, DataTypes) => {
     }*/
   }
   bandUser.init({
-    firstname: DataTypes.STRING,
-    lastname: DataTypes.STRING,
+    firstName: DataTypes.STRING,
+    lastName: DataTypes.STRING,
     bandName: DataTypes.STRING,
     bandBio: DataTypes.STRING,
-    username: DataTypes.STRING,
+    userName: DataTypes.STRING,
     email: DataTypes.STRING,
     genre: DataTypes.STRING,
     contact: DataTypes.STRING,
