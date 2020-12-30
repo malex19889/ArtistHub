@@ -42,12 +42,12 @@ module.exports = (sequelize, DataTypes) => {
   });
   // setup band association to their members
   bandUser.associate = function (models) {
-    BandUser.hasMany(models.bandMember, {
+    bandUser.hasMany(models.bandMember, {
       onDelete: "cascade"
     });
   };
   bandUser.associate = function (models) {
-    BandUser.hasMany(models.bandImage, {
+    bandUser.hasMany(models.bandImage, {
       onDelete: "cascade"
     });
   };
