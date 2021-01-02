@@ -8,18 +8,18 @@ VALUES (1, "D.B.", "Cooper", "dbcooper71", "dbcooper@gmail.com", "11041971", NOW
 
 
 -- TourDate Table
-INSERT INTO tourDates(id, date, time, location, ticketPrice, note, createAt, updateAt)
-VALUES (1, "2021-03-22", "04:30", "San Antonio Tx", "$20-$100", "BYOB"),
-(2, "2021-05-15", "07:00", "Austin Tx", "$30-$75", "bring chairs and BYOB"),
-(3, "2021-04-10", "08:30", "Austin Tx", "$20-$75", "bring chairs and BYOB"),
-(4, "2021-05-18", "07:40", "San Antonio Tx", "$10-$65", "BYOB");
+INSERT INTO tourDates(id, date, time, location, ticketPrice, note, FOREIGNKEY, createAt, updateAt)
+VALUES (1, "2021-03-22", "04:30", "San Antonio Tx", "$20-$100", "BYOB", "23", NOW(), NOW()),
+(2, "2021-05-15", "07:00", "Austin Tx", "$30-$75", "bring chairs and BYOB", "24", NOW(), NOW()),
+(3, "2021-04-10", "08:30", "Austin Tx", "$20-$75", "bring chairs and BYOB", "25", NOW(), NOW()),
+(4, "2021-05-18", "07:40", "San Antonio Tx", "$10-$65", "BYOB", "26", NOW(), NOW());
 
 -- bandUser Table
-INSERT INTO bandUsers(id, bandName, bandBio, userName, email, genre, contact, youtube, facebook, insta, twitter, password,  createAt, updateAt)
-VALUES (1, "Coding Badly", "All about the code", "Funcoding", "codingbad@gmail.com", "rock", "youtube.com", "instagram.com", "twitter.com", "676673", NOW(), NOW()),
-(2, "Bad Music", "tickling the ivory", "pianostrong", "babygrand@gmail.com", "classic", "youtube.com", "instagram.com", "twitter.com", "847473", NOW(), NOW()),
-(3, "Archtop Players", "Struming around", "steelguitars","playingthesteel@gmail.com", "rock", "youtube.com", "instagram.com", "twitter.com", "473", NOW(), NOW()),
-(4, "Players of the Axe", "chopping the wood with the axe", "axeplayers","axe@gmail.com", "classic", "youtube.com", "instagram.com", "twitter.com", "4787623", NOW(), NOW());
+INSERT INTO bandUsers(id, bandName, bandBio, userName, email, genre, contact, youtube, facebook, insta, twitter, password, FOREIGNKEY, createAt, updateAt)
+VALUES (1, "Coding Badly", "All about the code", "Funcoding", "codingbad@gmail.com", "rock", "youtube.com", "instagram.com", "twitter.com", "676673","23", NOW(), NOW()),
+(2, "Bad Music", "tickling the ivory", "pianostrong", "babygrand@gmail.com", "classic", "youtube.com", "instagram.com", "twitter.com", "847473", "24", NOW(), NOW()),
+(3, "Archtop Players", "Struming around", "steelguitars","playingthesteel@gmail.com", "rock", "youtube.com", "instagram.com", "twitter.com", "473", "25", NOW(), NOW()),
+(4, "Players of the Axe", "chopping the wood with the axe", "axeplayers","axe@gmail.com", "classic", "youtube.com", "instagram.com", "twitter.com", "4787623", "26", NOW(), NOW());
 
 
 
