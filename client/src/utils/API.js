@@ -13,6 +13,6 @@ export default{
         },
     userLogin:(userData)=>{
         return axios.post(
-            "/api/login", userData);
+            "/api/user/login", userData);
         },
 }
