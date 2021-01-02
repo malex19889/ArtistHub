@@ -4,7 +4,9 @@ import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
-
+import Modal from "../Modal"
+import {useAuthContext} from "../../store/contexts/authContext"
+import Login from "../Login";
 // come back to the modals later
 // import LoginModal from "../LoginModal";
 // import RegisterModal from "../RegisterModal";
@@ -14,12 +16,12 @@ import Button from "react-bootstrap/Button";
 
 
 function Navibar(props) {
+    const [authState,dispatch]= useAuthContext()
     return (<Navbar bg="dark" variant="dark">
         <Navbar.Brand>ArtistHub</Navbar.Brand>
         <Nav className="mr-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <button onClick={props.handleRegisterModal}>Register</button>
-            <button onClick={props.handleLoginModal}>Login</button>
+            <Nav.Link href="/">Home</Nav.Link>  
+            { props.children }
         </Nav>
         <Form inline>
             <FormControl type="text" placeholder="Search For an Artist!" className="mr-sm-2" />
