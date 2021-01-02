@@ -72,6 +72,19 @@ export default function UserRegister() {
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control onChange={e => setRegisterPassword(e.target.value)} type="password" placeholder="Password" />
                             </Form.Group>
+
+                            <Form.Group>
+                                {['checkbox'].map((type) => (
+                                    <div key={`default-${type}`} className="mb-3">
+                                        <Form.Check
+                                            type={type}
+                                            id={`default-${type}`}
+                                            label={`Please agree to our Terms and Conditions.`}
+                                        />
+                                    </div>
+                                ))}
+                            </Form.Group>
+
                             <Button variant="primary" type="submit">
                                 Submit
                             </Button>

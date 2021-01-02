@@ -2,6 +2,7 @@ import React from "react";
 import CardGroup from "react-bootstrap/CardGroup";
 import Card from "react-bootstrap/Card";
 
+//logic needed for these to pull from the last 3 artists added to the site
 function ArtistCard() {
     return (
         <div>

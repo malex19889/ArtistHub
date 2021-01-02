@@ -23,21 +23,20 @@ export default function Modal(props) {
       backgroundColor: "#fff",
       margin: "15% auto",
       padding: "20px",
-      border: "1px solid red",
-      width: "80%"
+      border: "5px solid black",
+      width: "50%"
     }
   }
   return <div style={style.modal}>
     <div style={style.content}>
       <button onClick={props.handleRegisterModal}>X</button>
       <Container>
-        <h2>Normal user</h2>
         <Row className="justify-content-lg-center">
           <Col style={{ maxWidth: "500px", marginTop: "30px", marginBottom: "30px" }}>
-
+            <Button type="button" href="/band/register">Band Registration</Button>
+            <Button type="button" href="/user/register">Fan Registration</Button>
           </Col>
         </Row>
-        <Button type="button" href="/band/register">Band Registration</Button>
       </Container>
     </div>
   </div>
