@@ -2,20 +2,6 @@ var bcrypt = require("bcrypt");
 
 module.exports = function (sequelize, DataTypes) {
   const BandUser = sequelize.define("BandUser", {
-    firstName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
-    },
-    lastName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
-    },
     bandName: {
       type: DataTypes.STRING,
       allowNull: false,
