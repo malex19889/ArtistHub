@@ -32,18 +32,22 @@ function App() {
             <BandRegister />
           </Route>
 
+          {/* protected */}
           <Route exact path="/band/home/">
             <BandHome />
           </Route>
 
+          {/* protected */}
           <Route exact path="/band/settings/">
             <BandSettings />
           </Route>
 
+          {/* protected */}
           <Route exact path="/user/settings/">
             <UserSettings />
           </Route>
-
+          
+          {/* protected */}
           <Route exact path="/user/favorites/">
             <UserFavorites />
           </Route>
