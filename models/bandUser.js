@@ -1,7 +1,8 @@
+"use strict";
 var bcrypt = require("bcrypt");
 
 module.exports = function (sequelize, DataTypes) {
-  const BandUser = sequelize.define("BandUser", {
+  const bandUser = sequelize.define("bandUser", {
     bandName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -85,29 +86,28 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
-  BandUser.prototype.validPassword = function (password) {
+  bandUser.prototype.validPassword = function (password) {
     return bcrypt.compareSync(password, this.password);
   };
   // In this case, before a User is created, we will automatically hash their password
-  BandUser.addHook("beforeCreate", function (user) {
+  bandUser.addHook("beforeCreate", function (user) {
     user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
   });
   // setup band association to their members
-  BandUser.associate = function (models) {
-    BandUser.hasMany(models.BandMember, {
+  bandUser.associate = function (models) {
+    bandUser.hasMany(models.bandMember, {
       onDelete: "cascade"
     });
   };
-  BandUser.associate = function (models) {
-    BandUser.hasMany(models.BandImage, {
+  bandUser.associate = function (models) {
+    bandUser.hasMany(models.bandImage, {
       onDelete: "cascade"
     });
   };
-  BandUser.associate = function (models) {
-    BandUser.hasMany(models.TourDate, {
+  bandUser.associate = function (models) {
+    bandUser.hasMany(models.tourDate, {
       onDelete: "cascade"
     });
   };
-
-  return BandUser;
+  return bandUser;
 };
