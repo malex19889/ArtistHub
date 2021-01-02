@@ -1,36 +1,89 @@
 "use strict";
 var bcrypt = require("bcrypt");
-const {
-  Model
-} = require("sequelize");
-module.exports = (sequelize, DataTypes) => {
-  class bandUser extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
 
-    static associate(models) {
-      // define association here
-    }*/
-  }
-  bandUser.init({
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    bandName: DataTypes.STRING,
-    bandBio: DataTypes.STRING,
-    userName: DataTypes.STRING,
-    email: DataTypes.STRING,
-    genre: DataTypes.STRING,
-    contact: DataTypes.STRING,
-    youtube: DataTypes.STRING,
-    facebook: DataTypes.STRING,
-    insta: DataTypes.STRING,
-    twitter: DataTypes.STRING,
-    password: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: "bandUser",
+module.exports = function (sequelize, DataTypes) {
+  const bandUser = sequelize.define("bandUser", {
+    bandName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
+    },
+    bandBio: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+        len: [1, 800]
+      }
+    },
+    userName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: true
+      }
+    },
+    genre: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: true,
+      validate: {
+        len: [1]
+      }
+    },
+    contact: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: true,
+      validate: {
+        len: [1]
+      }
+    },
+    youtube: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: true,
+      validate: {
+        len: [1]
+      }
+    },
+    facebook: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: true,
+      validate: {
+        len: [1]
+      }
+    },
+    insta: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: true,
+      validate: {
+        len: [1]
+      }
+    },
+    twitter: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: true,
+      validate: {
+        len: [1]
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   });
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
   bandUser.prototype.validPassword = function (password) {
