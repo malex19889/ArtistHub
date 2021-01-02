@@ -10,6 +10,9 @@ import BandRegister from "./pages/BandRegister";
 import UserRegister from "./pages/UserRegister";
 import BandHome from "./pages/BandHome";
 import NoMatch from "./pages/NoMatch";
+import BandSettings from "./pages/BandSettings";
+import UserSettings from "./pages/UserSettings";
+import UserFavorites from "./pages/UserFavorites";
 
 
 function App() {
@@ -29,8 +32,24 @@ function App() {
             <BandRegister />
           </Route>
 
+          {/* protected */}
           <Route exact path="/band/home/">
             <BandHome />
+          </Route>
+
+          {/* protected */}
+          <Route exact path="/band/settings/">
+            <BandSettings />
+          </Route>
+
+          {/* protected */}
+          <Route exact path="/user/settings/">
+            <UserSettings />
+          </Route>
+          
+          {/* protected */}
+          <Route exact path="/user/favorites/">
+            <UserFavorites />
           </Route>
 
           <Route>

@@ -22,8 +22,8 @@ export default function Modal(props) {
             backgroundColor: "#fff",
             margin: "15% auto",
             padding: "20px",
-            border: "1px solid red",
-            width: "80%"
+            border: "5px solid black",
+            width: "50%"
         }
     }
     return <div style={style.modal}>
