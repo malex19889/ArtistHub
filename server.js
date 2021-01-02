@@ -8,6 +8,7 @@ const app = express();
 const db = require("./models");
 // require routes
 const apiRoutes = require("./routes/apiRoutes");
+const userApiRoutes = require("./routes/userApiRoutes");
 // Define middleware here
 app.use(compression());
 app.use(express.urlencoded({ extended: true }));
@@ -18,15 +19,19 @@ if (process.env.NODE_ENV === "production") {
 }
 // Use sessions to keep track of our user's login status
 app.use(
-  session({ secret: "cat", resave: true, saveUninitialized: true })
+  session({ secret: "my great secret", resave: true, saveUninitialized: true, cookie: {
+    maxAge: 3600000,
+    sameSite: true
+  } })
 );
 app.use(passport.initialize());
 app.use(passport.session());
 
 
 // Use apiRoutes
-app.use("/api", apiRoutes);
 
+app.use("/api", apiRoutes);
+app.use("/user", userApiRoutes);
 // Send every request to the React app
 app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
