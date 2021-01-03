@@ -1,77 +1,10 @@
-const passport = require("../config/passport");
 const router = require("express").Router();
 const db = require("../models");
-
-// post route for creating new band
-router.post("/banduser", function (req, res) {
-  console.log(req.body);
-  db.BandUser.create({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    bandName: req.body.bandName,
-    bandBio: req.body.bandBio,
-    userName: req.body.userName,
-    email: req.body.email,
-    genre: req.body.genre,
-    contact: req.body.contact,
-    youtube: req.body.youtube,
-    facebook: req.body.facebook,
-    insta: req.body.insta,
-    twitter: req.body.twitter,
-    password: req.body.password,
-  })
-    .then(function(dbBandUser) {
-      res.json(dbBandUser);
-    });
-});
-
-// post route for loging in band user
-router.post("/user/login",function (req, res, next) {
-  console.log("routes/user.js, login, req.body: ");
-  console.log(req.body);
-  next();
-},
-passport.authenticate("local"),
-(req, res) => {
-  console.log("logged in", req.user);
-  var userInfo = {
-    username: req.user.userName
-  };
-  res.send(userInfo);
-}
-);
-
-// put route for updating band
-router.put("/banduser", function (req, res) {
-  console.log(req.body);
-  db.BandUser.update(req.body,
-    {
-      where: {
-        id: req.body.id
-      }
-    })
-    .then(function(dbBandUser) {
-      res.json(dbBandUser);
-    });
-});
-
-// delete route for deleting band
-router.delete("/banduser/:id", function (req, res) {
-  console.log(req.body);
-  db.BandUser.destroy({
-    where: {
-      id: req.params.id
-    }
-  })
-    .then(function(dbBandUser) {
-      res.json(dbBandUser);
-    });
-});
 
 // post route for adding band members
 router.post("/bandmember", function (req, res) {
   console.log(req.body);
-  db.BandMember.create({
+  db.bandMember.create({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     contact: req.body.contact,
@@ -89,7 +22,7 @@ router.post("/bandmember", function (req, res) {
 // post route for adding favorites, boolean value
 router.post("/favorites", function (req, res) {
   console.log(req.body);
-  db.Favorite.create({
+  db.favorite.create({
     band: req.body.band,
     url: req.body.url,
   })
@@ -101,7 +34,7 @@ router.post("/favorites", function (req, res) {
 // delete route for favorites
 router.delete("/favorites/:id", function (req, res) {
   console.log(req.body);
-  db.Favorite.destroy({
+  db.favorite.destroy({
     where: {
       id: req.params.id
     }
@@ -114,7 +47,7 @@ router.delete("/favorites/:id", function (req, res) {
 // post route for tourDate
 router.post("/tourdate", function (req, res) {
   console.log(req.body);
-  db.TourDate.create({
+  db.tourDate.create({
     date: req.body.date,
     time: req.body.time,
     location: req.body.location,
@@ -130,7 +63,7 @@ router.post("/tourdate", function (req, res) {
 // put route for updating tourDate
 router.put("/tourdate", function (req, res) {
   console.log(req.body);
-  db.TourDate.update(req.body,
+  db.tourDate.update(req.body,
     {
       where: {
         id: req.body.id
@@ -144,7 +77,7 @@ router.put("/tourdate", function (req, res) {
 // delete route for tourDate
 router.delete("/tourdate/:id", function (req, res) {
   console.log(req.body);
-  db.TourDate.destroy({
+  db.tourDate.destroy({
     where: {
       id: req.params.id
     }
@@ -158,7 +91,7 @@ router.delete("/tourdate/:id", function (req, res) {
 // below is just a template
 router.get("/home", function (req,res) {
   console.log(req.body);
-  db.BandUser.findAll({
+  db.bandUser.findAll({
     where: {
       id: req.params.id
     }

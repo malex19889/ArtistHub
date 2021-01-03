@@ -5,7 +5,7 @@ const db = require("../models");
 // route for creating a new user
 router.post("/register", function (req, res) {
   console.log(req.body);
-  db.User.create({
+  db.user.create({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     userName: req.body.userName,
@@ -38,7 +38,7 @@ passport.authenticate("local"),
 // put route for updating user
 router.put("/login", function (req, res) {
   console.log(req.body);
-  db.User.update(req.body,
+  db.user.update(req.body,
     {
       where: {
         id: req.body.id
@@ -49,10 +49,10 @@ router.put("/login", function (req, res) {
     });
 });
 
-// delete route for deleting band
+// delete route for deleting user
 router.delete("/login/:id", function (req, res) {
   console.log(req.body);
-  db.User.destroy({
+  db.user.destroy({
     where: {
       id: req.params.id
     }
