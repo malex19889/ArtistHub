@@ -35,7 +35,7 @@ module.exports = function (sequelize, DataTypes) {
     facebook: {
       type: DataTypes.STRING,
       allowNull: true,
-      unique: true,
+      unique: false,
       validate: {
         len: [1]
       }
@@ -43,7 +43,7 @@ module.exports = function (sequelize, DataTypes) {
     insta: {
       type: DataTypes.STRING,
       allowNull: true,
-      unique: true,
+      unique: false,
       validate: {
         len: [1]
       }
@@ -51,7 +51,7 @@ module.exports = function (sequelize, DataTypes) {
     twitter: {
       type: DataTypes.STRING,
       allowNull: true,
-      unique: true,
+      unique: false,
       validate: {
         len: [1]
       }

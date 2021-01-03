@@ -3,9 +3,9 @@ const router = require("express").Router();
 const db = require("../models");
 
 // post route for creating new band
-router.post("/banduser", function (req, res) {
+router.post("/register", function (req, res) {
   console.log(req.body);
-  db.bandUser.create({
+  db.BandUser.create({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     bandName: req.body.bandName,
@@ -18,15 +18,18 @@ router.post("/banduser", function (req, res) {
     facebook: req.body.facebook,
     insta: req.body.insta,
     twitter: req.body.twitter,
-    password: req.body.password,
+    password: req.body.password
   })
     .then(function(dbBandUser) {
       res.json(dbBandUser);
+    })
+    .catch(function (err) {
+      res.json(err);
     });
 });
 
 // post route for loging in band user
-router.post("/user/login",function (req, res, next) {
+router.post("/login",function (req, res, next) {
   console.log("routes/user.js, login, req.body: ");
   console.log(req.body);
   next();
@@ -42,9 +45,9 @@ passport.authenticate("local"),
 );
 
 // put route for updating band
-router.put("/banduser", function (req, res) {
+router.put("/user", function (req, res) {
   console.log(req.body);
-  db.bandUser.update(req.body,
+  db.BandUser.update(req.body,
     {
       where: {
         id: req.body.id
@@ -56,9 +59,9 @@ router.put("/banduser", function (req, res) {
 });
 
 // delete route for deleting band
-router.delete("/banduser/:id", function (req, res) {
+router.delete("/user/:id", function (req, res) {
   console.log(req.body);
-  db.bandUser.destroy({
+  db.BandUser.destroy({
     where: {
       id: req.params.id
     }
@@ -67,3 +70,5 @@ router.delete("/banduser/:id", function (req, res) {
       res.json(dbBandUser);
     });
 });
+
+module.exports = router;

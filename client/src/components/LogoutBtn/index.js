@@ -1,4 +1,5 @@
 import React from 'react'
+import { Redirect } from "react-router-dom"
 import  Button  from "react-bootstrap/Button";
 import API from "../../utils/API"
 // global auth context
@@ -10,7 +11,7 @@ const Logout = () => {
         API.userLogin(authState)
             .then(res => {
                 console.log(res);
-                dispatch({ type: "LOGOUT", user: res.data })
+                dispatch({ type: "LOGOUT", user: res.data });
             })
             .catch(err => {
                 console.log(err);

@@ -5,7 +5,7 @@ const db = require("../models");
 // route for creating a new user
 router.post("/register", function (req, res) {
   console.log(req.body);
-  db.user.create({
+  db.User.create({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     userName: req.body.userName,
@@ -47,7 +47,7 @@ router.get("/logout", function (req, res) {
 // put route for updating user
 router.put("/login", function (req, res) {
   console.log(req.body);
-  db.user.update(req.body,
+  db.User.update(req.body,
     {
       where: {
         id: req.body.id
@@ -61,7 +61,7 @@ router.put("/login", function (req, res) {
 // delete route for deleting user
 router.delete("/login/:id", function (req, res) {
   console.log(req.body);
-  db.user.destroy({
+  db.User.destroy({
     where: {
       id: req.params.id
     }

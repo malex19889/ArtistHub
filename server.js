@@ -31,8 +31,8 @@ app.use(passport.session());
 
 // Use apiRoutes
 
-// app.use("/auth", bandAuthRoutes);
-// app.use("/api", bandApiRoutes);
+app.use("/auth/band", bandAuthRoutes);
+app.use("/api", bandApiRoutes);
 app.use("/auth", userAuthRoutes);
 // Send every request to the React app
 app.get("*", function (req, res) {
