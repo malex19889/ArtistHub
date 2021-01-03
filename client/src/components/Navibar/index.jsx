@@ -4,9 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
-import Modal from "../Modal"
 import {useAuthContext} from "../../store/contexts/authContext"
-import Login from "../Login";
 // come back to the modals later
 // import LoginModal from "../LoginModal";
 // import RegisterModal from "../RegisterModal";

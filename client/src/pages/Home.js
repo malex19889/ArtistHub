@@ -13,58 +13,17 @@ import RegisterModal from "../components/RegisterModal";
 import API from "../utils/API";
 import ModalA from "../components/Modal";
 import Login from "../components/Login";
-
+import Logout from "../components/LogoutBtn"
+import { useAuthContext } from "../store/contexts/authContext"
 export default function Home() {
-    // const [loginModalIsOpen, setLoginModalIsOpen] = useState(false);
-    // const [registerModalIsOpen, setRegisterModalIsOpen] = useState(false);
-    // const [username, setUsername] = useState("");
-    // const [password, setPassword] = useState("");
-
-    // const userLogin = {
-    //     userName: username,
-    //     password: password
-    // }
-
-    // const handleLoginModal = () => {
-    //     setLoginModalIsOpen(!loginModalIsOpen)
-    // }
-    // const handleRegisterModal = () => {
-    //     setRegisterModalIsOpen(!registerModalIsOpen)
-    // }
-
-    // const handleLogin = (event) => {
-    //     event.preventDefault();
-    //     API.userLogin(userLogin)
-    //         .then(res => console.log(res.data))
-    //         .catch(err => console.log(err));
-    //     console.log("Login");
-    //     console.log(userLogin);
-
-
-    // }
-
-    // const handleInputChange = (event) => {
-    //     switch (event.target.name) {
-    //         case "userName":
-    //             setUsername(event.target.value)
-    //             return;
-    //         case "password":
-    //             setPassword(event.target.value)
-    //             return;
-    //         default:
-    //             break;
-    //     }
-    // }
+    const [authState, dispatch] = useAuthContext()
 
     return (
         <div>
             <Navibar>
-                <ModalA>
-                    <Login></Login>
-                </ModalA>
+                {authState.loggedIn ? <Logout></Logout> :<ModalA><Login></Login></ModalA>}
             </Navibar>
-            {/* <LoginModal open={loginModalIsOpen} handleInputChange={handleInputChange} handleLoginModal={handleLoginModal} handleSubmit={handleLogin} />
-            <RegisterModal open={registerModalIsOpen} handleRegisterModal={handleRegisterModal} /> */}
+            
             <Jumbotron />
             <Container fluid>
                 <Row>

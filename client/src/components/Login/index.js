@@ -4,24 +4,27 @@ import Button from 'react-bootstrap/Button'
 // hooks
 import useHandleInputChange from "../../hooks/useHandleInputChange"
 // contexts
-import {useAuthContext} from "../../store/contexts/authContext"
+import { useAuthContext } from "../../store/contexts/authContext"
 import API from "../../utils/API";
 
 function Login(props) {
     // globall auth state
-    const [authState,dispatch]= useAuthContext()
+    const [authState, dispatch] = useAuthContext()
     // hook for form input change
-    const {state,handleInputChange}= useHandleInputChange();
+    const { state, handleInputChange } = useHandleInputChange();
     console.log(authState)
     // handler for login submit
-    const handleLogin = (e)=>{
+    const handleLogin = (e) => {
         e.preventDefault();
         API.userLogin(state)
-        .then(res=>{
-            console.log(res);
-            dispatch({type:"LOGIN_SUCCESS",user:res.data})
-        })
-        .catch(err=> console.log(err))
+            .then(res => {
+                console.log(res);
+                dispatch({ type: "LOGIN_SUCCESS", user: res.data })
+            })
+            .catch(err => {
+                console.log(err);
+                dispatch({ type: "LOGIN_FAILED" });
+            })
     }
 
     return (
@@ -39,7 +42,7 @@ function Login(props) {
                 <Form.Group controlId="formBasicCheckbox">
                     <Form.Check type="checkbox" label="Check me out" />
                 </Form.Group>
-                <Button variant="primary" onClick={handleLogin}type="submit">
+                <Button variant="primary" onClick={handleLogin} type="submit">
                     Login
   </Button>
             </Form>

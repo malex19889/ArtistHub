@@ -7,8 +7,9 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const db = require("./models");
 // require routes
-const apiRoutes = require("./routes/apiRoutes");
-const userApiRoutes = require("./routes/userApiRoutes");
+const bandAuthRoutes = require("./routes/bandAuthRoutes");
+const bandApiRoutes = require("./routes/bandInfoRoutes");
+const userAuthRoutes = require("./routes/userAuthRoutes");
 // Define middleware here
 app.use(compression());
 app.use(express.urlencoded({ extended: true }));
@@ -30,8 +31,9 @@ app.use(passport.session());
 
 // Use apiRoutes
 
-app.use("/api", apiRoutes);
-app.use("/user", userApiRoutes);
+// app.use("/auth", bandAuthRoutes);
+// app.use("/api", bandApiRoutes);
+app.use("/auth", userAuthRoutes);
 // Send every request to the React app
 app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
