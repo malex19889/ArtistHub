@@ -9,7 +9,7 @@ function ArtistCard() {
             <h1 style={{margin:"0 auto", textAlign:"center", marginBottom:"10px"}}>Recently Joined</h1>
             <CardGroup style={{ margin: "10px" }}>
                 <Card>
-                    <Card.Img variant="top" src="holder.js/100px160" />
+                    <Card.Img variant="top" src="https://via.placeholder.com/100" />
                     <Card.Body>
                         <Card.Title>Band Name</Card.Title>
                         <Card.Text>
@@ -21,7 +21,7 @@ function ArtistCard() {
                     </Card.Footer>
                 </Card>
                 <Card>
-                    <Card.Img variant="top" src="holder.js/100px160" />
+                    <Card.Img variant="top" src="https://via.placeholder.com/100" />
                     <Card.Body>
                         <Card.Title>Band Name</Card.Title>
                         <Card.Text>
@@ -33,7 +33,7 @@ function ArtistCard() {
                     </Card.Footer>
                 </Card>
                 <Card>
-                    <Card.Img variant="top" src="holder.js/100px160" />
+                    <Card.Img variant="top" src="https://via.placeholder.com/100" />
                     <Card.Body>
                         <Card.Title>Band Name</Card.Title>
                         <Card.Text>

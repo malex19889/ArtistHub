@@ -13,6 +13,8 @@ import NoMatch from "./pages/NoMatch";
 import BandSettings from "./pages/BandSettings";
 import UserSettings from "./pages/UserSettings";
 import UserFavorites from "./pages/UserFavorites";
+import BandGallery from "./pages/BandGallery";
+import BandCalendar from "./pages/BandCalendar";
 // global state
 import { AuthProvider,useAuthContext } from './store/contexts/authContext';
 
@@ -43,11 +45,6 @@ function App() {
           </Route>
 
           {/* protected */}
-          {/* <Route exact path="/band/settings/">
-            <BandSettings />
-          </Route> */}
-
-          {/* protected */}
           <Route exact path="/user/settings/">
             <UserSettings />
           </Route>
@@ -55,6 +52,16 @@ function App() {
           {/* protected */}
           <Route exact path="/user/favorites/">
             <UserFavorites />
+          </Route>
+
+          {/* protected */}
+          <Route exact path="/band/gallery/">
+            <BandGallery />
+          </Route>
+
+          {/* protected */}
+          <Route exact path="/band/calendar/">
+            <BandCalendar />
           </Route>
 
           <PrivateRoute path="/band/settings/" authorization={authState && authState.loggedIn} component={BandSettings}/>
