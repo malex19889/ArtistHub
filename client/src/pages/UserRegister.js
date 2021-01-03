@@ -43,7 +43,7 @@ export default function UserRegister() {
                     <Col style={{ maxWidth: "500px", marginTop: "30px", marginBottom: "30px" }}>
                         <Form className="bandregister" onSubmit={handleRegisterSubmit}>
 
-                            <h1>Register</h1>
+                            <h1>Fan Register</h1>
 
                             <Form.Group controlId="formFirstName">
                                 <Form.Label>First Name</Form.Label>
