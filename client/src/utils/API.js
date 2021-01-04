@@ -19,4 +19,8 @@ export default{
         return axios.post(
             "/auth/band/login", userData);
         },
+    bandInfo:(userData)=>{
+        return axios.get(
+            "/api/home", userData);
+        },
 }
