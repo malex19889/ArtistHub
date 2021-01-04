@@ -1,7 +1,7 @@
 module.exports = function (sequelize, DataTypes) {
   var BandImage = sequelize.define("BandImage", {
     images: {
-      type: DataTypes.BLOB,
+      type: DataTypes.LONGBLOB,
       allowNull: false,
       unique: false,
     }});
