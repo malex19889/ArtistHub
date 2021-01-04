@@ -21,7 +21,10 @@ function Login(props) {
                 console.log(res);
                 dispatch({ type: "LOGIN_SUCCESS", user: res.data })
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err);
+                dispatch({ type: "LOGIN_FAILED" });
+            })
     }
 
     return (

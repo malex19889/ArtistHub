@@ -4,7 +4,7 @@ import axios from "axios";
 export default{
     logout: ()=>{
         return axios.get(
-            "/api/logout"
+            "/auth/logout"
         )
     },
     register:(userData)=>{
@@ -13,6 +13,10 @@ export default{
         },
     userLogin:(userData)=>{
         return axios.post(
-            "/api/user/login", userData);
+            "/auth/user/login", userData);
+        },
+    bandLogin:(userData)=>{
+        return axios.post(
+            "/auth/band/login", userData);
         },
 }

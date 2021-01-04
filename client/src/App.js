@@ -40,31 +40,18 @@ function App() {
           </Route>
 
           {/* protected */}
-          <Route exact path="/band/home/">
+          {/* <Route exact path="/band/home/">
             <BandHome />
-          </Route>
-
-          {/* protected */}
-          <Route exact path="/user/settings/">
-            <UserSettings />
-          </Route>
-          
-          {/* protected */}
-          <Route exact path="/user/favorites/">
-            <UserFavorites />
-          </Route>
-
-          {/* protected */}
-          <Route exact path="/band/gallery/">
-            <BandGallery />
-          </Route>
-
-          {/* protected */}
-          <Route exact path="/band/calendar/">
-            <BandCalendar />
-          </Route>
+          </Route> */}
 
           <PrivateRoute path="/band/settings/" authorization={authState && authState.loggedIn} component={BandSettings}/>
+
+          <PrivateRoute path="/band/home/" authorization={authState && authState.loggedIn} component={BandHome}/>
+
+          <PrivateRoute path="/user/settings/" authorization={authState && authState.loggedIn} component={UserSettings}/>
+
+          <PrivateRoute path="/user/favorites/" authorization={authState && authState.loggedIn} component={UserFavorites}/>
+
 
           <Route>
             <NoMatch />
