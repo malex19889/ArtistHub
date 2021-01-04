@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button"
 export default function MerchCard() {
     return (
             <Card style={{ width: '18rem', margin:"10px" }}>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top" src="https://via.placeholder.com/80" />
                 <Card.Body>
                     <Card.Title>Merch Item</Card.Title>
                     <Card.Text>
