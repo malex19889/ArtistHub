@@ -1,3 +1,5 @@
+USE artisthub;
+
 -- User table 
 INSERT INTO users(id, firstName, lastName, userName, email, password, createAt, updateAt)
 VALUES (1, "D.B.", "Cooper", "dbcooper71", "dbcooper@gmail.com", "11041971", NOW(), NOW()),

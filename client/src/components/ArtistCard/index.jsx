@@ -1,52 +1,16 @@
-import React from "react";
-import CardGroup from "react-bootstrap/CardGroup";
 import Card from "react-bootstrap/Card";
 
-//logic needed for these to pull from the last 3 artists added to the site
-function ArtistCard() {
-    return (
-        <div>
-            <h1 style={{margin:"0 auto", textAlign:"center", marginBottom:"10px"}}>Recently Joined</h1>
-            <CardGroup style={{ margin: "10px" }}>
-                <Card>
-                    <Card.Img variant="top" src="https://via.placeholder.com/100" />
-                    <Card.Body>
-                        <Card.Title>Band Name</Card.Title>
-                        <Card.Text>
-                            A short description about the band will go here. For example: "Metallica is an American heavy metal band. The band was formed in 1981 in Los Angeles by vocalist/guitarist James Hetfield and drummer Lars Ulrich, and has been based in San Francisco for most of its career.[1][2] The band's fast tempos, instrumentals and aggressive musicianship made them one of the founding "big four" bands of thrash metal, alongside Megadeth, Anthrax and Slayer."
-                    </Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                        <small className="text-muted">Date Added Goes Here</small>
-                    </Card.Footer>
-                </Card>
-                <Card>
-                    <Card.Img variant="top" src="https://via.placeholder.com/100" />
-                    <Card.Body>
-                        <Card.Title>Band Name</Card.Title>
-                        <Card.Text>
-                            A short description about the band will go here. For example: "Metallica is an American heavy metal band. The band was formed in 1981 in Los Angeles by vocalist/guitarist James Hetfield and drummer Lars Ulrich, and has been based in San Francisco for most of its career.[1][2] The band's fast tempos, instrumentals and aggressive musicianship made them one of the founding "big four" bands of thrash metal, alongside Megadeth, Anthrax and Slayer."
-                    </Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                        <small className="text-muted">Date Added Goes Here</small>
-                    </Card.Footer>
-                </Card>
-                <Card>
-                    <Card.Img variant="top" src="https://via.placeholder.com/100" />
-                    <Card.Body>
-                        <Card.Title>Band Name</Card.Title>
-                        <Card.Text>
-                            A short description about the band will go here. For example: "Metallica is an American heavy metal band. The band was formed in 1981 in Los Angeles by vocalist/guitarist James Hetfield and drummer Lars Ulrich, and has been based in San Francisco for most of its career.[1][2] The band's fast tempos, instrumentals and aggressive musicianship made them one of the founding "big four" bands of thrash metal, alongside Megadeth, Anthrax and Slayer."
-                        </Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                        <small className="text-muted">Date Added Goes Here</small>
-                    </Card.Footer>
-                </Card>
-            </CardGroup>
-        </div>
-    );
+function ArtistCard(props) {
+    return <Card>
+        <Card.Img variant="top" src={props.artist.img} />
+        <Card.Body>
+            <Card.Title>{props.artist.title}</Card.Title>
+            <Card.Text>{props.artist.text}</Card.Text>
+        </Card.Body>
+        <Card.Footer>
+            <small className="text-muted">{props.artist.date}</small>
+        </Card.Footer>
+    </Card>
 }
 
-export default ArtistCard;
+export default ArtistCard
