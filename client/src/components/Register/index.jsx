@@ -2,14 +2,6 @@ import React from 'react'
 
 import Button from 'react-bootstrap/Button'
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-
-// hooks
-import useHandleInputChange from "../../hooks/useHandleInputChange"
-
-// contexts
-import { useAuthContext } from "../../store/contexts/authContext"
-import API from "../../utils/API";
 
 function Register() {
 
