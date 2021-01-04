@@ -5,21 +5,19 @@ import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 
-// come back to the modals later
-// import LoginModal from "../LoginModal";
-// import RegisterModal from "../RegisterModal";
+import {useAuthContext} from "../../store/contexts/authContext"
 
 //for bands: add logic to change navbar to have links to Band Home, Settings, and Logout
 //for users: add logic to change navbar to have links to Favorites, Settings, and Logout
 
 
 function Navibar(props) {
+    const [authState,dispatch]= useAuthContext()
     return (<Navbar bg="dark" variant="dark">
         <Navbar.Brand>ArtistHub</Navbar.Brand>
         <Nav className="mr-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <button onClick={props.handleRegisterModal}>Register</button>
-            <button onClick={props.handleLoginModal}>Login</button>
+            <Nav.Link href="/">Home</Nav.Link>  
+            { props.children }
         </Nav>
         <Form inline>
             <FormControl type="text" placeholder="Search For an Artist!" className="mr-sm-2" />

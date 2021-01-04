@@ -21,20 +21,29 @@ router.post("/register", function (req, res) {
 });
 
 // post route for loging in user
-router.post("/login",function (req, res, next) {
+router.post("/user/login",function (req, res, next) {
   console.log("routes/user.js, login, req.body: ");
   console.log(req.body);
   next();
 },
 passport.authenticate("local"),
 (req, res) => {
-  console.log("logged in", req.user);
+  console.log("req",req.sessionID);
+  // console.log("logged in", req.user);
   var userInfo = {
-    username: req.user.userName
+    username: req.user.userName,
+    sessionId: req.sessionID,
+    id: req.user.id
   };
   res.send(userInfo);
 }
 );
+// logout route
+router.get("/logout", function (req, res) {
+  req.logout();
+  const logoutData = {data:req};
+  res.json(logoutData);
+});
 // put route for updating user
 router.put("/login", function (req, res) {
   console.log(req.body);
@@ -49,7 +58,7 @@ router.put("/login", function (req, res) {
     });
 });
 
-// delete route for deleting band
+// delete route for deleting user
 router.delete("/login/:id", function (req, res) {
   console.log(req.body);
   db.User.destroy({
