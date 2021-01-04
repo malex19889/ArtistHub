@@ -100,4 +100,43 @@ router.get("/home", function (req,res) {
   });
 });
 
+// post route for bandImage
+router.post("/bandimage", function (req, res) {
+  console.log(req.body);
+  db.BandImage.create({
+    images: req.body.date,
+    BandUserId: req.body.BandUserId
+  })
+    .then(function(dbBandImage) {
+      res.json(dbBandImage);
+    });
+});
+
+// put route for updating bandImage
+router.put("/bandimage", function (req, res) {
+  console.log(req.body);
+  db.BandImage.update(req.body,
+    {
+      where: {
+        id: req.body.id
+      }
+    })
+    .then(function(dbBandImage) {
+      res.json(dbBandImage);
+    });
+});
+
+// delete route for bandImage
+router.delete("/bandimage/:id", function (req, res) {
+  console.log(req.body);
+  db.BandImage.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(function(dbBandImage) {
+      res.json(dbBandImage);
+    });
+});
+
 module.exports = router;

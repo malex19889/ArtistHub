@@ -44,6 +44,13 @@ passport.authenticate("local"),
 }
 );
 
+// logout route
+router.get("/logout", function (req, res) {
+  req.logout();
+  const logoutData = {data:req};
+  res.json(logoutData);
+});
+
 // put route for updating band
 router.put("/user", function (req, res) {
   console.log(req.body);
