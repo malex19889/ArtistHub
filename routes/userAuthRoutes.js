@@ -5,7 +5,7 @@ const db = require("../models");
 // route for creating a new user
 router.post("/register", function (req, res) {
   console.log(req.body);
-  db.user.create({
+  db.User.create({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     userName: req.body.userName,
@@ -21,24 +21,33 @@ router.post("/register", function (req, res) {
 });
 
 // post route for loging in user
-router.post("/login",function (req, res, next) {
+router.post("/user/login",function (req, res, next) {
   console.log("routes/user.js, login, req.body: ");
   console.log(req.body);
   next();
 },
 passport.authenticate("local"),
 (req, res) => {
-  console.log("logged in", req.user);
+  console.log("req",req.sessionID);
+  // console.log("logged in", req.user);
   var userInfo = {
-    username: req.user.userName
+    username: req.user.userName,
+    sessionId: req.sessionID,
+    id: req.user.id
   };
   res.send(userInfo);
 }
 );
+// logout route
+router.get("/logout", function (req, res) {
+  req.logout();
+  const logoutData = {data:req};
+  res.json(logoutData);
+});
 // put route for updating user
 router.put("/login", function (req, res) {
   console.log(req.body);
-  db.user.update(req.body,
+  db.User.update(req.body,
     {
       where: {
         id: req.body.id
@@ -52,7 +61,7 @@ router.put("/login", function (req, res) {
 // delete route for deleting user
 router.delete("/login/:id", function (req, res) {
   console.log(req.body);
-  db.user.destroy({
+  db.User.destroy({
     where: {
       id: req.params.id
     }
