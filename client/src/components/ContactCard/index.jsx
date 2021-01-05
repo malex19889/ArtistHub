@@ -41,7 +41,7 @@ function ContactCard(props) {
                                     {props.band.youtube ? <a style={{ color: "black", margin: "10px" }} href={props.band.youtube}>Youtube</a> : <div></div>}
                                     {props.band.facebook ? <a style={{ color: "black", margin: "10px" }} href={props.band.facebook}>Facebook</a> : <div></div>}
                                     {props.band.insta ? <a style={{ color: "black", margin: "10px" }} href={props.band.insta}>Instagram</a> : <div></div>}
-                                    {props.band.insta<a style={{ color: "black", margin: "10px" }} href={props.band.twitter}>Twitter</a>}
+                                    {props.band.twitter ? <a style={{ color: "black", margin: "10px" }} href={props.band.twitter}>Twitter</a> : <div></div>}
                                 </ListGroup.Item>
                             </ListGroup>
                         </Row>

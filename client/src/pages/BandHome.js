@@ -96,16 +96,6 @@ export default function BandHome() {
                         <ContactCard band={band} />
                     </Col>
                 </Row>
-                <Row>
-                    <Col md={12}>
-                        <div className="d-flex align-items-center justify-content-center">
-                            <MerchCard />
-                            <MerchCard />
-                            <MerchCard />
-                            <MerchCard />
-                        </div>
-                    </Col>
-                </Row>
             </Container>
 
         </div>
