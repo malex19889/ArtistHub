@@ -89,15 +89,25 @@ router.delete("/tourdate/:id", function (req, res) {
 
 // get route for homepage - recently added bands, use sequelize timestamp
 // below is just a template
-router.get("/home", function (req,res) {
+router.get("/bands", function (req,res) {
   console.log(req.body);
   db.bandUser.findAll({
-    where: {
-      id: req.params.createdAt
-    }
 
-  }).then(function(dbBandUser){
-    res.json(dbBandUser);
+  }).then(function(dbBandUsers){
+    res.json(dbBandUsers.map((b) => {
+      return {bandName:b.bandName, bandBio:b.bandBio, imageUrl: "http://" , createdAt:b.createdAt};
+    }));
+  });
+});
+
+router.get("/bands/:id", function (req,res){
+  console.log("this is in the bands/:id "+ req.body);
+  db.bandUser.id({
+
+  }).then(function(dbBandUsers){
+    res.json(dbBandUsers.map((b) => {
+      return {bandName:b.bandName, bandBio:b.bandBio};
+    }));
   });
 });
 

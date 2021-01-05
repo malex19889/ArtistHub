@@ -61,6 +61,11 @@ module.exports = function (sequelize, DataTypes) {
         len: [1]
       }
     },
+    images: {
+      type: DataTypes.BLOB("LONG"),
+      allowNull: false,
+      unique: false,
+    },
     youtube: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -109,11 +114,6 @@ module.exports = function (sequelize, DataTypes) {
   // setup band association to their members
   BandUser.associate = function (models) {
     BandUser.hasMany(models.BandMember, {
-      onDelete: "cascade"
-    });
-  };
-  BandUser.associate = function (models) {
-    BandUser.hasMany(models.BandImage, {
       onDelete: "cascade"
     });
   };
