@@ -14,6 +14,7 @@ router.post("/register", function (req, res) {
     email: req.body.email,
     genre: req.body.genre,
     contact: req.body.contact,
+    bannerImage: req.body.bannerImage,
     youtube: req.body.youtube,
     facebook: req.body.facebook,
     insta: req.body.insta,
@@ -43,6 +44,13 @@ passport.authenticate("local"),
   res.send(userInfo);
 }
 );
+
+// logout route
+router.get("/logout", function (req, res) {
+  req.logout();
+  const logoutData = {data:req};
+  res.json(logoutData);
+});
 
 // put route for updating band
 router.put("/user", function (req, res) {
