@@ -87,56 +87,27 @@ router.delete("/tourdate/:id", function (req, res) {
     });
 });
 
-// get route for homepage - recently added bands, use sequelize timestamp
+// get route for homepage for added bands for the home page
 // below is just a template
-router.get("/home", function (req,res) {
+router.get("/bands", function (req,res) {
   console.log(req.body);
   db.bandUser.findAll({
-    where: {
-      id: req.params.id
-    }
-  }).then(function(dbBandUser){
-    res.json(dbBandUser);
+  }).then(function(dbBandUsers){
+    res.json(dbBandUsers.map((b) => {
+      return {bandName:b.bandName, bandName:b.bandBio, imageUrl: "http://", createdAt:b.createdAt};
+    }));
   });
 });
 
-// post route for bandImage
-router.post("/bandimage", function (req, res) {
+// get route for band home page
+router.get("/bands:id", function (req,res) {
   console.log(req.body);
-  db.BandImage.create({
-    images: req.body.date,
-    BandUserId: req.body.BandUserId
-  })
-    .then(function(dbBandImage) {
-      res.json(dbBandImage);
-    });
-});
-
-// put route for updating bandImage
-router.put("/bandimage", function (req, res) {
-  console.log(req.body);
-  db.BandImage.update(req.body,
-    {
-      where: {
-        id: req.body.id
-      }
-    })
-    .then(function(dbBandImage) {
-      res.json(dbBandImage);
-    });
-});
-
-// delete route for bandImage
-router.delete("/bandimage/:id", function (req, res) {
-  console.log(req.body);
-  db.BandImage.destroy({
-    where: {
-      id: req.params.id
-    }
-  })
-    .then(function(dbBandImage) {
-      res.json(dbBandImage);
-    });
+  db.bandUser.findOne({ where: {id: idParam}, include: [bandMember]
+  }).then(function(dbBandUsers){
+    res.json(dbBandUsers ((b) => {
+      return {bandName:b.bandName, bandBio:b.bandBio, genre:b.genre, contact:b.contact, youtube:b.youtube, facebook:b.facebook, insta:b.insta, twitter:b.twitter, bannerImage:b.bannerImage, bandMembers:b.bandmembers};
+    }));
+  });
 });
 
 module.exports = router;
