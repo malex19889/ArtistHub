@@ -38,12 +38,14 @@ passport.authenticate("local"),
   res.send(userInfo);
 }
 );
+
 // logout route
 router.get("/logout", function (req, res) {
   req.logout();
   const logoutData = {data:req};
   res.json(logoutData);
 });
+
 // put route for updating user
 router.put("/login", function (req, res) {
   console.log(req.body);

@@ -31,10 +31,6 @@ module.exports = function (sequelize, DataTypes) {
         len: [1]
       }
     },
-    tourName:{
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
     ticketPrice: {
       type: DataTypes.STRING,
       allowNull: true,
