@@ -40,7 +40,7 @@ function App() {
           </Route>
 
           {/* get rid of these before you PUSH WOMAN */}
-          <Route exact path="/band/home/">
+          <Route exact path="/band/home/:id">
             <BandHome />
           </Route>
           <Route exact path="/user/favorites">
