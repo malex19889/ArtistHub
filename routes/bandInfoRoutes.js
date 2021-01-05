@@ -102,7 +102,7 @@ router.get("/bands", function (req,res) {
 
 router.get("/bands/:id", function (req, res) {
   console.log(req.body);
-  db.bandUser.findOne({ where: {id: req.params.id}, include: [bandMember]})
+  db.BandUser.findOne({ where: {id: req.params.id}, include: [BandMember]})
     .then(function(user){
       res.json({
         bandName: user.bandName,
