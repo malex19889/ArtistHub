@@ -4,7 +4,8 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.LONGBLOB,
       allowNull: false,
       unique: false,
-    }});
+    }
+  });
   BandImage.associate = (models) => {
     BandImage.belongsTo(models.BandUser, {
       foreignKey: {

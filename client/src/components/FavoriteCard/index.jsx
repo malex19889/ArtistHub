@@ -8,7 +8,7 @@ function FavoriteCard() {
         <div>
             <Container className="align-self-center">
             <Card style={{margin:"10px"}}>
-                <Card.Img variant="top" src="holder.js/100px160" />
+                <Card.Img variant="top" src="https://via.placeholder.com/100" />
                 <Card.Body>
                     <Card.Title>Band Name</Card.Title>
                     <Card.Text>
