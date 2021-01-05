@@ -21,7 +21,7 @@ export default {
     },
     bandLogin: (userData) => {
         return axios.post(
-            "/auth/bands/login", userData);
+            "/auth/band/login", userData);
     },
     // call to get band object(all band data to be passed in as props later)
     bandInfo: (search) => {

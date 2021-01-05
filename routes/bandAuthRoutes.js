@@ -1,4 +1,4 @@
-const passport = require("../config/passport");
+const passport = require("../config/band-passport");
 const router = require("express").Router();
 const db = require("../models");
 
