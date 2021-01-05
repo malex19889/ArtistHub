@@ -42,7 +42,7 @@ passport.authenticate("local"),
 // logout route
 router.get("/logout", function (req, res) {
   req.logout();
-  const logoutData = {data:req};
+  const logoutData = {data:"logged out"};
   res.json(logoutData);
 });
 

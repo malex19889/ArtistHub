@@ -26,6 +26,7 @@ export default function BandRegister() {
     const [registerFacebook, setRegisterFacebook] = useState("");
     const [registerInsta, setRegisterInsta] = useState("");
     const [registerTwitter, setRegisterTwitter] = useState("");
+    const [imageState, setImageState] = useState()
 
     const user = {
         firstName: registerFirstname,
@@ -40,7 +41,8 @@ export default function BandRegister() {
         youtube: registerYoutube,
         facebook: registerFacebook,
         insta: registerInsta,
-        twitter: registerTwitter
+        twitter: registerTwitter,
+        bannerImage: imageState
     };
 
     const handleRegisterSubmit = (event) => {
@@ -50,7 +52,24 @@ export default function BandRegister() {
             .then(res => console.log(res))
             .catch(err => console.log(err))
     }
+    const handleReaderLoaded = (readerEvt)=>{
+        let binaryString = readerEvt.target.result
+        console.log(btoa(binaryString));
+        setImageState({base64TextString: btoa(binaryString)})
+    }
 
+    const handleImageUpload = (e)=>{
+        console.log("file to upload", e.target.files[0])
+        let file = e.target.files[0]
+
+        if (file){
+            const reader = new FileReader();
+            reader.onload = handleReaderLoaded.bind()
+
+            reader.readAsBinaryString(file)
+
+        }
+    }
     return (
         <div>
             <Navibar />
@@ -60,6 +79,9 @@ export default function BandRegister() {
                         <Form className="bandregister" onSubmit={handleRegisterSubmit}>
 
                             <h1>Band Register</h1>
+                            <Form.Group controlId="bandImage">
+                                <Form.File onChange={e=> handleImageUpload(e)} label="Choose Your band Cover Pic" type="file" name="image" id={"file"} accept=".jpg, .png, .jpg"/>    
+                            </Form.Group>
 
                             <Form.Group controlId="formFirstName">
                                 <Form.Label>First Name</Form.Label>
@@ -128,6 +150,7 @@ export default function BandRegister() {
                                 <Form.Control onChange={e => setRegisterPassword(e.target.value)} type="password" placeholder="Password" />
                             </Form.Group>
 
+                           
                             <Form.Group>
                                 {['checkbox'].map((type) => (
                                     <div key={`default-${type}`} className="mb-3">

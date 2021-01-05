@@ -12,7 +12,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
 import API from "../utils/API";
-
+// useParams to set id
 export default function BandHome() {
     const band = {
         bandName: "band1",

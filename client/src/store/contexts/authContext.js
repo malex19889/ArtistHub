@@ -9,13 +9,13 @@ const AuthProvider = ({ value = {}, ...props }) => {
         loggedIn: false,
         id: null,
         userName: ""
-    },()=>{
+    }, () => {
         const sessionId = localStorage.getItem("sessionId");
         if (sessionId) {
             return { loggedIn: true, sessionId: sessionId };
-                } else {
+        } else {
             return { loggedIn: false };
-        }  
+        }
     })
 
     return <Provider value={[authState, dispatch]} {...props} />

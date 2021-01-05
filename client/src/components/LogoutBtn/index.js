@@ -9,10 +9,11 @@ const Logout = () => {
     const [authState, dispatch] = useAuthContext()
     const handleLogout = (e)=>{
         e.preventDefault();
-        API.userLogin(authState)
+        API.logout(authState)
             .then(res => {
                 console.log(res);
                 dispatch({ type: "LOGOUT", user: res.data });
+                window.location.replace("/home")
             })
             .catch(err => {
                 console.log(err);
