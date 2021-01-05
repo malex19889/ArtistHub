@@ -13,4 +13,4 @@ function ArtistCard(props) {
     </Card>
 }
 
-export default ArtistCard
+export default ArtistCard;

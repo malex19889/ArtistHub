@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import BandJumbotron from "../components/BandJumbotron";
 import BandBioCard from "../components/BandBioCard";
@@ -55,18 +55,20 @@ export default function BandHome() {
                 insta: "https://www.instagram.com/",
                 twitter: "https://twitter.com/"
             }
+        ],
+
+        tour: [
+            {
+                tourName: "Summer Slaughter Tour",
+                date: "July 10, 2021",
+                time: "9 PM",
+                location: "Stubb's BBQ, Austin, TX",
+                ticketPrice: "$15",
+                notes: "BYOB, 1 hour set, opener has cancelled and we'll be going on at 10 PM."
+            }
         ]
     };
-    const tour = [
-        {
-            tourName: "Summer Slaughter Tour",
-            date: "July 10, 2021",
-            time: "9 PM",
-            location: "Stubb's BBQ, Austin, TX",
-            ticketPrice: "$15",
-            notes: "BYOB, 1 hour set, opener has cancelled and we'll be going on at 10 PM."
-        }
-    ]
+
     return (
         <div>
             <Navibar>
@@ -88,7 +90,7 @@ export default function BandHome() {
                         <BandBioCard band={band} />
                     </Col>
                     <Col lg={5}>
-                        <EventsGroup tour={tour} />
+                        <EventsGroup band={band} />
                     </Col>
                     <Col lg={4}>
                         <ContactCard band={band} />

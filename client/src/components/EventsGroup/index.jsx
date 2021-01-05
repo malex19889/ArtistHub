@@ -12,7 +12,7 @@ function EventsGroup(props) {
                 <Card body className="bandevents" style={{ marginLeft: "10px", marginRight: "10px", float: "left" }}>
                     <Card.Title style={{ textAlign: "center" }}>Upcoming Shows</Card.Title>
                     {
-                        props.tour.map((tour, i) => <EventsCard key={i + "-card"} tour={tour} />)
+                        props.band.map((band, i) => <EventsCard key={i + "-card"} band={band} />)
                     }
                 </Card>
             </CardGroup>
