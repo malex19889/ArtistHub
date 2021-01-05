@@ -46,7 +46,7 @@ export default function BandRegister() {
     const handleRegisterSubmit = (event) => {
         event.preventDefault();
         console.log(user)
-        API.register(user)
+        API.bandRegister(user)
             .then(res => console.log(res))
             .catch(err => console.log(err))
     }

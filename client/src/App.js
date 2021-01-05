@@ -40,13 +40,13 @@ function App() {
           </Route>
 
           {/* protected */}
-          {/* <Route exact path="/band/home/">
+          <Route  path="/band/home/:id">
             <BandHome />
-          </Route> */}
+          </Route>
 
           <PrivateRoute path="/band/settings/" authorization={authState && authState.loggedIn} component={BandSettings}/>
 
-          <PrivateRoute path="/band/home/" authorization={authState && authState.loggedIn} component={BandHome}/>
+          {/* <PrivateRoute path="/band/home/" authorization={authState && authState.loggedIn} component={BandHome}/> */}
 
           <PrivateRoute path="/user/settings/" authorization={authState && authState.loggedIn} component={UserSettings}/>
 
