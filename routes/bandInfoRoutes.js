@@ -4,7 +4,7 @@ const db = require("../models");
 // post route for adding band members
 router.post("/bandmember", function (req, res) {
   console.log(req.body);
-  db.bandMember.create({
+  db.BandMember.create({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     contact: req.body.contact,
@@ -22,7 +22,7 @@ router.post("/bandmember", function (req, res) {
 // post route for adding favorites, boolean value
 router.post("/favorites", function (req, res) {
   console.log(req.body);
-  db.favorite.create({
+  db.Favorite.create({
     band: req.body.band,
     url: req.body.url,
   })
@@ -34,7 +34,7 @@ router.post("/favorites", function (req, res) {
 // delete route for favorites
 router.delete("/favorites/:id", function (req, res) {
   console.log(req.body);
-  db.favorite.destroy({
+  db.Favorite.destroy({
     where: {
       id: req.params.id
     }
@@ -47,7 +47,7 @@ router.delete("/favorites/:id", function (req, res) {
 // post route for tourDate
 router.post("/tourdate", function (req, res) {
   console.log(req.body);
-  db.tourDate.create({
+  db.TourDate.create({
     date: req.body.date,
     time: req.body.time,
     location: req.body.location,
@@ -63,7 +63,7 @@ router.post("/tourdate", function (req, res) {
 // put route for updating tourDate
 router.put("/tourdate", function (req, res) {
   console.log(req.body);
-  db.tourDate.update(req.body,
+  db.TourDate.update(req.body,
     {
       where: {
         id: req.body.id
@@ -77,7 +77,7 @@ router.put("/tourdate", function (req, res) {
 // delete route for tourDate
 router.delete("/tourdate/:id", function (req, res) {
   console.log(req.body);
-  db.tourDate.destroy({
+  db.TourDate.destroy({
     where: {
       id: req.params.id
     }
@@ -91,23 +91,31 @@ router.delete("/tourdate/:id", function (req, res) {
 // below is just a template
 router.get("/bands", function (req,res) {
   console.log(req.body);
-  db.bandUser.findAll({
+  db.BandUser.findAll({
   }).then(function(dbBandUsers){
     res.json(dbBandUsers.map((b) => {
-      return {bandName:b.bandName, bandName:b.bandBio, imageUrl: "http://", createdAt:b.createdAt};
+      return {bandName:b.bandName, bandBio:b.bandBio, imageUrl: "http://", createdAt:b.createdAt};
     }));
   });
 });
 
 // get route for band home page
-router.get("/bands:id", function (req,res) {
+router.get("/bands/:id", function (req, res) {
   console.log(req.body);
-  db.bandUser.findOne({ where: {id: idParam}, include: [bandMember]
-  }).then(function(dbBandUsers){
-    res.json(dbBandUsers ((b) => {
-      return {bandName:b.bandName, bandBio:b.bandBio, genre:b.genre, contact:b.contact, youtube:b.youtube, facebook:b.facebook, insta:b.insta, twitter:b.twitter, bannerImage:b.bannerImage, bandMembers:b.bandmembers};
-    }));
-  });
+  db.BandUser.findOne({ where: {id: req.params.id}, include: [BandMember]})
+    .then(function(user){
+      res.json({
+        bandName: user.bandName,
+        bandBio: user.bandBio,
+        genre: user.genre,
+        contact: user.contact,
+        youtube: user.youtube,
+        facebook: user.facebook,
+        insta: user.insta,
+        twitter: user.twitter,
+        bannerImage: user.bannerImage,
+        bandMembers: user.bandMembers});
+    });
 });
 
 module.exports = router;
