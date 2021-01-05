@@ -14,6 +14,7 @@ router.post("/register", function (req, res) {
     email: req.body.email,
     genre: req.body.genre,
     contact: req.body.contact,
+    bannerImage: req.body.bannerImage,
     youtube: req.body.youtube,
     facebook: req.body.facebook,
     insta: req.body.insta,

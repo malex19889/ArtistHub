@@ -11,6 +11,7 @@ router.post("/bandmember", function (req, res) {
     bandRole: req.body.bandRole,
     facebook: req.body.facebook,
     insta: req.body.insta,
+    image: req.body.image,
     twitter: req.body.twitter,
     BandUserId: req.body.BandUserId
   })
@@ -48,6 +49,7 @@ router.delete("/favorites/:id", function (req, res) {
 router.post("/tourdate", function (req, res) {
   console.log(req.body);
   db.TourDate.create({
+    tourName: req.body.tourName,
     date: req.body.date,
     time: req.body.time,
     location: req.body.location,
