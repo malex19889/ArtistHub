@@ -48,7 +48,7 @@ module.exports = function (sequelize, DataTypes) {
         len: [1]
       }
     },
-    bannerImage: {
+    image: {
       type: DataTypes.BLOB("LONG"),
       allowNull: false,
       unique: false,

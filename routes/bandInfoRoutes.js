@@ -99,16 +99,18 @@ router.get("/bands", function (req,res) {
     }));
   });
 });
-
+/*
 router.get("/bands/:id", function (req,res){
   console.log("this is in the bands/:id "+ req.body);
   db.bandUser.id({
 
   }).then(function(dbBandUsers){
     res.json(dbBandUsers.map((b) => {
-      return {bandName:b.bandName, bandBio:b.bandBio};
+      return {bandName:b.bandName, bandBio:b.bandBio,genre: b.genre, contact: b.contact, youtube: b.youtube,
+        facebook: b.facebook, insta: b.insta, twitter: b.twitter, bannerImage: b.bannerImage};
     }));
   });
 });
+*/
 
 module.exports = router;
