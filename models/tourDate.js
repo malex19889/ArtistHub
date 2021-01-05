@@ -1,5 +1,13 @@
 module.exports = function (sequelize, DataTypes) {
   var TourDate = sequelize.define("TourDate", {
+    tourName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: false,
+      validate: {
+        len: [1]
+      }
+    },
     date: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -22,6 +30,10 @@ module.exports = function (sequelize, DataTypes) {
       validate: {
         len: [1]
       }
+    },
+    tourName:{
+      type: DataTypes.STRING,
+      allowNull: true,
     },
     ticketPrice: {
       type: DataTypes.STRING,

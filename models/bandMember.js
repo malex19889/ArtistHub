@@ -48,6 +48,11 @@ module.exports = function (sequelize, DataTypes) {
         len: [1]
       }
     },
+    image: {
+      type: DataTypes.BLOB("LONG"),
+      allowNull: false,
+      unique: false,
+    },
     twitter: {
       type: DataTypes.STRING,
       allowNull: true,

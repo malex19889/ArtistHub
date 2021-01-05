@@ -92,14 +92,14 @@ router.delete("/tourdate/:id", function (req, res) {
 router.get("/bands", function (req,res) {
   console.log(req.body);
   db.BandUser.findAll({
+
   }).then(function(dbBandUsers){
     res.json(dbBandUsers.map((b) => {
-      return {bandName:b.bandName, bandBio:b.bandBio, imageUrl: "http://", createdAt:b.createdAt};
+      return {bandName: b.bandName, bandBio: b.bandBio, imageUrl: "http://" , createdAt: b.createdAt};
     }));
   });
 });
 
-// get route for band home page
 router.get("/bands/:id", function (req, res) {
   console.log(req.body);
   db.BandUser.findOne({ where: {id: req.params.id}, include: [BandMember]})
@@ -119,3 +119,4 @@ router.get("/bands/:id", function (req, res) {
 });
 
 module.exports = router;
+
