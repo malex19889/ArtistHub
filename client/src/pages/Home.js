@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import Jumbotron from "../components/Jumbotron";
 
 import Container from "react-bootstrap/Container";
@@ -16,6 +16,7 @@ import { useAuthContext } from "../store/contexts/authContext"
 
 
 //need an API call to get artists from the database
+
 const artists = [
     {
         bandName: "Black Sabbath",
@@ -38,8 +39,10 @@ const artists = [
 ]
 
 export default function Home() {
-    const [authState, dispatch] = useAuthContext()
-
+    const [authState, dispatch] = useAuthContext();
+    useEffect(() => {
+        
+    }, [])
     return (
         <div>
             <Navibar>

@@ -29,7 +29,7 @@ export default function UserRegister() {
     const handleRegisterSubmit = (event) => {
         event.preventDefault();
         console.log(user)
-        API.register(user)
+        API.userRegister(user)
             .then(res => console.log(res))
             .catch(err => console.log(err))
     }
