@@ -95,7 +95,7 @@ router.get("/bands", function (req,res) {
 
   }).then(function(dbBandUsers){
     res.json(dbBandUsers.map((b) => {
-      return {bandName:b.bandName, bandBio:b.bandBio, imageUrl: "http://" , createdAt:b.createdAt};
+      return {bandName: b.bandName, bandBio: b.bandBio, imageUrl: "http://" , createdAt: b.createdAt};
     }));
   });
 });
