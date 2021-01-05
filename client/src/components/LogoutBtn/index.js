@@ -1,7 +1,8 @@
-import React from 'react'
-import { Redirect } from "react-router-dom"
+import React from 'react';
+import { Redirect } from "react-router-dom";
 import  Button  from "react-bootstrap/Button";
 import API from "../../utils/API"
+
 // global auth context
 import { useAuthContext } from "../../store/contexts/authContext"
 const Logout = () => {
@@ -21,9 +22,9 @@ const Logout = () => {
     }
     return (
         <div>
-           <Button onClick={handleLogout}>Logout</Button> 
+           <Button variant="outline-none" style={{ backgroundColor: "#343a40", color: "white" }}onClick={handleLogout}>Logout</Button> 
         </div>
     )
 }
 
-export default Logout
+export default Logout;
