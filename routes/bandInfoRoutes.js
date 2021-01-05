@@ -99,18 +99,24 @@ router.get("/bands", function (req,res) {
     }));
   });
 });
-/*
-router.get("/bands/:id", function (req,res){
-  console.log("this is in the bands/:id "+ req.body);
-  db.bandUser.id({
 
-  }).then(function(dbBandUsers){
-    res.json(dbBandUsers.map((b) => {
-      return {bandName:b.bandName, bandBio:b.bandBio,genre: b.genre, contact: b.contact, youtube: b.youtube,
-        facebook: b.facebook, insta: b.insta, twitter: b.twitter, bannerImage: b.bannerImage};
-    }));
-  });
+router.get("/bands/:id", function (req, res) {
+  console.log(req.body);
+  db.bandUser.findOne({ where: {id: req.params.id}, include: [bandMember]})
+    .then(function(user){
+      res.json({
+        bandName: user.bandName,
+        bandBio: user.bandBio,
+        genre: user.genre,
+        contact: user.contact,
+        youtube: user.youtube,
+        facebook: user.facebook,
+        insta: user.insta,
+        twitter: user.twitter,
+        bannerImage: user.bannerImage,
+        bandMembers: user.bandMembers});
+    });
 });
-*/
 
 module.exports = router;
+
