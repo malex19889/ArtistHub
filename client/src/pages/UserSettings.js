@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navibar from "../components/Navibar";
 import Footer from "../components/Footer";
+import Logout from "../components/LogoutBtn";
 
 import API from "../utils/API";
 
@@ -9,6 +10,7 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Nav from "react-bootstrap/Nav";
 
 
 export default function BandSettings() {
@@ -40,7 +42,17 @@ export default function BandSettings() {
 
     return (
         <div>
-            <Navibar />
+            <Navibar>
+                <Nav.Item>
+                    <Nav.Link style={{ color: "white" }} href="/favorites">Favorites</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                    <Nav.Link style={{ color: "white" }} href="/user/settings">Settings</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                    <Logout>Logout</Logout>
+                </Nav.Item>
+            </Navibar>
             <Container>
                 <Row className="justify-content-lg-center">
                     <Col style={{ maxWidth: "500px", marginTop: "30px", marginBottom: "30px" }}>

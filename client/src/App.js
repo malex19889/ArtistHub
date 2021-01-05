@@ -39,18 +39,27 @@ function App() {
             <BandRegister />
           </Route>
 
-          {/* protected */}
-          <Route  path="/band/home/:id">
+          {/* get rid of these before you PUSH WOMAN */}
+          <Route exact path="/band/home/">
             <BandHome />
           </Route>
+          <Route exact path="/user/favorites">
+            <UserFavorites />
+          </Route>
+          <Route exact path="/user/settings">
+            <UserSettings />
+          </Route>
+          <Route exact path="/band/settings">
+            <BandSettings />
+          </Route>
 
-          <PrivateRoute path="/band/settings/" authorization={authState && authState.loggedIn} component={BandSettings}/>
+          {/* <PrivateRoute path="/band/settings/" authorization={authState && authState.loggedIn} component={BandSettings}/> */}
 
           {/* <PrivateRoute path="/band/home/" authorization={authState && authState.loggedIn} component={BandHome}/> */}
 
-          <PrivateRoute path="/user/settings/" authorization={authState && authState.loggedIn} component={UserSettings}/>
+          {/* <PrivateRoute path="/user/settings/" authorization={authState && authState.loggedIn} component={UserSettings}/> */}
 
-          <PrivateRoute path="/user/favorites/" authorization={authState && authState.loggedIn} component={UserFavorites}/>
+          {/* <PrivateRoute path="/user/favorites/" authorization={authState && authState.loggedIn} component={UserFavorites}/> */}
 
 
           <Route>

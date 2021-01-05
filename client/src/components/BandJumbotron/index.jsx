@@ -3,9 +3,11 @@ import "./style.css";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Container from "react-bootstrap/Container";
 
-function JumbotronPage() {
+function JumbotronPage(props) {
     return (
         <Jumbotron fluid className="jumbo">
+            {/* you may have to remove the image hardcoded into ./style.css */}
+            {props.band.bannerImage} 
             <Container>
                 <br />
                 <br />
@@ -13,9 +15,9 @@ function JumbotronPage() {
                 <br />
                 <br />
                 <br />
-                <h1 className="jumbohead">Band Name</h1>
+                <h1 className="jumbohead">{props.band.bandName}</h1>
                 <p className="jumbop">
-                    Genre goes here.
+                    {props.band.genre}
                 </p>
             </Container>
         </Jumbotron>
