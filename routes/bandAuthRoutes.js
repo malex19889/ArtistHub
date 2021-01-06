@@ -1,4 +1,4 @@
-const passport = require("../config/band-passport");
+const passport = require("../config/passport");
 const router = require("express").Router();
 const db = require("../models");
 
@@ -35,11 +35,13 @@ router.post("/login",function (req, res, next) {
   console.log(req.body);
   next();
 },
-passport.authenticate("local"),
+passport.authenticate("band-local"),
 (req, res) => {
-  console.log("logged in", req.user);
+  console.log("logged in", req.user.userName);
   var userInfo = {
-    username: req.user.userName
+    username: req.user.userName,
+    sessionId: req.sessionID,
+    id: req.user.id
   };
   res.send(userInfo);
 }
