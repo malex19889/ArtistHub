@@ -6,14 +6,7 @@ import Row from "react-bootstrap/Row";
 
 import MemberContact from "../MemberContact";
 
-import API from "../../utils/API";
-
 function ContactCard(props) {
-    const band = []
-
-    function handleFavorite(bandUserId) {
-        API.favorite(bandUserId)
-    }
 
     return (
         <div>

@@ -1,9 +1,7 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React from "react";
 import BandJumbotron from "../components/BandJumbotron";
 import BandBioCard from "../components/BandBioCard";
 import EventsGroup from "../components/EventsGroup";
-import MerchCard from "../components/MerchCard";
 import Navibar from "../components/Navibar";
 import Logout from "../components/LogoutBtn";
 import ContactCard from "../components/ContactCard";
@@ -12,7 +10,6 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
-import API from "../utils/API";
 // useParams to set id
 export default function BandHome() {
     const band = {
