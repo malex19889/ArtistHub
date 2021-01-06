@@ -65,6 +65,14 @@ export default function BandHome() {
                 location: "Stubb's BBQ, Austin, TX",
                 ticketPrice: "$15",
                 notes: "BYOB, 1 hour set, opener has cancelled and we'll be going on at 10 PM."
+            },
+            {
+                tourName: "Summer Slaughter Tour",
+                date: "July 12, 2021",
+                time: "9 PM",
+                location: "Zombies, San Antonio, TX",
+                ticketPrice: "$20",
+                notes: "Open bar. Please bring ID, 21+ show."
             }
         ]
     };
