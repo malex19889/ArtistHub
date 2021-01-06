@@ -69,14 +69,14 @@ passport.use("band-local",
   )
 );
 
-// In order to help keep authentication state across HTTP requests,
-// Sequelize needs to serialize and deserialize the user
-// Just consider this part boilerplate needed to make it all work
+// need logic to handle bot kids of user
 passport.serializeUser((user, cb) => {
+  console.log("passport serialize function check",user);
   cb(null, user);
 });
 
 passport.deserializeUser((obj, cb) => {
+  console.log("passport deserialize function check",obj);
   cb(null, obj);
 });
 

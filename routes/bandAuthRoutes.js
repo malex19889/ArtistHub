@@ -37,9 +37,11 @@ router.post("/login",function (req, res, next) {
 },
 passport.authenticate("band-local"),
 (req, res) => {
-  console.log("logged in", req.user);
+  console.log("logged in", req.user.userName);
   var userInfo = {
-    username: req.user.userName
+    username: req.user.userName,
+    sessionId: req.sessionID,
+    id: req.user.id
   };
   res.send(userInfo);
 }
