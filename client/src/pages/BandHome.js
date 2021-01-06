@@ -1,11 +1,12 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import { useParams } from "react-router-dom";
 import BandJumbotron from "../components/BandJumbotron";
 import BandBioCard from "../components/BandBioCard";
 import EventsGroup from "../components/EventsGroup";
 import Navibar from "../components/Navibar";
 import Logout from "../components/LogoutBtn";
 import ContactCard from "../components/ContactCard";
-
+import API from "../utils/API"
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -73,6 +74,16 @@ export default function BandHome() {
             }
         ]
     };
+    const [bandState, setBandState] = useState({})
+    let {id} = useParams();
+    useEffect(() => {
+       API.bandInfoById(id)
+       .then((res) => {
+           console.log(res)
+           setBandState(res)
+       })
+       .catch(err=> console.log(err))
+    })
 
     return (
         <div>
