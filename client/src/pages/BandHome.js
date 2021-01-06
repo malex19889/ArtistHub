@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 import BandJumbotron from "../components/BandJumbotron";
 import BandBioCard from "../components/BandBioCard";
@@ -36,6 +36,16 @@ export default function BandHome() {
             notes: "BYOB, 1 hour set, opener has cancelled and we'll be going on at 10 PM."
         }
     ]
+    const [bandState, setBandState] = useState({})
+    let {id} = useParams();
+    useEffect(() => {
+       API.bandInfoById(id)
+       .then((res) => {
+           console.log(res)
+           setBandState(res)
+       })
+       .catch(err=> console.log(err))
+    })
     return (
         <div>
             <Navibar>
