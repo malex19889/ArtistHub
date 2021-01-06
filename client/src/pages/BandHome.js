@@ -77,10 +77,11 @@ export default function BandHome() {
     const [bandState, setBandState] = useState({})
     let {id} = useParams();
     useEffect(() => {
+        console.log(id)
        API.bandInfoById(id)
        .then((res) => {
            console.log(res)
-           setBandState(res)
+        //    setBandState(res)
        })
        .catch(err=> console.log(err))
     })
