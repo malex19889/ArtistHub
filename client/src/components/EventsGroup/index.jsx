@@ -7,12 +7,11 @@ import EventsCard from "../EventsCard";
 function EventsGroup(props) {
     return (
         <div>
-            <h1 style={{ margin: "0 auto", textAlign: "center", marginBottom: "10px" }}>Recently Joined</h1>
-            <CardGroup style={{ margin: "10px" }}>
+            <CardGroup>
                 <Card body className="bandevents" style={{ marginLeft: "10px", marginRight: "10px", float: "left" }}>
                     <Card.Title style={{ textAlign: "center" }}>Upcoming Shows</Card.Title>
                     {
-                        props.tour.map((tour, i) => <EventsCard key={i + "-card"} tour={tour} />)
+                        props.band.tour.map((band, i) => <EventsCard key={i + "-card"} band={band} />)
                     }
                 </Card>
             </CardGroup>

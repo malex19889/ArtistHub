@@ -6,11 +6,11 @@ function EventsCard(props) {
         <div>
             <ListGroup horizontal style={{ marginBottom: "5px" }}>
                 {/* style these item fields to be the same size all the way across/fit to card */}
-                <ListGroup.Item>{props.tour.tourName}</ListGroup.Item>
-                <ListGroup.Item>{props.tour.date}, {props.tour.time}</ListGroup.Item>
-                <ListGroup.Item>{props.tour.location}</ListGroup.Item>
-                <ListGroup.Item>{props.tour.notes}</ListGroup.Item>
-                <ListGroup.Item>{props.tour.ticketPrice}</ListGroup.Item>
+                <ListGroup.Item>{props.band.tourName}</ListGroup.Item>
+                <ListGroup.Item>{props.band.date}, {props.time}</ListGroup.Item>
+                <ListGroup.Item>{props.band.location}</ListGroup.Item>
+                <ListGroup.Item>{props.band.notes}</ListGroup.Item>
+                <ListGroup.Item>{props.band.ticketPrice}</ListGroup.Item>
             </ListGroup>
         </div>
     );

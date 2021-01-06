@@ -1,11 +1,11 @@
-import React, { useState , useEffect} from "react";
+import React, { useEffect} from "react";
 import Jumbotron from "../components/Jumbotron";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 
 import BioCard from "../components/BioCard";
-import ArtistGroup from "../components/ArtistGroup";
+import BandGroup from "../components/BandGroup";
 import Col from "react-bootstrap/Col";
 import Navibar from '../components/Navibar';
 import ModalA from "../components/Modal";
@@ -17,7 +17,7 @@ import { useAuthContext } from "../store/contexts/authContext"
 
 //need an API call to get artists from the database
 
-const artists = [
+const bands = [
     {
         bandName: "Black Sabbath",
         bandBio: "Black Sabbath were an English rock band formed in Birmingham in 1968 by guitarist Tony Iommi, drummer Bill Ward, bassist Geezer Butler and vocalist Ozzy Osbourne. They are often cited as pioneers of heavy metal music. The band helped define the genre with releases such as Black Sabbath (1970), Paranoid (1970), and Master of Reality (1971). The band had multiple line-up changes following Osbourne's departure in 1979, with Iommi being the only constant member throughout its history.",
@@ -65,7 +65,7 @@ export default function Home() {
                         <BioCard />
                     </Col>
                     <Col md={8}>
-                        <ArtistGroup artists={artists} />
+                        <BandGroup bands={bands} />
                     </Col>
                 </Row>
 
