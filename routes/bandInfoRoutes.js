@@ -112,6 +112,8 @@ router.get("/bands/:id", function (req, res) {
       console.log(user.TourDates.map(td=> td.dataValues));
       // console.log(user);
       let band = {
+        firstName: user.firstName,
+        lastName: user.lastName,
         bandName: user.bandName,
         bandBio: user.bandBio,
         genre: user.genre,
@@ -122,7 +124,7 @@ router.get("/bands/:id", function (req, res) {
         twitter: user.twitter,
         bannerImage: user.bannerImage,
         bandMembers: user.BandMembers.map(bm=> bm.dataValues),
-        tourDates: user.TourDates.map(td=> td.dataValues)};
+        tour: user.TourDates.map(td=> td.dataValues)};
       console.log(band);
       res.json(band);
     });
