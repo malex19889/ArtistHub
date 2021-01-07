@@ -24,9 +24,9 @@ router.post("/bandmember", function (req, res) {
 router.post("/favorites", function (req, res) {
   console.log(req.body);
   db.Favorite.create({
-    UserId: req.user.id,
-    bandName: req.body.bandName,
-    url: req.body.bandName
+    UserId: req.body.authState.id,
+    band: req.body.band.bandName,
+    url: req.body.url
   })
     .then(function(dbFavorite) {
       res.json(dbFavorite);
@@ -39,6 +39,19 @@ router.delete("/favorites/:id", function (req, res) {
   db.Favorite.destroy({
     where: {
       id: req.params.id
+    }
+  })
+    .then(function(dbFavorite) {
+      res.json(dbFavorite);
+    });
+});
+
+// get route for favorites
+router.get("/favorites/:id", function (req, res) {
+  console.log("Looking for favorites for:",req.params.id);
+  db.Favorite.findAll({
+    where: {
+      userId: req.params.id
     }
   })
     .then(function(dbFavorite) {
@@ -122,7 +135,7 @@ router.get("/bands/:id", function (req, res) {
         facebook: user.facebook,
         insta: user.insta,
         twitter: user.twitter,
-        bannerImage: user.bannerImage,
+        bannerImage: "https://via.placeholder.com/600x320",
         bandMembers: user.BandMembers.map(bm=> bm.dataValues),
         tour: user.TourDates.map(td=> td.dataValues)};
       console.log(band);

@@ -21,6 +21,8 @@ export const AuthReducer=(state,action)=>{
             }            
         case "LOGOUT":
             localStorage.removeItem("sessionId");
+            localStorage.removeItem("userName");
+            localStorage.removeItem("id");
             return{
                 ...state,
                 loggedIn: false,
