@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+
 
 import ListGroup from "react-bootstrap/ListGroup";
 import Container from "react-bootstrap/Container";
@@ -11,24 +11,11 @@ import API from "../../utils/API"
 
 function FavoriteGroup(props) {
 
-    const [bandState, setBandState] = useState({});
-    const [authState, dispatch] = useAuthContext();
-    let {id} = useParams();
-
-    useEffect(() => {
-        console.log(id)
-       API.bandInfoById(id)
-       .then((res) => {
-           console.log(res)
-        //    setBandState(res)
-       })
-       .catch(err=> console.log(err))
-    })
-
+    console.log("favGroup props",props)
     function handleDeleteFavorite(id) {
-        console.log(authState);
-        const obj = { id, authState }
-        API.deleteFavorites(obj)
+        
+      
+        API.deleteFavorites(id)
     }
 
     return (
@@ -39,7 +26,7 @@ function FavoriteGroup(props) {
                     {props.favorites.map((favorites, i) =>
                         <div>
                             <FavoriteCard key={i + "-favorite"} favorites={favorites} />
-                            <DeleteBtn handleDeleteFavorite={handleDeleteFavorite} id={props.favorites.id} />
+                            <DeleteBtn handleDeleteFavorite={handleDeleteFavorite} id={favorites.id} />
                         </div>
                     )}
                 </ListGroup>

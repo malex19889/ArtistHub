@@ -23,6 +23,7 @@ function Login(props) {
       .then((res) => {
         console.log(res);
         dispatch({ type: "LOGIN_SUCCESS", user: res.data });
+        window.location.reload()
       })
       .catch((err) => {
         console.log(err);
@@ -36,7 +37,8 @@ function Login(props) {
       .then((res) => {
         console.log(res);
         dispatch({ type: "LOGIN_SUCCESS", user: res.data });
-        history.push("/band/home/1");
+        window.location.href="/band/home/1";
+        // history.push("/band/home/1");
       })
       .catch((err) => {
         console.log(err);

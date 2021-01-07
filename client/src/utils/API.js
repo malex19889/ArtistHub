@@ -41,6 +41,10 @@ export default {
         return axios.post(
             "/api/favorites", band);
     },
+    getFavorites: (id) => {
+        return axios.get(
+            "/api/favorites/" + id)
+        },
     deleteFavorites: function (id) {
         return axios.delete("/api/favorites/" + id);
     }

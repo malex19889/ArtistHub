@@ -4,10 +4,10 @@ import Jumbotron from "react-bootstrap/Jumbotron";
 import Container from "react-bootstrap/Container";
 
 function JumbotronPage(props) {
+    console.log(props)
     return (
         <Jumbotron fluid className="jumbo">
             {/* you may have to remove the image hardcoded into ./style.css */}
-            {props.band.bannerImage} 
             <Container>
                 <br />
                 <br />

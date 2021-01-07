@@ -18,7 +18,9 @@ import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
 // useParams to set id
 export default function BandHome() {
-    const band = {
+
+    const [authState, dispatch] = useAuthContext();
+    const [band, setBand] = useState({
         firstName: "Ozzy",
         lastName: "Osbourne",
         bandName: "Black Sabbath",
@@ -78,26 +80,22 @@ export default function BandHome() {
                 notes: "Open bar. Please bring ID, 21+ show."
             }
         ]
-    };
-    const [authState, dispatch] = useAuthContext();
+    })
 
-
-    const [bandState, setBandState] = useState({})
     let { id } = useParams();
     useEffect(() => {
         console.log(id)
         API.bandInfoById(id)
             .then((res) => {
-                console.log(res)
-                //    setBandState(res)
+                setBand(res.data);
             })
-            .catch(err => console.log(err))
-    })
-
+            .catch(err => console.log(err));
+    }, [id])
+    // console.log(band)
     function handleFavorite(band) {
-        console.log(authState)
-        const obj = { band, authState }
-        API.saveFavorites(obj)
+        console.log(authState);
+        const obj = { band, authState, url: window.location.href }
+        API.saveFavorites(obj);
     }
 
     return (
@@ -134,4 +132,5 @@ export default function BandHome() {
 
         </div>
     );
+
 }
