@@ -102,7 +102,7 @@ export default function BandHome() {
         <div>
             <Navibar>
                 <Nav.Item>
-                    {/* ifUser ?  <Nav.Link style={{ color: "white" }} href="/favorites">Favorites</Nav.Link> : <Nav.Link style={{ color: "white" }} href="/band/home">My Band</Nav.Link>*/}
+                    {authState.loggedIn ?  <Nav.Link style={{ color: "white" }} href="/favorites">Favorites</Nav.Link> : <Nav.Link style={{ color: "white" }} href="/band/home">My Band</Nav.Link>}
                     <Nav.Link style={{ color: "white" }} href="/band/home">My Band</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
