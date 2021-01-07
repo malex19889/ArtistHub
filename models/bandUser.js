@@ -116,12 +116,9 @@ module.exports = function (sequelize, DataTypes) {
     BandUser.hasMany(models.BandMember, {
       onDelete: "cascade"
     });
-  };
-  BandUser.associate = function (models) {
     BandUser.hasMany(models.TourDate, {
       onDelete: "cascade"
     });
   };
-
   return BandUser;
 };
