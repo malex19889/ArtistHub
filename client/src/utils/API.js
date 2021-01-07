@@ -44,6 +44,9 @@ export default {
     getFavorites: (id) => {
         return axios.get(
             "/api/favorites/" + id)
+        },
+    deleteFavorites: function (id) {
+        return axios.delete("/api/favorites/" + id);
     }
     // maybe can turn into 1 call 
     // post band member call
