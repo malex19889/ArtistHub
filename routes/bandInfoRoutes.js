@@ -92,7 +92,7 @@ router.delete("/tourdate/:id", function (req, res) {
 // get route for homepage for added bands for the home page
 // below is just a template
 router.get("/bands", function (req,res) {
-  console.log(req.body);
+  console.log("user object test",req.user);
   db.BandUser.findAll({
 
   }).then(function(dbBandUsers){
