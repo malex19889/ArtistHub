@@ -11,8 +11,10 @@ const AuthProvider = ({ value = {}, ...props }) => {
         userName: ""
     }, () => {
         const sessionId = localStorage.getItem("sessionId");
+        const username = localStorage.getItem("userName");
+        const id = localStorage.getItem("id");
         if (sessionId) {
-            return { loggedIn: true, sessionId: sessionId };
+            return { loggedIn: true, sessionId: sessionId, id: id, username: username };
         } else {
             return { loggedIn: false };
         }

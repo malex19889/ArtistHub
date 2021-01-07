@@ -1,9 +1,11 @@
-export const AuthReducer =(state,action)=>{
+export const AuthReducer=(state,action)=>{
     switch (action.type) {
         case "LOGIN_SUCCESS":
             console.log(action)
             const sessionId = action.user.sessionId;
-            localStorage.setItem("sessionId",sessionId)
+            localStorage.setItem("sessionId", sessionId)
+            localStorage.setItem("userName", action.user.username)
+            localStorage.setItem("id", action.user.id)
             return{
                 ...state,
                 loggedIn: true,

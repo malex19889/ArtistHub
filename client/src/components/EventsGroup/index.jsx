@@ -8,11 +8,9 @@ function EventsGroup(props) {
     return (
         <div>
             <CardGroup>
-                <Card body className="bandevents" style={{ marginLeft: "10px", marginRight: "10px", float: "left" }}>
+                <Card body className="bandevents" style={{ marginLeft: "10px", marginRight: "10px", float: "left", minWidth:"500px" }}>
                     <Card.Title style={{ textAlign: "center" }}>Upcoming Shows</Card.Title>
-                    {
-                        props.band.tour.map((band, i) => <EventsCard key={i + "-card"} band={band} />)
-                    }
+                    {props.band.tour.map((band, i) => <EventsCard key={i + "-card"} band={band} />)}
                 </Card>
             </CardGroup>
         </div>
