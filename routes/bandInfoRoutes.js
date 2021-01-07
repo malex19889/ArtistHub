@@ -24,8 +24,9 @@ router.post("/bandmember", function (req, res) {
 router.post("/favorites", function (req, res) {
   console.log(req.body);
   db.Favorite.create({
-    band: req.body.band,
-    url: req.body.url,
+    UserId: req.user.id,
+    bandName: req.body.bandName,
+    url: req.body.bandName
   })
     .then(function(dbFavorite) {
       res.json(dbFavorite);

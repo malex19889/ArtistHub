@@ -37,6 +37,10 @@ export default {
         return axios.get(
             "/api/bands/");
     },
+    saveFavorites: (band) => {
+        return axios.post(
+            "/api/favorites", band);
+    }
     // maybe can turn into 1 call 
     // post band member call
     // post image call
@@ -46,6 +50,4 @@ export default {
     // update user call
 
     // update band call
-
-
 }

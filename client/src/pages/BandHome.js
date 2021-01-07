@@ -1,12 +1,17 @@
 import React, {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
+import {useAuthContext} from "../store/contexts/authContext";
+
 import BandJumbotron from "../components/BandJumbotron";
 import BandBioCard from "../components/BandBioCard";
 import EventsGroup from "../components/EventsGroup";
 import Navibar from "../components/Navibar";
 import Logout from "../components/LogoutBtn";
 import ContactCard from "../components/ContactCard";
+import FavBtn from "../components/FavBtn";
+
 import API from "../utils/API"
+
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -74,16 +79,25 @@ export default function BandHome() {
             }
         ]
     };
+    const [authState, dispatch] = useAuthContext();
+
+    
     const [bandState, setBandState] = useState({})
     let {id} = useParams();
     useEffect(() => {
        API.bandInfoById(id)
        .then((res) => {
            console.log(res)
-           setBandState(res)
+        // setBandState(res)
        })
        .catch(err=> console.log(err))
     })
+
+    function handleFavorite(band) {
+        console.log(authState)
+        const obj = {band, authState}
+        API.saveFavorites(obj)
+      }
 
     return (
         <div>
@@ -102,13 +116,14 @@ export default function BandHome() {
             <BandJumbotron band={band} />
             <Container fluid>
                 <Row>
-                    <Col lg={3}>
+                    <Col lg={3} style={{marginTop:"10px", marginBottom:"10px"}}>
                         <BandBioCard band={band} />
+                        <FavBtn handleFavorite={handleFavorite} band={band} />
                     </Col>
-                    <Col lg={5}>
+                    <Col lg={5} style={{marginTop:"10px", marginBottom:"10px"}}>
                         <EventsGroup band={band} />
                     </Col>
-                    <Col lg={4}>
+                    <Col lg={4} style={{marginTop:"10px", marginBottom:"10px"}}>
                         <ContactCard band={band} />
                     </Col>
                 </Row>

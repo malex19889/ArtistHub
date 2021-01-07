@@ -14,7 +14,18 @@ import Logout from "../components/LogoutBtn";
 // import Row from "react-bootstrap/Row";
 // import Col from "react-bootstrap/Col";
 
-import FavoriteCard from "../components/FavoriteCard"
+import FavoriteGroup from "../components/FavoriteGroup"
+
+const favorites = [
+    {
+        band: "Black Sabbath",
+        url: "/band/home/1"
+    },
+    {
+        band: "Metallica",
+        url:"band/home/:id"
+    }
+]
 
 export default function Favorites() {
     return (
@@ -31,9 +42,7 @@ export default function Favorites() {
                 </Nav.Item>
             </Navibar>
             <div>
-                <FavoriteCard />
-                <FavoriteCard />
-                <FavoriteCard />
+                <FavoriteGroup favorites={favorites}/>
             </div>
             <Footer />
         </div>
