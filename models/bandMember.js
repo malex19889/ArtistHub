@@ -50,7 +50,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     image: {
       type: DataTypes.BLOB("LONG"),
-      allowNull: false,
+      allowNull: true,
       unique: false,
     },
     twitter: {
@@ -62,7 +62,7 @@ module.exports = function (sequelize, DataTypes) {
       }
     }
   });
-  BandMember.associate = (models) => {
+  BandMember.associate = function (models){
     BandMember.belongsTo(models.BandUser, {
       foreignKey: {
         allowNull: false
