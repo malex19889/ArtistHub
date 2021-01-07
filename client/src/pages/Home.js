@@ -68,9 +68,6 @@ export default function Home() {
                         <BandGroup bands={bands} />
                     </Col>
                 </Row>
-
-                {/* need backend code to display last 3 band pages created */}
-
             </Container>
 
         </div>

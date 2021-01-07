@@ -120,20 +120,20 @@ export default function BandRegister() {
 
                             <Form.Group controlId="formYoutube">
                                 <Form.Label>Youtube Channel</Form.Label>
-                                <Form.Control onChange={e => setRegisterYoutube(e.target.value)} type="youtube" placeholder="@VEVO" />
+                                <Form.Control onChange={e => setRegisterYoutube(e.target.value)} type="youtube" placeholder="Add Link" />
                             </Form.Group>
 
                             <Form.Group controlId="facebook">
                                 <Form.Label>Facebook</Form.Label>
-                                <Form.Control onChange={e => setRegisterFacebook(e.target.value)} type="facebook" placeholder="Enter Facebook Link" />
+                                <Form.Control onChange={e => setRegisterFacebook(e.target.value)} type="facebook" placeholder="Add Link" />
                             </Form.Group>
                             <Form.Group controlId="insta">
                                 <Form.Label>Instagram</Form.Label>
-                                <Form.Control onChange={e => setRegisterInsta(e.target.value)} type="insta" placeholder="@Whoever" />
+                                <Form.Control onChange={e => setRegisterInsta(e.target.value)} type="insta" placeholder="Add Link" />
                             </Form.Group>
                             <Form.Group controlId="twitter">
                                 <Form.Label>Twitter</Form.Label>
-                                <Form.Control onChange={e => setRegisterTwitter(e.target.value)} type="twitter" placeholder="@Whoever" />
+                                <Form.Control onChange={e => setRegisterTwitter(e.target.value)} type="twitter" placeholder="Add Link" />
                             </Form.Group>
 
 

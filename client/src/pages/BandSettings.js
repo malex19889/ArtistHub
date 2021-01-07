@@ -11,7 +11,8 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
-
+import AddTourForm from "../components/AddTourForm";
+import AddMemberForm from "../components/AddMemberForm";
 
 
 export default function BandSettings() {
@@ -59,20 +60,21 @@ export default function BandSettings() {
                 </Nav.Item>
             </Navibar>
             <Container>
-                <Row className="justify-content-lg-center">
-                    <Col style={{ maxWidth: "500px", marginTop: "30px", marginBottom: "30px" }}>
+                <Row className="Settings">
+                    {/* GENERAL SETTINGS */}
+                    <Col lg={4} style={{ width: "100%", marginTop: "30px", marginBottom: "30px" }}>
                         <Form className="bandregister" onSubmit={handleUpdateInfo}>
 
-                            <h1>Settings</h1>
+                            <h2>General Settings</h2>
 
                             <Form.Group controlId="formBandName">
                                 <Form.Label>Band Name</Form.Label>
                                 <Form.Control onChange={e => setUpdateBandname(e.target.value)} type="bandName" placeholder="Existing information, or blank" />
                             </Form.Group>
-                            
+
                             {/* add a form.file for new cover photo */}
                             {/* add a form.file for added images to a gallery */}
-                            
+
                             <Form.Group controlId="formBandBio">
                                 <Form.Label>Band Biography</Form.Label>
                                 <Form.Control as="textarea" onChange={e => setUpdateBandBio(e.target.value)} type="bandBio" placeholder="Existing information, or blank" />
@@ -111,6 +113,16 @@ export default function BandSettings() {
                             </Button>
 
                         </Form>
+                    </Col>
+
+                    {/* ADD A TOUR DATE */}
+                    <Col lg={4} style={{ width: "100%", marginTop: "30px", marginBottom: "30px" }}>
+                        <AddTourForm />
+                    </Col>
+
+                    {/* ADD A BAND MEMBER */}
+                    <Col lg={4} style={{ width: "100%", marginTop: "30px", marginBottom: "30px" }}>
+                        <AddMemberForm />
                     </Col>
                 </Row>
             </Container>
