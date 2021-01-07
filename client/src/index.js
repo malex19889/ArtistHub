@@ -5,8 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AuthProvider } from "./store/contexts/authContext";
 ReactDOM.render(
-<AuthProvider>
-  <App />
+  <AuthProvider>
+    <App />
   </AuthProvider>
   , document.getElementById("root"));
 
