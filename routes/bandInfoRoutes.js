@@ -104,9 +104,10 @@ router.get("/bands", function (req,res) {
 
 router.get("/bands/:id", function (req, res) {
   console.log("query for band with id:",req.params.id);
-  db.BandUser.findOne({ where: {id: req.params.id}, include: [db.BandMember]})
+  db.BandUser.findOne({ where: {id: req.params.id}, include: [db.BandMember, db.TourDate]})
     .then(function(user){
       console.log(user.BandMembers.map(bm=> bm.dataValues));
+      console.log(user.TourDates.map(td=> td.dataValues));
       // console.log(user);
       let band = {
         bandName: user.bandName,
@@ -118,7 +119,8 @@ router.get("/bands/:id", function (req, res) {
         insta: user.insta,
         twitter: user.twitter,
         bannerImage: user.bannerImage,
-        bandMembers: user.BandMembers.map(bm=> bm.dataValues)};
+        bandMembers: user.BandMembers.map(bm=> bm.dataValues),
+        tourDates: user.TourDates.map(td=> td.dataValues)};
       console.log(band);
       res.json(band);
     });
