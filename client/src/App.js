@@ -43,13 +43,13 @@ function App() {
           <Route exact path="/band/home/:id">
             <BandHome />
           </Route>
-          <Route exact path="/user/favorites">
+          <Route exact path="/user/favorites/:id">
             <UserFavorites />
           </Route>
-          <Route exact path="/user/settings">
+          <Route exact path="/user/settings/:id">
             <UserSettings />
           </Route>
-          <Route exact path="/band/settings">
+          <Route exact path="/band/settings/:id">
             <BandSettings />
           </Route>
 
