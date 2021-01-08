@@ -85,6 +85,7 @@ export default function Home() {
 
         )
         //bandUser render
+        // ANOTHER ELSE NEEDED: if authState.id = session's id, render page
     } else if (authState.loggedIn && authState.isBand) {
         return (
             <div>

@@ -47,22 +47,22 @@ export default function UserRegister() {
 
                             <Form.Group controlId="formFirstName">
                                 <Form.Label>First Name</Form.Label>
-                                <Form.Control onChange={e => setRegisterFirstname(e.target.value)} type="username" placeholder="Enter First Name" />
+                                <Form.Control onChange={e => setRegisterFirstname(e.target.value)} type="username" placeholder="Enter First Name" required />
                             </Form.Group>
 
                             <Form.Group controlId="formLastName">
                                 <Form.Label>Last Name</Form.Label>
-                                <Form.Control onChange={e => setRegisterLastname(e.target.value)} type="username" placeholder="Enter Last Name" />
+                                <Form.Control onChange={e => setRegisterLastname(e.target.value)} type="username" placeholder="Enter Last Name" required />
                             </Form.Group>
 
                             <Form.Group controlId="formUsername">
                                 <Form.Label>Username</Form.Label>
-                                <Form.Control onChange={e => setRegisterUsername(e.target.value)} type="username" placeholder="Enter username" />
+                                <Form.Control onChange={e => setRegisterUsername(e.target.value)} type="username" placeholder="Enter username" required />
                             </Form.Group>
 
                             <Form.Group controlId="formBasicEmail">
                                 <Form.Label>Email address</Form.Label>
-                                <Form.Control onChange={e => setRegisterEmail(e.target.value)} type="email" placeholder="Enter email" />
+                                <Form.Control onChange={e => setRegisterEmail(e.target.value)} type="email" placeholder="Enter email" required/>
                                 <Form.Text className="text-muted">
                                     We'll never share your email with anyone else.
                                 </Form.Text>
@@ -70,7 +70,7 @@ export default function UserRegister() {
 
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control onChange={e => setRegisterPassword(e.target.value)} type="password" placeholder="Password" />
+                                <Form.Control onChange={e => setRegisterPassword(e.target.value)} type="password" placeholder="Password" required/>
                             </Form.Group>
 
                             <Form.Group>
