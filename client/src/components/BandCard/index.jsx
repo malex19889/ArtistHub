@@ -6,7 +6,7 @@ function BandCard(props) {
         <Card>
             <Card.Img variant="top" src={props.band.imgUrl} />
             <Card.Body>
-                <Card.Title><a href="/band/home/:id" style={{ color: "black" }}>{props.band.bandName}</a></Card.Title>
+                <Card.Title><a href={"/band/home/"+props.band.id} style={{ color: "black" }}>{props.band.bandName}</a></Card.Title>
                 <Card.Text>{props.band.bandBio}</Card.Text>
             </Card.Body>
             <Card.Footer>

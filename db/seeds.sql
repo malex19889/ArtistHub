@@ -16,6 +16,7 @@
     -- favorite will be almost the same, but only needs to take in the band ID and user's ID.
         -- we will need to be able to pull all data from the band ID so we can display the data in Favorite Card.
 
+<<<<<<< HEAD
 use artisthub;
 SELECT * from users;
 SELECT * from bandusers;
@@ -53,3 +54,7 @@ VALUES ("Johnny", "Rocker", "938-938-8766", "drummer", "facebook.com", "instagra
 ("Ivory", "Player", "938-548-9336", "piano", "facebook.com", "instagram.com", "twitter.com",3, NOW(), NOW()),
 ("Danny", "LaRuso", "215-433-9889", "vocialist","facebook.com", "instagram.com", "twitter.com",4, NOW(), NOW());
 
+=======
+-- User table 
+-- TourDate Table
+>>>>>>> main

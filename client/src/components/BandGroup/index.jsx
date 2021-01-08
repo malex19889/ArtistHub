@@ -4,6 +4,7 @@ import BandCard from '../BandCard'
 
 //logic needed for these to pull from the last 3 artists added to the site
 function BandGroup(props) {
+    console.log("band Group props",props)
     return (
         <div>
             <h1 style={{ margin: "0 auto", textAlign: "center", marginBottom: "10px" }}>Recently Joined</h1>
