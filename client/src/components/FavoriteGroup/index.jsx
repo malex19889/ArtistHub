@@ -13,8 +13,6 @@ function FavoriteGroup(props) {
 
     console.log("favGroup props",props)
     function handleDeleteFavorite(id) {
-        
-      
         API.deleteFavorites(id)
     }
 

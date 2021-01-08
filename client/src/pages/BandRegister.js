@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+
 import Navibar from "../components/Navibar";
 import Footer from "../components/Footer";
 
@@ -12,6 +14,8 @@ import Col from "react-bootstrap/Col";
 
 
 export default function BandRegister() {
+
+    let { id } = useParams();
 
     const [registerFirstname, setRegisterFirstname] = useState("");
     const [registerLastname, setRegisterLastname] = useState("");
@@ -163,7 +167,7 @@ export default function BandRegister() {
                                 ))}
                             </Form.Group>
                             
-                            <Button variant="dark" type="submit" handleRegisterSubmit={handleRegisterSubmit}>
+                            <Button variant="dark" type="submit" href={"/band/home/" + id} handleRegisterSubmit={handleRegisterSubmit}>
                                 Submit
                             </Button>
                         </Form>

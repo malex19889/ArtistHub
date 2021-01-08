@@ -102,12 +102,10 @@ export default function BandHome() {
         <div>
             <Navibar>
                 <Nav.Item>
-                    {authState.loggedIn ?  <Nav.Link style={{ color: "white" }} href="/favorites">Favorites</Nav.Link> : <Nav.Link style={{ color: "white" }} href="/band/home">My Band</Nav.Link>}
-                    <Nav.Link style={{ color: "white" }} href="/band/home">My Band</Nav.Link>
+                    {authState.isBand ? <Nav.Link style={{ color: "white" }} href={"/band/home" + band.id}>My Band</Nav.Link> : <Nav.Link style={{ color: "white" }} href="/user/favorites">Favorites</Nav.Link>}
                 </Nav.Item>
                 <Nav.Item>
-                    {/* ifUser ?  <Nav.Link style={{ color: "white" }} href="/user/settings">Settings</Nav.Link> : <Nav.Link style={{ color: "white" }} href="/band/settings">Settings</Nav.Link>*/}
-                    <Nav.Link style={{ color: "white" }} href="/band/settings">Settings</Nav.Link>
+                    {authState.isBand ? <Nav.Link style={{ color: "white" }} href="/band/settings">Settings</Nav.Link> : <Nav.Link style={{ color: "white" }} href="/user/settings">Settings</Nav.Link>}
                 </Nav.Item>
                 <Nav.Item>
                     <Logout>Logout</Logout>
