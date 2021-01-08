@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {useAuthContext} from "../store/contexts/authContext";
+import { useAuthContext } from "../store/contexts/authContext";
 
 import BandJumbotron from "../components/BandJumbotron";
 import BandBioCard from "../components/BandBioCard";
@@ -18,7 +18,9 @@ import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
 // useParams to set id
 export default function BandHome() {
-    const band = {
+
+    const [authState, dispatch] = useAuthContext();
+    const [band, setBand] = useState({
         firstName: "Ozzy",
         lastName: "Osbourne",
         bandName: "Black Sabbath",
@@ -78,27 +80,23 @@ export default function BandHome() {
                 notes: "Open bar. Please bring ID, 21+ show."
             }
         ]
-    };
-    const [authState, dispatch] = useAuthContext();
-
-    
-    const [bandState, setBandState] = useState({})
-    let {id} = useParams();
+    })
+    console.log(authState)
+    let { id } = useParams();
     useEffect(() => {
         console.log(id)
-       API.bandInfoById(id)
-       .then((res) => {
-           console.log(res)
-        //    setBandState(res)
-       })
-       .catch(err=> console.log(err))
-    })
-
+        API.bandInfoById(id)
+            .then((res) => {
+                setBand(res.data);
+            })
+            .catch(err => console.log(err));
+    }, [id])
+    // console.log(band)
     function handleFavorite(band) {
-        console.log(authState)
-        const obj = {band, authState}
-        API.saveFavorites(obj)
-      }
+        console.log(authState);
+        const obj = { band, authState, url: window.location.href }
+        API.saveFavorites(obj);
+    }
 
     return (
         <div>
@@ -117,14 +115,14 @@ export default function BandHome() {
             <BandJumbotron band={band} />
             <Container fluid>
                 <Row>
-                    <Col lg={3} style={{marginTop:"10px", marginBottom:"10px"}}>
+                    <Col lg={3} style={{ marginTop: "10px", marginBottom: "10px" }}>
                         <BandBioCard band={band} />
                         <FavBtn handleFavorite={handleFavorite} band={band} />
                     </Col>
-                    <Col lg={5} style={{marginTop:"10px", marginBottom:"10px"}}>
+                    <Col lg={5} style={{ marginTop: "10px", marginBottom: "10px" }}>
                         <EventsGroup band={band} />
                     </Col>
-                    <Col lg={4} style={{marginTop:"10px", marginBottom:"10px"}}>
+                    <Col lg={4} style={{ marginTop: "10px", marginBottom: "10px" }}>
                         <ContactCard band={band} />
                     </Col>
                 </Row>
@@ -132,4 +130,5 @@ export default function BandHome() {
 
         </div>
     );
+
 }
