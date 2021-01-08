@@ -7,13 +7,13 @@ router.post("/bandmember", function (req, res) {
   db.BandMember.create({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
-    contact: req.body.contact,
+    contact: req.body.memberContact,
     bandRole: req.body.bandRole,
     facebook: req.body.facebook,
     insta: req.body.insta,
     image: req.body.image,
     twitter: req.body.twitter,
-    BandUserId: req.body.BandUserId
+    BandUserId: req.body.id
   })
     .then(function (dbBandMember) {
       res.json(dbBandMember);
@@ -69,7 +69,7 @@ router.post("/tourdate", function (req, res) {
     location: req.body.location,
     ticketPrice: req.body.ticketPrice,
     notes: req.body.notes,
-    BandUserId: req.body.BandUserId
+    BandUserId: req.body.id
   })
     .then(function (dbTourDate) {
       res.json(dbTourDate);
@@ -111,7 +111,7 @@ router.get("/bands", function (req, res) {
 
   }).then(function (dbBandUsers) {
     res.json(dbBandUsers.map((b) => {
-      return { id: b.id, bandName: b.bandName, bandBio: b.bandBio, imgUrl: "https://via.placeholder.com/600x320", createdAt: b.createdAt };
+      return { id: b.id, bandName: b.bandName, bandBio: b.bandBio, imgUrl: b.bannerImage, createdAt: b.createdAt };
     }));
   });
 });
@@ -136,7 +136,7 @@ router.get("/bands/:id", function (req, res) {
         facebook: user.facebook,
         insta: user.insta,
         twitter: user.twitter,
-        bannerImage: "https://via.placeholder.com/600x320",
+        bannerImage: user.bannerImage,
         bandMembers: user.BandMembers.map(bm => bm.dataValues),
         tour: user.TourDates.map(td => td.dataValues)
       };

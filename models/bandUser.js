@@ -62,9 +62,12 @@ module.exports = function (sequelize, DataTypes) {
       }
     },
     bannerImage: {
-      type: DataTypes.BLOB("LONG"),
+      type: DataTypes.STRING,
       allowNull: true,
       unique: false,
+      validate: {
+        len: [1]
+      }
     },
     youtube: {
       type: DataTypes.STRING,
