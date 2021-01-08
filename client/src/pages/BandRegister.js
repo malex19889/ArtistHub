@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+
 import Navibar from "../components/Navibar";
 import Footer from "../components/Footer";
 
@@ -12,6 +14,8 @@ import Col from "react-bootstrap/Col";
 
 
 export default function BandRegister() {
+
+    let { id } = useParams();
 
     const [registerFirstname, setRegisterFirstname] = useState("");
     const [registerLastname, setRegisterLastname] = useState("");
@@ -49,7 +53,10 @@ export default function BandRegister() {
         event.preventDefault();
         console.log(user)
         API.bandRegister(user)
-            .then(res => console.log(res))
+            .then(res => {
+                console.log(res);
+                window.location.href="/home"
+            })
             .catch(err => console.log(err))
     }
     const handleReaderLoaded = (readerEvt)=>{

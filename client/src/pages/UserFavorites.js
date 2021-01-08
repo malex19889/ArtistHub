@@ -29,7 +29,7 @@ export default function Favorites() {
             url: "band/home/:id"
         }
     ]);
-    
+
     useEffect(() => {
         API.getFavorites(1)
             .then(res => {
@@ -42,10 +42,10 @@ export default function Favorites() {
         <div>
             <Navibar>
                 <Nav.Item>
-                    <Nav.Link style={{ color: "white" }} href="/favorites">Favorites</Nav.Link>
+                    <Nav.Link style={{ color: "white" }} href={"/user/favorites/" + authState.id}>Favorites</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link style={{ color: "white" }} href="/user/settings">Settings</Nav.Link>
+                    <Nav.Link style={{ color: "white" }} href={"/user/settings/" + authState.id}>Settings</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                     <Logout>Logout</Logout>

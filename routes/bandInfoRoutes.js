@@ -15,7 +15,7 @@ router.post("/bandmember", function (req, res) {
     twitter: req.body.twitter,
     BandUserId: req.body.BandUserId
   })
-    .then(function(dbBandMember) {
+    .then(function (dbBandMember) {
       res.json(dbBandMember);
     });
 });
@@ -28,7 +28,7 @@ router.post("/favorites", function (req, res) {
     band: req.body.band.bandName,
     url: req.body.url
   })
-    .then(function(dbFavorite) {
+    .then(function (dbFavorite) {
       res.json(dbFavorite);
     });
 });
@@ -41,20 +41,20 @@ router.delete("/favorites/:id", function (req, res) {
       id: req.params.id
     }
   })
-    .then(function(dbFavorite) {
+    .then(function (dbFavorite) {
       res.json(dbFavorite);
     });
 });
 
 // get route for favorites
 router.get("/favorites/:id", function (req, res) {
-  console.log("Looking for favorites for:",req.params.id);
+  console.log("Looking for favorites for:", req.params.id);
   db.Favorite.findAll({
     where: {
       userId: req.params.id
     }
   })
-    .then(function(dbFavorite) {
+    .then(function (dbFavorite) {
       res.json(dbFavorite);
     });
 });
@@ -71,7 +71,7 @@ router.post("/tourdate", function (req, res) {
     notes: req.body.notes,
     BandUserId: req.body.BandUserId
   })
-    .then(function(dbTourDate) {
+    .then(function (dbTourDate) {
       res.json(dbTourDate);
     });
 });
@@ -85,7 +85,7 @@ router.put("/tourdate", function (req, res) {
         id: req.body.id
       }
     })
-    .then(function(dbTourDate) {
+    .then(function (dbTourDate) {
       res.json(dbTourDate);
     });
 });
@@ -98,31 +98,31 @@ router.delete("/tourdate/:id", function (req, res) {
       id: req.params.id
     }
   })
-    .then(function(dbTourDate) {
+    .then(function (dbTourDate) {
       res.json(dbTourDate);
     });
 });
 
 // get route for homepage for added bands for the home page
 // below is just a template
-router.get("/bands", function (req,res) {
-  console.log("user object test",req.user);
+router.get("/bands", function (req, res) {
+  console.log("user object test", req.user);
   db.BandUser.findAll({
 
-  }).then(function(dbBandUsers){
+  }).then(function (dbBandUsers) {
     res.json(dbBandUsers.map((b) => {
-      return {id: b.id,bandName: b.bandName, bandBio: b.bandBio, imgUrl: "https://via.placeholder.com/600x320" , createdAt: b.createdAt};
+      return { id: b.id, bandName: b.bandName, bandBio: b.bandBio, imgUrl: "https://via.placeholder.com/600x320", createdAt: b.createdAt };
     }));
   });
 });
 
 router.get("/bands/:id", function (req, res) {
-  console.log("this is my req.user test",req.user);
-  console.log("query for band with id:",req.params.id);
-  db.BandUser.findOne({ where: {id: req.params.id}, include: [db.BandMember, db.TourDate]})
-    .then(function(user){
-      console.log(user.BandMembers.map(bm=> bm.dataValues));
-      console.log(user.TourDates.map(td=> td.dataValues));
+  console.log("this is my req.user test", req.user);
+  console.log("query for band with id:", req.params.id);
+  db.BandUser.findOne({ where: { id: req.params.id }, include: [db.BandMember, db.TourDate] })
+    .then(function (user) {
+      console.log(user.BandMembers.map(bm => bm.dataValues));
+      console.log(user.TourDates.map(td => td.dataValues));
       // console.log(user);
       let band = {
         id: user.id,
@@ -137,12 +137,12 @@ router.get("/bands/:id", function (req, res) {
         insta: user.insta,
         twitter: user.twitter,
         bannerImage: "https://via.placeholder.com/600x320",
-        bandMembers: user.BandMembers.map(bm=> bm.dataValues),
-        tour: user.TourDates.map(td=> td.dataValues)};
+        bandMembers: user.BandMembers.map(bm => bm.dataValues),
+        tour: user.TourDates.map(td => td.dataValues)
+      };
       console.log(band);
       res.json(band);
     });
 });
 
 module.exports = router;
-
