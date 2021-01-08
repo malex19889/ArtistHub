@@ -7,9 +7,9 @@ function BandGroup(props) {
     console.log("band Group props",props)
     return (
         <div>
-            <h1 style={{ margin: "0 auto", textAlign: "center", marginBottom: "10px" }}>Recently Joined</h1>
+            <h1 style={{ margin: "0 auto", textAlign: "center", marginBottom: "10px" }}>Featured</h1>
             <CardGroup style={{ margin: "10px" }}>
-                {props.bands.map((band, i) => <BandCard key={i + "-card"} band={band} />)}
+                {props.bands.slice(0,3).map((band, i) => <BandCard key={i + "-card"} band={band} />)}
             </CardGroup>
         </div>
     );
