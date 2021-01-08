@@ -94,7 +94,7 @@ export default function Home() {
                     </Nav.Item>
 
                     <Nav.Item>
-                        <Nav.Link style={{ color: "white" }} href={"/band/settings" + authState.id}>Settings</Nav.Link>
+                        <Nav.Link style={{ color: "white" }} href={"/band/settings/" + authState.id}>Settings</Nav.Link>
                     </Nav.Item>
 
                     <Nav.Item>
@@ -120,11 +120,11 @@ export default function Home() {
         <div>
             <Navibar>
                 <Nav.Item>
-                    <Nav.Link style={{ color: "white" }} href="/user/favorites">Favorites</Nav.Link>
+                    <Nav.Link style={{ color: "white" }} href={"/user/favorites/" + authState.id}>Favorites</Nav.Link>
                 </Nav.Item>
 
                 <Nav.Item>
-                    <Nav.Link style={{ color: "white" }} href="/user/settings">Settings</Nav.Link>
+                    <Nav.Link style={{ color: "white" }} href={"/user/settings/" + authState.id}>Settings</Nav.Link>
                 </Nav.Item>
 
                 <Nav.Item>

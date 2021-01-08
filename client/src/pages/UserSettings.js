@@ -48,10 +48,10 @@ export default function BandSettings() {
         <div>
             <Navibar>
                 <Nav.Item>
-                    {authState.isBand ? <Nav.Link style={{ color: "white" }} href="/band/home">My Band</Nav.Link> : <Nav.Link style={{ color: "white" }} href="/user/favorites">Favorites</Nav.Link>}
+                    <Nav.Link style={{ color: "white" }} href={"/user/favorites/" + authState.id}>Favorites</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    {authState.isBand ? <Nav.Link style={{ color: "white" }} href="/band/settings">Settings</Nav.Link> : <Nav.Link style={{ color: "white" }} href="/user/settings">Settings</Nav.Link>}
+                    <Nav.Link style={{ color: "white" }} href={"/user/settings" + authState.id}>Settings</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                     <Logout>Logout</Logout>
@@ -88,7 +88,6 @@ export default function BandSettings() {
                                 <Form.Label>Country</Form.Label>
                                 <Form.Control onChange={e => setRegisterCountry(e.target.value)} type="youtube" placeholder="Existing information, or blank" />
                             </Form.Group>
-
 
                             <Button variant="dark" type="submit" handleUpdateAddress={handleUpdateAddress}>
                                 Submit

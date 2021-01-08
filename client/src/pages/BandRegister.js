@@ -53,7 +53,10 @@ export default function BandRegister() {
         event.preventDefault();
         console.log(user)
         API.bandRegister(user)
-            .then(res => console.log(res))
+            .then(res => {
+                console.log(res);
+                window.location.href="/home"
+            })
             .catch(err => console.log(err))
     }
     const handleReaderLoaded = (readerEvt)=>{
@@ -167,7 +170,7 @@ export default function BandRegister() {
                                 ))}
                             </Form.Group>
                             
-                            <Button variant="dark" type="submit" href={"/band/home/" + id} handleRegisterSubmit={handleRegisterSubmit}>
+                            <Button variant="dark" type="submit" handleRegisterSubmit={handleRegisterSubmit}>
                                 Submit
                             </Button>
                         </Form>

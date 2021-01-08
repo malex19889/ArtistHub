@@ -19,7 +19,7 @@ import AddMemberForm from "../components/AddMemberForm";
 
 export default function BandSettings() {
 
-    let {id} = useParams();
+    let { id } = useParams();
 
     const [authState, dispatch] = useAuthContext();
 
@@ -56,10 +56,10 @@ export default function BandSettings() {
         <div>
             <Navibar>
                 <Nav.Item>
-                    {authState.isBand ? <Nav.Link style={{ color: "white" }} href={"/band/home/" + id}>My Band</Nav.Link> : <Nav.Link style={{ color: "white" }} href="/user/favorites">Favorites</Nav.Link>}
+                    <Nav.Link style={{ color: "white" }} href={"/band/home/" + id}>My Band</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    {authState.isBand ? <Nav.Link style={{ color: "white" }} href="/band/settings">Settings</Nav.Link> : <Nav.Link style={{ color: "white" }} href="/user/settings">Settings</Nav.Link>}
+                    <Nav.Link style={{ color: "white" }} href={"/band/settings/" + id}>Settings</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                     <Logout>Logout</Logout>

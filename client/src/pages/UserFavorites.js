@@ -42,10 +42,10 @@ export default function Favorites() {
         <div>
             <Navibar>
                 <Nav.Item>
-                    {authState.isBand ? <Nav.Link style={{ color: "white" }} href="/band/home">My Band</Nav.Link> : <Nav.Link style={{ color: "white" }} href="/user/favorites">Favorites</Nav.Link>}
+                    <Nav.Link style={{ color: "white" }} href={"/user/favorites/" + authState.id}>Favorites</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    {authState.isBand ? <Nav.Link style={{ color: "white" }} href="/band/settings">Settings</Nav.Link> : <Nav.Link style={{ color: "white" }} href="/user/settings">Settings</Nav.Link>}
+                    <Nav.Link style={{ color: "white" }} href={"/user/settings/" + authState.id}>Settings</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                     <Logout>Logout</Logout>
