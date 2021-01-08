@@ -37,7 +37,7 @@ function Login(props) {
       .then((res) => {
         console.log(res);
         dispatch({ type: "BAND_LOGIN_SUCCESS", user: res.data });
-        window.location.href="/band/home/1";
+        window.location.href="/band/home/"+res.data.id;
         // history.push("/band/home/1");
       })
       .catch((err) => {
