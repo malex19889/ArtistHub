@@ -47,6 +47,16 @@ export default {
         },
     deleteFavorites: function (id) {
         return axios.delete("/api/favorites/" + id);
+    },
+    // Add tourdates to bands
+    addTourDate: (data) =>{
+        return axios.post(
+            "/api/tourdate",data)
+    },
+    // add band memebrs
+    addMember: (data) =>{
+        return axios.post(
+            "/api/bandmember", data)
     }
     // maybe can turn into 1 call 
     // post band member call

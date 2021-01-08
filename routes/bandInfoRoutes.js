@@ -13,7 +13,7 @@ router.post("/bandmember", function (req, res) {
     insta: req.body.insta,
     image: req.body.image,
     twitter: req.body.twitter,
-    BandUserId: req.body.BandUserId
+    BandUserId: req.body.id
   })
     .then(function (dbBandMember) {
       res.json(dbBandMember);
@@ -69,7 +69,7 @@ router.post("/tourdate", function (req, res) {
     location: req.body.location,
     ticketPrice: req.body.ticketPrice,
     notes: req.body.notes,
-    BandUserId: req.body.BandUserId
+    BandUserId: req.body.id
   })
     .then(function (dbTourDate) {
       res.json(dbTourDate);
