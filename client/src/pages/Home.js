@@ -15,6 +15,9 @@ import Register from "../components/Register";
 import { useAuthContext } from "../store/contexts/authContext"
 
 
+
+
+
 //need an API call to get artists from the database
 
 const bands = [
@@ -38,10 +41,12 @@ const bands = [
     },
 ]
 
+
+
 export default function Home() {
     const [authState, dispatch] = useAuthContext();
     useEffect(() => {
-        
+
     }, [])
     return (
         <div>
@@ -65,6 +70,7 @@ export default function Home() {
                         <BioCard />
                     </Col>
                     <Col md={8}>
+                    
                         <BandGroup bands={bands} />
                     </Col>
                 </Row>
