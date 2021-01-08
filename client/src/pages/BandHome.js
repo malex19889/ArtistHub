@@ -102,10 +102,10 @@ export default function BandHome() {
         <div>
             <Navibar>
                 <Nav.Item>
-                    <Nav.Link style={{ color: "white" }} href="/band/home">My Band</Nav.Link>
+                    <Nav.Link style={{ color: "white" }} href={"/band/home/" + band.id}>My Band</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link style={{ color: "white" }} href="/band/settings">Settings</Nav.Link>
+                    <Nav.Link style={{ color: "white" }} href={"/band/settings/" + band.id}>Settings</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                     <Logout>Logout</Logout>

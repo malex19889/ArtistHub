@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Navibar from "../components/Navibar";
 import Footer from "../components/Footer";
 import Logout from "../components/LogoutBtn";
+import { useAuthContext } from "../store/contexts/authContext";
+import { useParams } from "react-router-dom";
 
 import API from "../utils/API";
 
@@ -16,6 +18,10 @@ import AddMemberForm from "../components/AddMemberForm";
 
 
 export default function BandSettings() {
+
+    let { id } = useParams();
+
+    const [authState, dispatch] = useAuthContext();
 
     const [updateBandname, setUpdateBandname] = useState("");
     const [updateBandBio, setUpdateBandBio] = useState("");
@@ -50,10 +56,10 @@ export default function BandSettings() {
         <div>
             <Navibar>
                 <Nav.Item>
-                    <Nav.Link style={{ color: "white" }} href="/band/home">My Band</Nav.Link>
+                    <Nav.Link style={{ color: "white" }} href={"/band/home/" + id}>My Band</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link style={{ color: "white" }} href="/band/settings">Settings</Nav.Link>
+                    <Nav.Link style={{ color: "white" }} href={"/band/settings/" + id}>Settings</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                     <Logout>Logout</Logout>

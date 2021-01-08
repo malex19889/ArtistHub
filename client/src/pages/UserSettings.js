@@ -3,6 +3,8 @@ import Navibar from "../components/Navibar";
 import Footer from "../components/Footer";
 import Logout from "../components/LogoutBtn";
 
+import { useAuthContext } from "../store/contexts/authContext";
+
 import API from "../utils/API";
 
 import Form from "react-bootstrap/Form";
@@ -14,12 +16,14 @@ import Nav from "react-bootstrap/Nav";
 
 
 export default function BandSettings() {
-    
+
+    const [authState, dispatch] = useAuthContext();
+
     const [registerStreet, setRegisterStreet] = useState("");
     const [registerCity, setRegisterCity] = useState("");
-    const [registerSt, setRegisterSt ] = useState("");
-    const [registerZip, setRegisterZip ] = useState("");
-    const [registerCountry, setRegisterCountry ] = useState("");
+    const [registerSt, setRegisterSt] = useState("");
+    const [registerZip, setRegisterZip] = useState("");
+    const [registerCountry, setRegisterCountry] = useState("");
 
     //need to add mailing address properties to model
     //looking into Google Maps API for autofill/validation
@@ -44,10 +48,10 @@ export default function BandSettings() {
         <div>
             <Navibar>
                 <Nav.Item>
-                    <Nav.Link style={{ color: "white" }} href="/favorites">Favorites</Nav.Link>
+                    <Nav.Link style={{ color: "white" }} href={"/user/favorites/" + authState.id}>Favorites</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link style={{ color: "white" }} href="/user/settings">Settings</Nav.Link>
+                    <Nav.Link style={{ color: "white" }} href={"/user/settings" + authState.id}>Settings</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                     <Logout>Logout</Logout>
@@ -84,7 +88,6 @@ export default function BandSettings() {
                                 <Form.Label>Country</Form.Label>
                                 <Form.Control onChange={e => setRegisterCountry(e.target.value)} type="youtube" placeholder="Existing information, or blank" />
                             </Form.Group>
-
 
                             <Button variant="dark" type="submit" handleUpdateAddress={handleUpdateAddress}>
                                 Submit
