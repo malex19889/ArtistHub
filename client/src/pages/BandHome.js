@@ -81,7 +81,7 @@ export default function BandHome() {
             }
         ]
     })
-
+    console.log(authState)
     let { id } = useParams();
     useEffect(() => {
         console.log(id)
