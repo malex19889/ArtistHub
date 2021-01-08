@@ -111,7 +111,7 @@ router.get("/bands", function (req,res) {
 
   }).then(function(dbBandUsers){
     res.json(dbBandUsers.map((b) => {
-      return {bandName: b.bandName, bandBio: b.bandBio, imageUrl: "http://" , createdAt: b.createdAt};
+      return {id: b.id,bandName: b.bandName, bandBio: b.bandBio, imgUrl: "https://via.placeholder.com/600x320" , createdAt: b.createdAt};
     }));
   });
 });
@@ -125,6 +125,7 @@ router.get("/bands/:id", function (req, res) {
       console.log(user.TourDates.map(td=> td.dataValues));
       // console.log(user);
       let band = {
+        id: user.id,
         firstName: user.firstName,
         lastName: user.lastName,
         bandName: user.bandName,

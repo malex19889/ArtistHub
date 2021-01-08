@@ -36,7 +36,7 @@ function Login(props) {
     API.bandLogin(state)
       .then((res) => {
         console.log(res);
-        dispatch({ type: "LOGIN_SUCCESS", user: res.data });
+        dispatch({ type: "BAND_LOGIN_SUCCESS", user: res.data });
         window.location.href="/band/home/1";
         // history.push("/band/home/1");
       })

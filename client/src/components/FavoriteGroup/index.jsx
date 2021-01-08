@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 
 import ListGroup from "react-bootstrap/ListGroup";
@@ -6,15 +6,10 @@ import Container from "react-bootstrap/Container";
 import FavoriteCard from "../FavoriteCard";
 import DeleteBtn from "../DeleteBtn";
 
-import { useAuthContext } from "../../store/contexts/authContext";
 import API from "../../utils/API"
 
 function FavoriteGroup(props) {
-
-    console.log("favGroup props",props)
     function handleDeleteFavorite(id) {
-        
-      
         API.deleteFavorites(id)
     }
 
