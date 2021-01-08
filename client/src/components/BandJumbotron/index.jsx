@@ -8,7 +8,6 @@ function JumbotronPage(props) {
     return (
         <Jumbotron fluid className="jumbo" style={{backgroundImage: "url(" + props.band.bannerImage + ")"}}>
             {/* you may have to remove the image hardcoded into ./style.css */}
-          
             <Container>
                 <br />
                 <br />
