@@ -7,7 +7,7 @@ router.post("/bandmember", function (req, res) {
   db.BandMember.create({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
-    contact: req.body.contact,
+    contact: req.body.memberContact,
     bandRole: req.body.bandRole,
     facebook: req.body.facebook,
     insta: req.body.insta,

@@ -90,7 +90,7 @@ export default function AddMemberForm() {
                     placeholder="Add Link" />
             </Form.Group>
 
-            <Button variant="dark" type="submit" onClick={state}>
+            <Button variant="dark" type="submit" onClick={handleSubmit}>
                 Submit
             </Button>
 
