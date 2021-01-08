@@ -11,7 +11,7 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-
+require('dotenv').config()
 
 export default function BandRegister() {
 
@@ -30,7 +30,7 @@ export default function BandRegister() {
     const [registerFacebook, setRegisterFacebook] = useState("");
     const [registerInsta, setRegisterInsta] = useState("");
     const [registerTwitter, setRegisterTwitter] = useState("");
-    const [imageState, setImageState] = useState()
+    const [imageState, setImageState] = useState("")
 
     const user = {
         firstName: registerFirstname,
@@ -58,24 +58,27 @@ export default function BandRegister() {
                 window.location.href="/home"
             })
             .catch(err => console.log(err))
-    }
-    const handleReaderLoaded = (readerEvt)=>{
-        let binaryString = readerEvt.target.result
-        console.log(btoa(binaryString));
-        setImageState({base64TextString: btoa(binaryString)})
-    }
+    };
 
-    const handleImageUpload = (e)=>{
-        console.log("file to upload", e.target.files[0])
-        let file = e.target.files[0]
-
-        if (file){
-            const reader = new FileReader();
-            reader.onload = handleReaderLoaded.bind()
-
-            reader.readAsBinaryString(file)
-
-        }
+    const handleImageUpload = ()=>{
+        let widget = window.cloudinary.createUploadWidget(
+            {
+              cloudName: process.env.CLOUD_NAME,
+              uploadPreset: process.env.UPLOAD_PRESET,
+              sources: ["local", "camera"]
+            },
+            (error, result) => {
+              if (result.event === "success") {
+              
+                const file = result.info.url; 
+                console.log("RESULT")
+                console.log(result.info)
+                console.log("file: ", file, result.info.resource_type);
+                setImageState(result.info.url)
+              }
+            }
+          );
+          widget.open();
     }
     return (
         <div>
@@ -86,10 +89,10 @@ export default function BandRegister() {
                         <Form className="bandregister" onSubmit={handleRegisterSubmit}>
 
                             <h1>Band Register</h1>
-                            <Form.Group controlId="bandImage">
+                            {/* <Form.Group controlId="bandImage">
                                 <Form.File onChange={e=> handleImageUpload(e)} label="Choose Your band Cover Pic" type="file" name="image" id={"file"} accept=".jpg, .png, .jpg"/>    
-                            </Form.Group>
-
+                            </Form.Group> */}
+                            <Button onClick={handleImageUpload}>Upload band cover Pic</Button>
                             <Form.Group controlId="formFirstName">
                                 <Form.Label>First Name</Form.Label>
                                 <Form.Control onChange={e => setRegisterFirstname(e.target.value)} type="username" placeholder="Enter First Name" />
