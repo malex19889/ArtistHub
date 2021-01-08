@@ -1,13 +1,24 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-
+import { useAuthContext } from "../../store/contexts/authContext";
 import useHandleInputChange from "../../hooks/useHandleInputChange";
+import API from "../../utils/API"
 
 export default function AddMemberForm() {
 
     const { state, handleInputChange } = useHandleInputChange();
+    const [authState, dispatch] = useAuthContext();
 
+    const handleSubmit = (e)=>{
+        e.preventDefault();
+        let insert = {...state,...authState}
+        API.addMember(insert)
+        .then(res=>{
+            console.log(res)
+        })
+        .catch(err=> console.log(err))
+    }
     return (
         <Form className="bandregister">
 
@@ -79,7 +90,7 @@ export default function AddMemberForm() {
                     placeholder="Add Link" />
             </Form.Group>
 
-            <Button variant="dark" type="submit" onClick={state}>
+            <Button variant="dark" type="submit" onClick={handleSubmit}>
                 Submit
             </Button>
 
