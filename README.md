@@ -31,6 +31,11 @@ nd add bands to your favorites page so you can easily keep track of all their up
 
 This application was created with react app. If you would like to install this on your computer, clone the repo and run "npm install" inside your terminal.
 
+![image](https://user-images.githubusercontent.com/66077644/104109199-29cd7b80-5291-11eb-9c50-2581ea9f9edb.png)
+
+![image](https://user-images.githubusercontent.com/66077644/104109180-ff7bbe00-5290-11eb-8af0-dabb81dad4b7.png)
+
+
 Please refer to the Usage section for a link to the deployed application.
 
 ## Technology
