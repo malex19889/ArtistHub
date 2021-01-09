@@ -4,12 +4,10 @@ import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
-// hooks
+
 import useHandleInputChange from "../../hooks/useHandleInputChange"
 import { useAuthContext } from "../../store/contexts/authContext"
 import API from "../../utils/API"
-//for bands: add logic to change navbar to have links to Band Home, Settings, and Logout
-//for users: add logic to change navbar to have links to Favorites, Settings, and Logout
 
 
 function Navibar(props) {
