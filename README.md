@@ -29,9 +29,9 @@ nd add bands to your favorites page so you can easily keep track of all their up
 
 ## Installation
 
-Application is deployed, user does not need to install anything in order to use it.
+This application was created with react app. If you would like to install this on your computer, clone the repo and run "npm install" inside your terminal.
 
-Please refer to the Usage section for a link to the application.
+Please refer to the Usage section for a link to the deployed application.
 
 ## Technology
 
