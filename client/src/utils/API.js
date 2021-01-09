@@ -25,6 +25,7 @@ export default {
     },
     // call to get band object(all band data to be passed in as props later)
     bandInfo: (search) => {
+        console.log(search);
         return axios.get(
             "/api/bands/", search);
     },

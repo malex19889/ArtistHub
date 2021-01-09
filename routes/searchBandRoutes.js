@@ -1,4 +1,3 @@
-
 const router = require("express").Router();
 const db = require("../models");
 
@@ -13,3 +12,5 @@ router.get("/api/bands", function (req, res) {
     }));
   });
 });
+
+module.exports = router;

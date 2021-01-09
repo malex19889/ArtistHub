@@ -34,7 +34,8 @@ export default function SearchResults() {
             </Navibar>
             <div className="align-self-center">
                 <h2>Search Results</h2>
-                <SearchCard band={band}/>
+                <SearchCard 
+                band={band}/>
             </div>
             <Footer />
         </div>
