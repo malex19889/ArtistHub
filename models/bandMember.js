@@ -49,11 +49,7 @@ module.exports = function (sequelize, DataTypes) {
       }
     },
     image: {
-<<<<<<< HEAD
-      type: DataTypes.BLOB("LONG"),
-=======
       type: DataTypes.STRING,
->>>>>>> main
       allowNull: true,
       unique: false,
       validate: {
