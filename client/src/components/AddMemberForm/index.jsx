@@ -10,14 +10,15 @@ export default function AddMemberForm() {
     const { state, handleInputChange } = useHandleInputChange();
     const [authState, dispatch] = useAuthContext();
 
-    const handleSubmit = (e)=>{
+    const handleSubmit = (e) => {
         e.preventDefault();
-        let insert = {...state,...authState}
+        let insert = { ...state, ...authState }
         API.addMember(insert)
-        .then(res=>{
-            console.log(res)
-        })
-        .catch(err=> console.log(err))
+            .then(res => {
+                console.log(res)
+                window.location.href = "/band/home/" + authState.id
+            })
+            .catch(err => console.log(err))
     }
     return (
         <Form className="bandregister">
@@ -26,11 +27,11 @@ export default function AddMemberForm() {
 
             <Form.Group controlId="formFirstName">
                 <Form.Label>First Name</Form.Label>
-                <Form.Control 
-                onChange={handleInputChange} 
-                type="firstName" 
-                name="firstName"
-                placeholder="Enter First Name" />
+                <Form.Control
+                    onChange={handleInputChange}
+                    type="firstName"
+                    name="firstName"
+                    placeholder="Enter First Name" />
             </Form.Group>
 
             {/* add a form.file for new cover photo */}

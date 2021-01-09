@@ -1,17 +1,16 @@
+const router = require("express").Router();
+const db = require("../models");
 
-// const router = require("express").Router();
-// const db = require("../models");
 
+router.get("/api/bands", function (req, res) {
+  console.log(res);
+  db.BandUser.findAll({
 
-// router.get("/search", (request, response) => {
+  }).then(function (dbBandUsers) {
+    res.json(dbBandUsers.map((b) => {
+      return { id: b.id, bandName: b.bandName, bandBio: b.bandBio, imgUrl: b.bannerImage, createdAt: b.createdAt };
+    }));
+  });
+});
 
-//   //Holds value of the query param 'searchquery'.
-//   const searchQuery = request.query.searchquery;
-
-//   //Do something when the searchQuery is not null.
-//   if(searchQuery !== null){
-//   //send out a message NO Band Found
-//   }else{
-//     response.end();
-//   }
-// });
+module.exports = router;
