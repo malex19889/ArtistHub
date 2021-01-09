@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 function SearchCard(props) {
     return (
         <Row>
-            {props.band.map((band, i) =>
+            {props.bands.map((band, i) =>
             <Card key={i+"-searched"} band={band} style={{margin:"10px"}}>
                 <Card.Img variant="top" src={props.band.imgUrl} />
                 <Card.Body>

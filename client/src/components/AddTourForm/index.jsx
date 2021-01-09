@@ -8,14 +8,15 @@ export default function AddTourForm(props) {
 
     const { state, handleInputChange } = useHandleInputChange();
     const [authState, dispatch] = useAuthContext();
-    const handleSubmit = (e)=>{
+    const handleSubmit = (e) => {
         e.preventDefault();
-        let insert = {...state,...authState}
+        let insert = { ...state, ...authState }
         API.addTourDate(insert)
-        .then(res=>{
-            console.log(res)
-        })
-        .catch(err=> console.log(err))
+            .then(res => {
+                console.log(res)
+                window.location.href = "/band/home/" + authState.id
+            })
+            .catch(err => console.log(err))
     }
     return (
         <Form className="tourdates" >

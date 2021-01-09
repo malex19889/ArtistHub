@@ -44,17 +44,17 @@ export default {
     getFavorites: (id) => {
         return axios.get(
             "/api/favorites/" + id)
-        },
+    },
     deleteFavorites: function (id) {
         return axios.delete("/api/favorites/" + id);
     },
     // Add tourdates to bands
-    addTourDate: (data) =>{
+    addTourDate: (data) => {
         return axios.post(
-            "/api/tourdate",data)
+            "/api/tourdate", data)
     },
     // add band memebrs
-    addMember: (data) =>{
+    addMember: (data) => {
         return axios.post(
             "/api/bandmember", data)
     }

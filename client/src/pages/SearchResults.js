@@ -17,6 +17,7 @@ import SearchCard from "../components/SearchCard";
 
 export default function SearchResults() {
     const [authState, dispatch] = useAuthContext();
+    const [band, setBand] = useState({});
 
     return (
         <div>
@@ -33,7 +34,7 @@ export default function SearchResults() {
             </Navibar>
             <div className="align-self-center">
                 <h2>Search Results</h2>
-                <SearchCard bands={bands}/>
+                <SearchCard band={band}/>
             </div>
             <Footer />
         </div>
