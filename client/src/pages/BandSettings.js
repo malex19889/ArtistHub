@@ -48,7 +48,9 @@ export default function BandSettings() {
         console.log(user)
         //axios.put required to update band data
         API.update(user)
-            .then(res => console.log(res))
+            .then(res => {
+                console.log(res)
+            })
             .catch(err => console.log(err))
     }
 
