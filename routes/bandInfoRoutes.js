@@ -102,6 +102,9 @@ router.put("/tourdate", function (req, res) {
     })
     .then(function (dbTourDate) {
       res.json(dbTourDate);
+    })
+    .catch(function (err) {
+      res.json(err);
     });
 });
 
@@ -157,6 +160,9 @@ router.get("/bands/:id", function (req, res) {
       };
       console.log(band);
       res.json(band);
+    })
+    .catch(function (err) {
+      res.json(err);
     });
 });
 
