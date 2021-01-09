@@ -5,6 +5,8 @@ import Footer from "../components/Footer";
 import Logout from "../components/LogoutBtn";
 import { useAuthContext } from "../store/contexts/authContext";
 
+import API from "../utils/API";
+
 
 // import Form from "react-bootstrap/Form";
 // import Button from "react-bootstrap/Button";
@@ -13,12 +15,26 @@ import { useAuthContext } from "../store/contexts/authContext";
 // import Row from "react-bootstrap/Row";
 // import Col from "react-bootstrap/Col";
 
-import SearchCard from "../components/SearchCard";
+import BandCard from "../components/BandCard";
 
-export default function SearchResults() {
+export default function Browse() {
     const [authState, dispatch] = useAuthContext();
-    const [band, setBand] = useState({});
+    const [bands, setSearch] = useState([]);
 
+    useEffect (() => {
+         API.bands()
+            //store this data in state, and map it in the SearchCard component
+            .then(res => {
+                console.log("HEY, A SEARCH: ", res.data)
+                setSearch(res.data);
+
+                //window.location.href = "/results";
+            })
+            .catch(err =>
+                console.log(err)
+            )
+    }, [])
+    console.log()
     return (
         <div>
             <Navibar>
@@ -33,9 +49,9 @@ export default function SearchResults() {
                 </Nav.Item>
             </Navibar>
             <div className="align-self-center">
-                <h2>Search Results</h2>
-                <SearchCard 
-                band={band}/>
+                <h2>Browse</h2>
+                {bands.map((band, i) => <BandCard key={i + "-card"} band={band} />)}
+                {/* {search.id ? (<SearchCard search={search} />) : (<div></div>)} */}
             </div>
             <Footer />
         </div>

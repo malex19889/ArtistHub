@@ -13,7 +13,7 @@ import NoMatch from "./pages/NoMatch";
 import BandSettings from "./pages/BandSettings";
 import UserSettings from "./pages/UserSettings";
 import UserFavorites from "./pages/UserFavorites";
-import SearchResults from "./pages/SearchResults";
+import SearchResults from "./pages/Browse";
 
 // import BandGallery from "./pages/BandGallery";
 // import BandCalendar from "./pages/BandCalendar";
@@ -55,7 +55,7 @@ function App() {
           <Route exact path="/band/settings/:id">
             <BandSettings />
           </Route>
-          <Route exact path="/results">
+          <Route exact path="/browse">
             <SearchResults />
           </Route>
 
