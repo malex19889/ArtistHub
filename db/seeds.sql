@@ -1,4 +1,4 @@
-USE artisthub;
+
 
 
 -- notes about how to improve our DB structure, as there is a lot of redundancy and overcomplication:
@@ -14,10 +14,13 @@ USE artisthub;
     -- user will remain the same.
     -- tourDate will contain the same model, but also include the band ID.
     -- favorite will be almost the same, but only needs to take in the band ID and user's ID.
-        -- we will need to be able to pull all data from the band ID so we can display the data in Favorite Card.
+        -- we will need to be able to pull all data from the band ID so we can display the data in Favorite Card
 
--- User table 
--- TourDate Table
+use artisthub;
+SELECT * from users;
+SELECT * from bandusers;
+SELECT * from BandMembers;
+SELECT * from tourdates;
 
 INSERT INTO users(firstName, lastName, userName, email, password, createdAt, updatedAt)
 VALUES ("D.B.", "Cooper", "dbcooper71", "dbcooper@gmail.com", "11041971", NOW(), NOW()),
