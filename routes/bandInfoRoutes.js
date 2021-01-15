@@ -17,6 +17,9 @@ router.post("/bandmember", function (req, res) {
   })
     .then(function (dbBandMember) {
       res.json(dbBandMember);
+    })
+    .catch(function (err) {
+      res.json(err);
     });
 });
 
@@ -30,6 +33,9 @@ router.post("/favorites", function (req, res) {
   })
     .then(function (dbFavorite) {
       res.json(dbFavorite);
+    })
+    .catch(function (err) {
+      res.json(err);
     });
 });
 
@@ -43,6 +49,9 @@ router.delete("/favorites/:id", function (req, res) {
   })
     .then(function (dbFavorite) {
       res.json(dbFavorite);
+    })
+    .catch(function (err) {
+      res.json(err);
     });
 });
 
@@ -56,6 +65,9 @@ router.get("/favorites/:id", function (req, res) {
   })
     .then(function (dbFavorite) {
       res.json(dbFavorite);
+    })
+    .catch(function (err) {
+      res.json(err);
     });
 });
 
@@ -73,6 +85,9 @@ router.post("/tourdate", function (req, res) {
   })
     .then(function (dbTourDate) {
       res.json(dbTourDate);
+    })
+    .catch(function (err) {
+      res.json(err);
     });
 });
 
@@ -87,6 +102,9 @@ router.put("/tourdate", function (req, res) {
     })
     .then(function (dbTourDate) {
       res.json(dbTourDate);
+    })
+    .catch(function (err) {
+      res.json(err);
     });
 });
 
@@ -142,8 +160,10 @@ router.get("/bands/:id", function (req, res) {
       };
       console.log(band);
       res.json(band);
+    })
+    .catch(function (err) {
+      res.json(err);
     });
 });
 
 module.exports = router;
-
