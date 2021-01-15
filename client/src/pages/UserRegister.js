@@ -30,7 +30,10 @@ export default function UserRegister() {
         event.preventDefault();
         console.log(user)
         API.userRegister(user)
-            .then(res => console.log(res))
+            .then(res => {
+                console.log(res);
+                window.location.href="/home";
+            })
             .catch(err => console.log(err))
     }
 
