@@ -65,6 +65,9 @@ router.put("/user", function (req, res) {
     })
     .then(function(dbBandUser) {
       res.json(dbBandUser);
+    })
+    .catch(function (err) {
+      res.json(err);
     });
 });
 
