@@ -31,6 +31,9 @@ export default function UserRegister() {
         console.log(user)
         API.userRegister(user)
             .then(res => {
+                if(res.data.errors){
+                    console.log(res.data.errors)
+                }
                 console.log(res);
                 window.location.href="/home";
             })
