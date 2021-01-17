@@ -51,10 +51,14 @@ export default function BandRegister() {
 
     const handleRegisterSubmit = (event) => {
         event.preventDefault();
-        console.log(user)
+        // console.log(user)
         API.bandRegister(user)
             .then(res => {
-                console.log(res);
+                console.log(res.data);
+                if (res.data.errors){
+                   
+                    console.log(res.data.errors)
+                }
                 window.location.href="/home"
             })
             .catch(err => console.log(err))

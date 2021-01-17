@@ -1,5 +1,6 @@
 const express = require("express");
-const session = require("express-session");
+const session = require("express-session"),
+  bodyParser = require("body-parser");
 const compression = require("compression");
 const passport = require("./config/passport");
 const path = require("path");
@@ -25,6 +26,7 @@ app.use(
     sameSite: true
   } })
 );
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
