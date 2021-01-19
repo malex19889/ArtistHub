@@ -6,5 +6,5 @@ module.exports = function(req, res, next) {
   }
 
   // If the user isn't logged in, redirect them to the index page
-  return res.redirect("/");
+  return res.json({errors:"You Shall Not Pass!"});
 };

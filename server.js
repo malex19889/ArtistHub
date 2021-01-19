@@ -21,11 +21,9 @@ if (process.env.NODE_ENV === "production") {
 }
 // Use sessions to keep track of our user's login status
 app.use(
-  session({ secret: "my great secret", resave: true, saveUninitialized: true, cookie: {
-    maxAge: 3600000,
-    sameSite: true
-  } })
+  session({ secret: "my great secret", resave: true, saveUninitialized: true })
 );
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
