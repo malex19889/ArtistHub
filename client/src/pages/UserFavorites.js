@@ -31,8 +31,11 @@ export default function Favorites() {
     ]);
 
     useEffect(() => {
-        API.getFavorites(1)
+        API.getFavorites(authState.id)
             .then(res => {
+                if(res.data.errors){
+                   return window.location.href="/"
+                }
                 console.log(res.data)
                 setFavorites(res.data)
             })

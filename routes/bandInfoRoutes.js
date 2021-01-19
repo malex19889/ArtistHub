@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const db = require("../models");
+const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 // post route for adding band members
 router.post("/bandmember", function (req, res) {
@@ -24,7 +25,7 @@ router.post("/bandmember", function (req, res) {
 });
 
 // post route for adding favorites, boolean value
-router.post("/favorites", function (req, res) {
+router.post("/favorites",isAuthenticated, function (req, res) {
   console.log(req.body);
   db.Favorite.create({
     UserId: req.body.authState.id,
@@ -40,7 +41,7 @@ router.post("/favorites", function (req, res) {
 });
 
 // delete route for favorites
-router.delete("/favorites/:id", function (req, res) {
+router.delete("/favorites/:id",isAuthenticated,function (req, res) {
   console.log(req.body);
   db.Favorite.destroy({
     where: {
@@ -56,7 +57,7 @@ router.delete("/favorites/:id", function (req, res) {
 });
 
 // get route for favorites
-router.get("/favorites/:id", function (req, res) {
+router.get("/favorites/:id",isAuthenticated, function (req, res) {
   console.log("Looking for favorites for:", req.params.id);
   db.Favorite.findAll({
     where: {

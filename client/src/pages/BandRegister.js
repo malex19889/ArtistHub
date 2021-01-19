@@ -51,10 +51,14 @@ export default function BandRegister() {
 
     const handleRegisterSubmit = (event) => {
         event.preventDefault();
-        console.log(user)
+        // console.log(user)
         API.bandRegister(user)
             .then(res => {
-                console.log(res);
+                console.log(res.data);
+                if (res.data.errors){
+                   
+                    console.log(res.data.errors)
+                }
                 window.location.href="/home"
             })
             .catch(err => console.log(err))
@@ -64,7 +68,7 @@ export default function BandRegister() {
         let widget = window.cloudinary.createUploadWidget(
             {
               cloudName: process.env.REACT_APP_CLOUD_NAME,
-              uploadPreset: "awq1uzrp",
+              uploadPreset: process.env.REACT_APP_UPLOAD_PRESET,
               sources: ["local", "camera"]
             },
             (error, result) => {
