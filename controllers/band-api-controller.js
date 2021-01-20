@@ -1,5 +1,5 @@
 const db = require("../models");
-
+const dateFormat = require("dateformat");
 module.exports = {
 
   createBand: function (req, res) {
@@ -95,7 +95,7 @@ module.exports = {
     db.BandUser.findAll({})
       .then(function (dbBandUsers) {
         res.json(dbBandUsers.map((b) => {
-          return { id: b.id, bandName: b.bandName, bandBio: b.bandBio, imgUrl: b.bannerImage, createdAt: b.createdAt };
+          return { id: b.id, bandName: b.bandName, bandBio: b.bandBio, imgUrl: b.bannerImage, createdAt: dateFormat(b.createdAt,"dddd, mmmm dS, yyyy") };
         }));
       });
   },
