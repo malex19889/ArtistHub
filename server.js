@@ -1,5 +1,6 @@
 const express = require("express");
-const session = require("express-session");
+const session = require("express-session"),
+  bodyParser = require("body-parser");
 const compression = require("compression");
 const passport = require("./config/passport");
 const path = require("path");
@@ -7,9 +8,10 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const db = require("./models");
 // require routes
-const bandAuthRoutes = require("./routes/bandAuthRoutes");
-const bandApiRoutes = require("./routes/bandInfoRoutes");
-const userAuthRoutes = require("./routes/userAuthRoutes");
+const authRoutes = require("./routes/authRoutes");
+const userApiRoutes = require("./routes/userApiRoutes");
+const bandApiRoutes = require("./routes/bandApiRoutes");
+
 // Define middleware here
 app.use(compression());
 app.use(express.urlencoded({ extended: true }));
@@ -20,20 +22,18 @@ if (process.env.NODE_ENV === "production") {
 }
 // Use sessions to keep track of our user's login status
 app.use(
-  session({ secret: "my great secret", resave: true, saveUninitialized: true, cookie: {
-    maxAge: 3600000,
-    sameSite: true
-  } })
+  session({ secret: "my great secret", resave: true, saveUninitialized: true })
 );
+
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
 
 // Use apiRoutes
+app.use("/api", userApiRoutes,bandApiRoutes);
+app.use("/auth", authRoutes);
 
-app.use("/auth/band", bandAuthRoutes);
-app.use("/api", bandApiRoutes);
-app.use("/auth", userAuthRoutes);
 // Send every request to the React app
 app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));

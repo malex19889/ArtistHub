@@ -9,19 +9,19 @@ export default {
     },
     userRegister: (userData) => {
         return axios.post(
-            "/auth/register", userData);
+            "/api/user/register", userData);
     },
     bandRegister: (bandData) => {
         return axios.post(
-            "/auth/band/register", bandData);
+            "/api/band/register", bandData);
     },
     userLogin: (userData) => {
         return axios.post(
-            "/auth/user/login", userData);
+            "/auth/user", userData);
     },
     bandLogin: (userData) => {
         return axios.post(
-            "/auth/band/login", userData);
+            "/auth/band", userData);
     },
     // call to get band object(all band data to be passed in as props later)
     bandInfo: (search) => {

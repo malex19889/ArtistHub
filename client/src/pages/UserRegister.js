@@ -30,7 +30,15 @@ export default function UserRegister() {
         event.preventDefault();
         console.log(user)
         API.userRegister(user)
-            .then(res => console.log(res))
+            .then(res => {
+                if (res.data.errors) {
+                   alert(res.data.errors[0].message)
+                } else if (!res.data.errors) {
+                    console.log(res);
+                    window.location.href = "/home";
+                }
+
+            })
             .catch(err => console.log(err))
     }
 
@@ -62,7 +70,7 @@ export default function UserRegister() {
 
                             <Form.Group controlId="formBasicEmail">
                                 <Form.Label>Email address</Form.Label>
-                                <Form.Control onChange={e => setRegisterEmail(e.target.value)} type="email" placeholder="Enter email" required/>
+                                <Form.Control onChange={e => setRegisterEmail(e.target.value)} type="email" placeholder="Enter email" required />
                                 <Form.Text className="text-muted">
                                     We'll never share your email with anyone else.
                                 </Form.Text>
@@ -70,7 +78,7 @@ export default function UserRegister() {
 
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control onChange={e => setRegisterPassword(e.target.value)} type="password" placeholder="Password" required/>
+                                <Form.Control onChange={e => setRegisterPassword(e.target.value)} type="password" placeholder="Password" required />
                             </Form.Group>
 
                             <Form.Group>
