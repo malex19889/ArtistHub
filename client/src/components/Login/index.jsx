@@ -8,13 +8,14 @@ import { useAuthContext } from "../../store/contexts/authContext";
 import API from "../../utils/API";
 import { Redirect, useHistory } from "react-router-dom";
 
-function Login(props) {
-  let history = useHistory();
-  // globall auth state
+function Login() {
+  // global auth state
   const [authState, dispatch] = useAuthContext();
+
   // hook for form input change
   const { state, handleInputChange } = useHandleInputChange();
   console.log(authState);
+
   // handler for login submit
   const handleUserLogin = (e) => {
       console.log("user login")
@@ -30,6 +31,7 @@ function Login(props) {
         dispatch({ type: "LOGIN_FAILED" });
       });
   };
+  
   const handleBandLogin = (e) => {
     console.log("band login")
     e.preventDefault();

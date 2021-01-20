@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-const ImageForm = (props) => {
+const ImageForm = () => {
     const [fileState, setFileState] = useState()
     const handleReaderLoaded = (readerEvt)=>{
         let binaryString = readerEvt.target.result
