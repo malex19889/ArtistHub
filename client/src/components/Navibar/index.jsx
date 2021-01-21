@@ -5,11 +5,8 @@ import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 
-import { useAuthContext } from "../../store/contexts/authContext"
 
 function Navibar(props) {
-    // input change hook
-    const [authState, dispatch] = useAuthContext();
 
     return (
         <Navbar bg="dark" variant="dark">
