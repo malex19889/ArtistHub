@@ -117,7 +117,7 @@ export default function BandHome() {
                 <Row>
                     <Col lg={3} style={{ marginTop: "10px", marginBottom: "10px" }}>
                         <BandBioCard band={band} />
-                        <FavBtn handleFavorite={handleFavorite} band={band} />
+                        {authState.isBand ? <div></div> : <FavBtn handleFavorite={handleFavorite} band={band} />}
                     </Col>
                     <Col lg={5} style={{ marginTop: "10px", marginBottom: "10px" }}>
                         <EventsGroup band={band} />

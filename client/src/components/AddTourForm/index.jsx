@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import API from "../../utils/API"
 import useHandleInputChange from "../../hooks/useHandleInputChange";
 import { useAuthContext } from "../../store/contexts/authContext";
-export default function AddTourForm(props) {
+export default function AddTourForm() {
 
     const { state, handleInputChange } = useHandleInputChange();
     const [authState, dispatch] = useAuthContext();
