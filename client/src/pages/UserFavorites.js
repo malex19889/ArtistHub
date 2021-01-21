@@ -19,25 +19,20 @@ import API from "../utils/API";
 
 export default function Favorites() {
     const [authState, dispatch] = useAuthContext();
-    const [favorites, setFavorites] = useState([
-        {
-            bandName: "Black Sabbath",
-            url: "/band/home/1"
-        },
-        {
-            bandName: "Metallica",
-            url: "band/home/:id"
-        }
-    ]);
+    const [favorites, setFavorites] = useState([]);
+    const [noFaves, setNoFaves] = useState(false);
 
     useEffect(() => {
         API.getFavorites(authState.id)
             .then(res => {
                 if(res.data.errors){
                    return window.location.href="/"
+                }else if(res.data.length === 0){
+                    setNoFaves(true);
                 }
-                console.log(res.data)
-                setFavorites(res.data)
+                console.log(noFaves);
+                console.log(res.data);
+                setFavorites(res.data);
             })
     }, [authState.id])
 
@@ -56,6 +51,7 @@ export default function Favorites() {
             </Navibar>
             <div>
                 <FavoriteGroup favorites={favorites} />
+               { noFaves ? <h2>You Dont have any favorites yet. Go add some!</h2> : <></>}
             </div>
             <Footer />
         </div>
