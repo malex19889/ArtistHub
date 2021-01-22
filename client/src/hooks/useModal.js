@@ -1,11 +1,7 @@
 import { useState } from "react";
 
 const useModal = () => {
-    //stores the curent view state of the modal
     const [show, setShow] = useState(false);
-
-    // const handleClose = () => setShow(false);
-    // const handleShow = () => setShow(true);
 
     const toggle = (status) => {
         setShow(status);
@@ -15,8 +11,6 @@ const useModal = () => {
     return {
         show,
         toggle
-        // handleClose,
-        // handleShow
     }
 };
 
