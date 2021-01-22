@@ -22,6 +22,10 @@ import API from "../utils/API";
 
 
 export default function Home() {
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
 
     const [authState, dispatch] = useAuthContext();
@@ -60,13 +64,13 @@ export default function Home() {
                     <ModalA
                         loginRegister="Login">
                         <h2>Login</h2>
-                        <Login></Login>
+                        <Login onClick={handleShow} onHide={handleClose}></Login>
                     </ModalA>
 
                     <ModalA
                         loginRegister="Register">
                         <h2>Register</h2>
-                        <Register></Register>
+                        <Register onClick={handleShow} onHide={handleClose}></Register>
                     </ModalA>
                 </Navibar>
                 <Jumbotron />

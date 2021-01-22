@@ -6,18 +6,18 @@ import Button from "react-bootstrap/Button"
 //props.loginRegister changes the label on the navbar, and props.children refers to login and register components
 
 const ModalA = (props) => {
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
 
   return (
     <>
-      <Button variant="outline-none" style={{ backgroundColor: "#343a40", color: "white" }} onClick={handleShow}>
+      <Button variant="outline-none" style={{ backgroundColor: "#343a40", color: "white" }} onClick={props.handleShow}>
         {props.loginRegister}
           </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={props.show} onHide={props.handleClose}>
         <Modal.Header closeButton>
         </Modal.Header>
         <Modal.Body>{props.children}</Modal.Body>
