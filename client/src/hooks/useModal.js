@@ -1,18 +1,22 @@
-import {useState} from "react";
+import { useState } from "react";
 
 const useModal = () => {
     //stores the curent view state of the modal
-    const [isShown, setIsShown] = useState(false);
+    const [show, setShow] = useState(false);
 
-    //changes the value of isShown to its opposite
-    function toggle() {
-        setIsShown(!isShown);
+    // const handleClose = () => setShow(false);
+    // const handleShow = () => setShow(true);
+
+    const toggle = (status) => {
+        setShow(status);
     }
 
     //return so our component has access
     return {
-        isShown,
+        show,
         toggle
+        // handleClose,
+        // handleShow
     }
 };
 
