@@ -11,6 +11,7 @@ import BandGroup from "../components/BandGroup";
 import Logout from "../components/LogoutBtn";
 import Navibar from '../components/Navibar';
 import ModalA from "../components/Modal";
+import useModal from "../hooks/useModal";
 import Login from "../components/Login";
 import Register from "../components/Register";
 // global auth context
@@ -22,10 +23,7 @@ import API from "../utils/API";
 
 
 export default function Home() {
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const { isShown, toggle } = useModal();
 
 
     const [authState, dispatch] = useAuthContext();
@@ -61,13 +59,19 @@ export default function Home() {
         return (
             <div>
                 <Navibar>
-                    <ModalA onClick={handleShow} onHide={handleClose}
+                    <ModalA
+                        onClick={toggle}
+                        isShown={isShown}
+                        hide={toggle}
                         loginRegister="Login">
                         <h2>Login</h2>
                         <Login></Login>
                     </ModalA>
 
-                    <ModalA onClick={handleShow} onHide={handleClose}
+                    <ModalA
+                        onClick={toggle}
+                        isShown={isShown}
+                        hide={toggle}
                         loginRegister="Register">
                         <h2>Register</h2>
                         <Register></Register>
