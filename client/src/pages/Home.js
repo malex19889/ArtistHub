@@ -61,16 +61,16 @@ export default function Home() {
         return (
             <div>
                 <Navibar>
-                    <ModalA
+                    <ModalA onClick={handleShow} onHide={handleClose}
                         loginRegister="Login">
                         <h2>Login</h2>
-                        <Login onClick={handleShow} onHide={handleClose}></Login>
+                        <Login></Login>
                     </ModalA>
 
-                    <ModalA
+                    <ModalA onClick={handleShow} onHide={handleClose}
                         loginRegister="Register">
                         <h2>Register</h2>
-                        <Register onClick={handleShow} onHide={handleClose}></Register>
+                        <Register></Register>
                     </ModalA>
                 </Navibar>
                 <Jumbotron />
