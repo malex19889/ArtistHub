@@ -37,10 +37,10 @@ export default function BandSettings() {
         bandBio: updateBandBio,
         genre: updateGenre,
         contact: updateContact,
-        youtube: updateYoutube,
-        facebook: updateFacebook,
-        insta: updateInsta,
-        twitter: updateTwitter
+        youtube: updateYoutube.replace("https://",""),
+        facebook: updateFacebook.replace("https://",""),
+        insta: updateInsta.replace("https://",""),
+        twitter: updateTwitter.replace("https://","")
     };
 
     const handleUpdateInfo = (event) => {

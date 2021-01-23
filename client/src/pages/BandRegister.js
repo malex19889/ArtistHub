@@ -42,10 +42,10 @@ export default function BandRegister() {
         bandBio: registerBandBio,
         genre: registerGenre,
         contact: registerContact,
-        youtube: registerYoutube,
-        facebook: registerFacebook,
-        insta: registerInsta,
-        twitter: registerTwitter,
+        youtube: registerYoutube.replace("https://",""),
+        facebook: registerFacebook.replace("https://",""),
+        insta: registerInsta.replace("https://",""),
+        twitter: registerTwitter.replace("https://",""),
         bannerImage: imageState
     };
 
