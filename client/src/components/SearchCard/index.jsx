@@ -11,7 +11,6 @@ function SearchCard(props) {
                 <Card.Img variant="top" src={props.search.imgUrl} />
                 <Card.Body>
                     <Card.Title><a href={"/band/home/" + props.search.id} style={{ color: "black" }}>{props.search.bandName}</a></Card.Title>
-                    {console.log(props.search.bandName)}
                     <Card.Text>{props.search.bandBio}</Card.Text>
                 </Card.Body>
                 <Card.Footer>
