@@ -7,22 +7,17 @@ import Container from "react-bootstrap/Container";
 import ModalA from "../components/Modal";
 import Login from "../components/Login";
 import Register from "../components/Register";
+import useModal from "../hooks/useModal";
 
 import { useAuthContext } from "../store/contexts/authContext";
 
 import API from "../utils/API";
 
-
-// import Form from "react-bootstrap/Form";
-// import Button from "react-bootstrap/Button";
-// import Container from "react-bootstrap/Container";
-// import Card from "react-bootstrap/Card";
-// import Row from "react-bootstrap/Row";
-// import Col from "react-bootstrap/Col";
-
 import BandCard from "../components/BandCard";
 
 export default function Browse() {
+    const { isShown, toggle } = useModal();
+
     const [authState, dispatch] = useAuthContext();
     const [bands, setSearch] = useState([]);
 
@@ -45,12 +40,18 @@ export default function Browse() {
             <div>
                 <Navibar>
                     <ModalA
+                        onClick={toggle}
+                        isShown={isShown}
+                        hide={toggle}
                         loginRegister="Login">
                         <h2>Login</h2>
                         <Login></Login>
                     </ModalA>
 
                     <ModalA
+                        onClick={toggle}
+                        isShown={isShown}
+                        hide={toggle}
                         loginRegister="Register">
                         <h2>Register</h2>
                         <Register></Register>
