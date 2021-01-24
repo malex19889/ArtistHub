@@ -91,11 +91,12 @@ module.exports = {
   },
 
   addMerch: function (req, res) {
-    console.log(req.body);
+    console.log("Merch Body: "+req.body);
+    console.log("Merch User: "+req.user);
     db.Merch.create({
       itemName: req.body.itemName,
       description: req.body.description,
-      price: parseFloat(req.body.price),
+      price: parseFloat(req.body.price.replace("$","")),
       image: req.body.image,
       quantity: parseInt(req.body.quantity),
       BandUserId: req.user.id
@@ -111,8 +112,10 @@ module.exports = {
   getBandMerch: function(req,res){
     console.log("Looking for merch for band id: " + req.body);
     db.Merch.findAll({
-      where:{BandUserId:req.params.id}})
+      where:{BandUserId:req.params.id},
+      raw: true,})
       .then(function(dbMerchItems) {
+        console.log(dbMerchItems);
         res.json(dbMerchItems);
       })
       .catch(err => res.json(err));
