@@ -10,15 +10,16 @@ export default function MerchCard(props) {
             {console.log("merch " + props)}
             {props.merch.map((merch, i) =>
                 <Card key={i + "-merchItem"} merch={merch} style={{ width: '18rem', margin: "10px" }}>
-                    <Card.Img variant="top" src={props.merch.merchImg} />
+                    <Card.Img variant="top" src={props.merch.image} />
                     <Card.Body>
-                        <Card.Title>{props.merch.merchItem}</Card.Title>
+                        <Card.Title>{props.merch.itemName}</Card.Title>
                         <Card.Text>
-                            {props.merch.merchDesc}
+                            {"$" + props.merch.price}
+                            {props.merch.description}
                         </Card.Text>
                         <Button variant="dark">Purchase</Button>
                     </Card.Body>
-                    <Card.Footer className="text-muted">{props.merch.merchQuantity}</Card.Footer>
+                    <Card.Footer className="text-muted">{props.merch.quantity}</Card.Footer>
                 </Card>
             )}
         </Row>

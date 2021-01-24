@@ -3,12 +3,10 @@ import { useParams } from "react-router-dom";
 import { useAuthContext } from "../store/contexts/authContext";
 
 import BandJumbotron from "../components/BandJumbotron";
-import BandBioCard from "../components/BandBioCard";
-import EventsGroup from "../components/EventsGroup";
+
 import Navibar from "../components/Navibar";
 import Logout from "../components/LogoutBtn";
-import ContactCard from "../components/ContactCard";
-import FavBtn from "../components/FavBtn";
+
 import ModalA from "../components/Modal";
 import Login from "../components/Login";
 import Register from "../components/Register";
@@ -19,8 +17,7 @@ import useModal from "../hooks/useModal";
 import API from "../utils/API";
 
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+
 import Nav from "react-bootstrap/Nav";
 
 export default function BandHome() {
@@ -88,27 +85,27 @@ export default function BandHome() {
             }
         ]
     });
-    const [merch, setMerch] = useState(
-        [
-            {
-                merchImg: "https://via.placeholder.com/80",
-                merchItem: "Cool Ass T-Shirt",
-                merchDesc: "Look at this sweet fuckin top yo, how sick is this",
-                merchQuantity: "666"
-            }
-        ]
-    )
+    const [merch, setMerch] = useState([
+        {
+            itemName: "Cool Ass T-Shirt",
+            description: "Look at this sweet fuckin top yo, how sick is this",
+            price: "$20",
+            image: "https://via.placeholder.com/80",
+            quantity: "666"
+        }
+    ])
 
     console.log(authState)
     let { id } = useParams();
-    // useEffect(() => {
-    //     console.log(id)
-    //     API.merchInfoById(id)
-    //         .then((res) => {
-    //             setBand(res.data);
-    //         })
-    //         .catch(err => console.log(err));
-    // }, [id])
+    useEffect(() => {
+        console.log(id)
+        API.merchInfoById(id)
+            .then((res) => {
+                console.log("something" + res)
+                setMerch(res.data);
+            })
+            .catch(err => console.log(err));
+    }, [id])
 
     if (!authState.loggedIn) {
         return (
