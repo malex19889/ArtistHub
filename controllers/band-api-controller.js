@@ -112,8 +112,10 @@ module.exports = {
   getBandMerch: function(req,res){
     console.log("Looking for merch for band id: " + req.body);
     db.Merch.findAll({
-      where:{BandUserId:req.params.id}})
+      where:{BandUserId:req.params.id},
+      raw: true,})
       .then(function(dbMerchItems) {
+        console.log(dbMerchItems);
         res.json(dbMerchItems);
       })
       .catch(err => res.json(err));
