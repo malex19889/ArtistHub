@@ -127,6 +127,9 @@ module.exports = function (sequelize, DataTypes) {
     BandUser.hasMany(models.TourDate, {
       onDelete: "cascade"
     });
+    BandUser.hasMany(models.Merch, {
+      onDelete: "cascade"
+    });
   };
 
 

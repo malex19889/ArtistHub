@@ -15,6 +15,7 @@ import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
 import AddTourForm from "../components/AddTourForm";
 import AddMemberForm from "../components/AddMemberForm";
+import AddMerchForm from "../components/AddMerch";
 
 
 export default function BandSettings() {
@@ -131,6 +132,9 @@ export default function BandSettings() {
                     {/* ADD A BAND MEMBER */}
                     <Col lg={4} style={{ width: "100%", marginTop: "30px", marginBottom: "30px" }}>
                         <AddMemberForm />
+                    </Col>
+                    <Col lg={4} style={{ width: "100%", marginTop: "30px", marginBottom: "30px" }}>
+                        <AddMerchForm/>
                     </Col>
                 </Row>
             </Container>
