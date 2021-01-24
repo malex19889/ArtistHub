@@ -11,7 +11,7 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-require('dotenv').config()
+require('dotenv').config();
 
 export default function BandRegister() {
 
@@ -42,10 +42,10 @@ export default function BandRegister() {
         bandBio: registerBandBio,
         genre: registerGenre,
         contact: registerContact,
-        youtube: registerYoutube,
-        facebook: registerFacebook,
-        insta: registerInsta,
-        twitter: registerTwitter,
+        youtube: registerYoutube.replace("https://",""),
+        facebook: registerFacebook.replace("https://",""),
+        insta: registerInsta.replace("https://",""),
+        twitter: registerTwitter.replace("https://",""),
         bannerImage: imageState
     };
 

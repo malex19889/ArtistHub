@@ -90,6 +90,34 @@ module.exports = {
       });
   },
 
+  addMerch: function (req, res) {
+    console.log(req.body);
+    db.Merch.create({
+      itemName: req.body.itemName,
+      description: req.body.description,
+      price: parseFloat(req.body.price),
+      image: req.body.image,
+      quantity: parseInt(req.body.quantity),
+      BandUserId: req.user.id
+    })
+      .then(function (dbMerchItem) {
+        res.json(dbMerchItem);
+      })
+      .catch(function (err) {
+        res.json(err);
+      });
+  },
+
+  getBandMerch: function(req,res){
+    console.log("Looking for merch for band id: " + req.body);
+    db.Merch.findAll({
+      where:{BandUserId:req.params.id}})
+      .then(function(dbMerchItems) {
+        res.json(dbMerchItems);
+      })
+      .catch(err => res.json(err));
+  },
+
   getAllBands: function (req, res) {
     console.log("user object test", req.user);
     db.BandUser.findAll({})
