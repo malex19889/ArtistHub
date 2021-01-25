@@ -20,7 +20,7 @@ module.exports = {
       twitter: req.body.twitter,
       password: req.body.password
     })
-      .then(function(dbBandUser) {
+      .then(function (dbBandUser) {
         res.json(dbBandUser);
       })
       .catch(function (err) {
@@ -28,20 +28,38 @@ module.exports = {
       });
   },
 
-  addBandMember:function (req, res) {
+  addBandMember: function (req, res) {
     console.log(req.body);
-    db.Favorite.destroy({
-      where: {
-        id: req.params.id
-      }
+    db.BandMember.create({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      contact: req.body.memberContact,
+      bandRole: req.body.bandRole,
+      facebook: req.body.facebook,
+      insta: req.body.insta,
+      image: req.body.image,
+      twitter: req.body.twitter,
+      BandUserId: req.user.id
     })
-      .then(function (dbFavorite) {
-        res.json(dbFavorite);
-      })
-      .catch(function (err) {
-        res.json(err);
+      .then(function (dbBandMember) {
+        res.json(dbBandMember);
       });
   },
+
+  // deleteBand:function (req, res) {
+  //   console.log(req.body);
+  //   db.Favorite.destroy({
+  //     where: {
+  //       id: req.params.id
+  //     }
+  //   })
+  //     .then(function (dbFavorite) {
+  //       res.json(dbFavorite);
+  //     })
+  //     .catch(function (err) {
+  //       res.json(err);
+  //     });
+  // },
 
   addTourDate: function (req, res) {
     console.log(req.body);
@@ -91,12 +109,12 @@ module.exports = {
   },
 
   addMerch: function (req, res) {
-    console.log("Merch Body: "+req.body);
-    console.log("Merch User: "+req.user);
+    console.log("Merch Body: " + req.body);
+    console.log("Merch User: " + req.user);
     db.Merch.create({
       itemName: req.body.itemName,
       description: req.body.description,
-      price: parseFloat(req.body.price.replace("$","")),
+      price: parseFloat(req.body.price.replace("$", "")),
       image: req.body.image,
       quantity: parseInt(req.body.quantity),
       BandUserId: req.user.id
@@ -109,14 +127,13 @@ module.exports = {
       });
   },
 
-  getBandMerch: function(req,res){
-    console.log("Looking for merch for band id: " + req.body);
+  getBandMerch:  function(req,res){
+    console.log("Looking for merch for band id: " + req.params.id);
     db.Merch.findAll({
-      where:{BandUserId:req.params.id},
-      raw: true,})
+      where:{BandUserId:req.params.id}})
       .then(function(dbMerchItems) {
         console.log(dbMerchItems);
-        res.json(dbMerchItems);
+        res.json(dbMerchItems.map(bm => bm.dataValues));
       })
       .catch(err => res.json(err));
   },
@@ -126,7 +143,7 @@ module.exports = {
     db.BandUser.findAll({})
       .then(function (dbBandUsers) {
         res.json(dbBandUsers.map((b) => {
-          return { id: b.id, bandName: b.bandName, bandBio: b.bandBio, imgUrl: b.bannerImage, createdAt: dateFormat(b.createdAt,"dddd, mmmm dS, yyyy") };
+          return { id: b.id, bandName: b.bandName, bandBio: b.bandBio, imgUrl: b.bannerImage, createdAt: dateFormat(b.createdAt, "dddd, mmmm dS, yyyy") };
         }));
       });
   },

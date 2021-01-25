@@ -65,7 +65,6 @@ export default function BandHome() {
                 twitter: "https://twitter.com/"
             }
         ],
-
         tour: [
             {
                 tourName: "Summer Slaughter Tour",
@@ -95,13 +94,13 @@ export default function BandHome() {
         }
     ])
 
-    console.log(authState)
+    console.log("authState " + authState)
     let { id } = useParams();
     useEffect(() => {
         console.log(id)
         API.merchInfoById(id)
             .then((res) => {
-                console.log("something" + res)
+                console.log("res " + res)
                 setMerch(res.data);
             })
             .catch(err => console.log(err));
