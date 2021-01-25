@@ -120,20 +120,25 @@ module.exports = {
       BandUserId: req.user.id
     })
       .then(function (dbMerchItem) {
+        console.log("dbMerchItem", dbMerchItem),
         res.json(dbMerchItem);
       })
       .catch(function (err) {
+        console.log("error " + err),
         res.json(err);
       });
   },
 
-  getBandMerch:  function(req,res){
+  getBandMerch: function(req,res){
     console.log("Looking for merch for band id: " + req.params.id);
     db.Merch.findAll({
-      where:{BandUserId:req.params.id}})
+      where:{BandUserId:req.params.id},
+      raw: true,})
       .then(function(dbMerchItems) {
         console.log(dbMerchItems);
-        res.json(dbMerchItems.map(bm => bm.dataValues));
+        res.json(dbMerchItems.map((b) => {
+          return { id: b.id, itemName: b.itemName, description: b.description, price: b.price, image: b.image, quantity: b.quantity, BandUserId: b.BandUserId,};
+        }));
       })
       .catch(err => res.json(err));
   },

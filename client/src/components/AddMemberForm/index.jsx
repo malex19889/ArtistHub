@@ -16,7 +16,7 @@ export default function AddMemberForm() {
         API.addMember(insert)
             .then(res => {
                 console.log(res)
-                //window.location.href = "/band/home/" + authState.id
+                window.location.href = "/band/home/" + authState.id
             })
             .catch(err => console.log(err))
     }

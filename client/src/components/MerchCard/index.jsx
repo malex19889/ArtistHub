@@ -9,17 +9,18 @@ export default function MerchCard(props) {
         <Row className="align-items-center justify-content-center">
             {console.log("merch " + props)}
             {props.merch.map((merch, i) =>
-                <Card key={i + "-merchItem"} merch={merch} style={{ width: '18rem', margin: "10px" }}>
-                    <Card.Img variant="top" src={props.merch.image} />
+                <Card key={i + "-merchItem"} merch={merch} style={{ width: "300px", margin: "10px" }}>
+                    <Card.Img variant="top" src={merch.image} style={{textAlign:"center", height:"250px", width:"299px"}}/>
                     <Card.Body>
-                        <Card.Title>{props.merch.itemName}</Card.Title>
+                        <Card.Title>{merch.itemName}</Card.Title>
                         <Card.Text>
-                            {"$" + props.merch.price}
-                            {props.merch.description}
+                            {"$" + merch.price}
+                            <br />
+                            {merch.description}
                         </Card.Text>
                         <Button variant="dark">Purchase</Button>
                     </Card.Body>
-                    <Card.Footer className="text-muted">{props.merch.quantity}</Card.Footer>
+                    <Card.Footer className="text-muted">{merch.quantity}</Card.Footer>
                 </Card>
             )}
         </Row>

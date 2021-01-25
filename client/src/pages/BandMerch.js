@@ -87,7 +87,7 @@ export default function BandHome() {
     const [merch, setMerch] = useState([
         {
             itemName: "Cool Ass T-Shirt",
-            description: "Look at this sweet fuckin top yo, how sick is this",
+            description: "a shirt",
             price: "$20",
             image: "https://via.placeholder.com/80",
             quantity: "666"
@@ -96,12 +96,23 @@ export default function BandHome() {
 
     console.log("authState " + authState)
     let { id } = useParams();
+    //useEffect for pulling merch info
     useEffect(() => {
         console.log(id)
         API.merchInfoById(id)
             .then((res) => {
                 console.log("res " + res)
                 setMerch(res.data);
+            })
+            .catch(err => console.log(err));
+    }, [id])
+
+    //useEffect for pulling band info for jumbotron
+    useEffect(() => {
+        console.log(id)
+        API.bandInfoById(id)
+            .then((res) => {
+                setBand(res.data);
             })
             .catch(err => console.log(err));
     }, [id])
