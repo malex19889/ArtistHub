@@ -14,6 +14,7 @@ import BandSettings from "./pages/BandSettings";
 import UserSettings from "./pages/UserSettings";
 import UserFavorites from "./pages/UserFavorites";
 import SearchResults from "./pages/Browse";
+import BandMerch from "./pages/BandMerch";
 
 // import BandGallery from "./pages/BandGallery";
 // import BandCalendar from "./pages/BandCalendar";
@@ -57,6 +58,9 @@ function App() {
           </Route>
           <Route exact path="/browse">
             <SearchResults />
+          </Route>
+          <Route exact path="/band/merch/:id">
+            <BandMerch />
           </Route>
 
           {/* <PrivateRoute path="/band/settings/" authorization={authState && authState.loggedIn} component={BandSettings}/> */}

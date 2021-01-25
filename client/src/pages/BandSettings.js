@@ -73,7 +73,7 @@ export default function BandSettings() {
                     {/* GENERAL SETTINGS */}
                     <Col lg={4} style={{ width: "100%", marginTop: "30px", marginBottom: "30px" }}>
                         <Form className="bandregister" onSubmit={handleUpdateInfo}>
-
+ 
                             <h2>General Settings</h2>
 
                             <Form.Group controlId="formBandName">
