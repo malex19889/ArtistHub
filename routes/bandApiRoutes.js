@@ -20,4 +20,13 @@ router.route("/bands")
 
 router.route("/bands/:id")
   .get(bandApi.getBandById);
+
+router.route("/merch")
+  .post(bandApi.addMerch)
+  .put()
+  .delete();
+
+router.route("/merch/:id")
+  .get(bandApi.getBandMerch);
 module.exports = router;
+

@@ -58,6 +58,14 @@ export default {
     addMember: (data) => {
         return axios.post(
             "/api/bandmember", data)
+    },
+    addMerch: (data) => {
+        return axios.post(
+            "/api/merch", data)
+    },
+    merchInfoById: (id) => {
+        return axios.get(
+            "/api/merch/" + id );
     }
     // maybe can turn into 1 call 
     // post band member call

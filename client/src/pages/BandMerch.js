@@ -3,23 +3,21 @@ import { useParams } from "react-router-dom";
 import { useAuthContext } from "../store/contexts/authContext";
 
 import BandJumbotron from "../components/BandJumbotron";
-import BandBioCard from "../components/BandBioCard";
-import EventsGroup from "../components/EventsGroup";
+
 import Navibar from "../components/Navibar";
 import Logout from "../components/LogoutBtn";
-import ContactCard from "../components/ContactCard";
-import FavBtn from "../components/FavBtn";
+
 import ModalA from "../components/Modal";
 import Login from "../components/Login";
 import Register from "../components/Register";
+import MerchCard from "../components/MerchCard";
 
 import useModal from "../hooks/useModal";
 
 import API from "../utils/API";
 
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+
 import Nav from "react-bootstrap/Nav";
 
 export default function BandHome() {
@@ -67,7 +65,6 @@ export default function BandHome() {
                 twitter: "https://twitter.com/"
             }
         ],
-
         tour: [
             {
                 tourName: "Summer Slaughter Tour",
@@ -86,9 +83,31 @@ export default function BandHome() {
                 notes: "Open bar. Please bring ID, 21+ show."
             }
         ]
-    })
-    console.log(authState)
+    });
+    const [merch, setMerch] = useState([
+        {
+            itemName: "Cool Ass T-Shirt",
+            description: "a shirt",
+            price: "$20",
+            image: "https://via.placeholder.com/80",
+            quantity: "666"
+        }
+    ])
+
+    console.log("authState " + authState)
     let { id } = useParams();
+    //useEffect for pulling merch info
+    useEffect(() => {
+        console.log(id)
+        API.merchInfoById(id)
+            .then((res) => {
+                console.log("res " + res)
+                setMerch(res.data);
+            })
+            .catch(err => console.log(err));
+    }, [id])
+
+    //useEffect for pulling band info for jumbotron
     useEffect(() => {
         console.log(id)
         API.bandInfoById(id)
@@ -97,12 +116,6 @@ export default function BandHome() {
             })
             .catch(err => console.log(err));
     }, [id])
-    // console.log(band)
-    function handleFavorite(band) {
-        console.log(authState);
-        const obj = { band, authState, url: window.location.href }
-        API.saveFavorites(obj);
-    }
 
     if (!authState.loggedIn) {
         return (
@@ -129,17 +142,7 @@ export default function BandHome() {
 
                 <BandJumbotron band={band} />
                 <Container fluid>
-                    <Row>
-                        <Col lg={3} style={{ marginTop: "10px", marginBottom: "10px" }}>
-                            <BandBioCard band={band} />
-                        </Col>
-                        <Col lg={5} style={{ marginTop: "10px", marginBottom: "10px" }}>
-                            <EventsGroup band={band} />
-                        </Col>
-                        <Col lg={4} style={{ marginTop: "10px", marginBottom: "10px" }}>
-                            <ContactCard band={band} />
-                        </Col>
-                    </Row>
+                    <MerchCard merch={merch} />
                 </Container>
 
             </div>
@@ -161,17 +164,7 @@ export default function BandHome() {
 
                 <BandJumbotron band={band} />
                 <Container fluid>
-                    <Row>
-                        <Col lg={3} style={{ marginTop: "10px", marginBottom: "10px" }}>
-                            <BandBioCard band={band} />
-                        </Col>
-                        <Col lg={5} style={{ marginTop: "10px", marginBottom: "10px" }}>
-                            <EventsGroup band={band} />
-                        </Col>
-                        <Col lg={4} style={{ marginTop: "10px", marginBottom: "10px" }}>
-                            <ContactCard band={band} />
-                        </Col>
-                    </Row>
+                    <MerchCard merch={merch} />
                 </Container>
 
             </div>
@@ -192,18 +185,7 @@ export default function BandHome() {
 
             <BandJumbotron band={band} />
             <Container fluid>
-                <Row>
-                    <Col lg={3} style={{ marginTop: "10px", marginBottom: "10px" }}>
-                        <BandBioCard band={band} />
-                        <FavBtn handleFavorite={handleFavorite} band={band} />
-                    </Col>
-                    <Col lg={5} style={{ marginTop: "10px", marginBottom: "10px" }}>
-                        <EventsGroup band={band} />
-                    </Col>
-                    <Col lg={4} style={{ marginTop: "10px", marginBottom: "10px" }}>
-                        <ContactCard band={band} />
-                    </Col>
-                </Row>
+                <MerchCard merch={merch} />
             </Container>
 
         </div>
