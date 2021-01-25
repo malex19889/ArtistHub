@@ -55,6 +55,8 @@ export default function Browse() {
 
       setSearch(filteredBand);
 
+    //   search.map((search, i) => <BandCard key={i + "-card"} band={search} />)}
+
    }
    
 
