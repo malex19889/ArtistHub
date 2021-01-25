@@ -24,13 +24,12 @@ import BandCard from "../components/BandCard";
 
 export default function Browse() {
     const { isShown, toggle } = useModal();
-
+    const { state, handleInputChange } = useHandleInputChange();
     const [authState, dispatch] = useAuthContext();
     const [bands, setBands] = useState([]);
     const [search, setSearch] = useState();
 
-    const { state, handleInputChange } = useHandleInputChange();
-
+   
    
   
    const handleSearch = (e) =>{
@@ -42,20 +41,21 @@ export default function Browse() {
       console.log(" name of the artist " + band); 
       console.log("sorted bands "+ JSON.stringify(sortedBands));
       const filteredBand = sortedBands.filter((obj) => {
-              let test = obj.bandName;
-              console.log("inside the filter " + test);
+              let bandName = obj.bandName.toLowerCase();
+              console.log("inside the filter " + bandName);
               console.log("inside the filter and the key " + band);
-              if (test === band) {
+              if (bandName === band.toLowerCase()) {
                   return obj;
               }
+            //   return obj;
+        
           });
       
-      
-      console.log(" return setSearch " + JSON.stringify(filteredBand));
+       console.log(" return setSearch " + JSON.stringify(filteredBand));
+       setSearch(filteredBand);
 
-      setSearch(filteredBand);
+       <Button type="submit" variant="outline-info" onClick={handleSearch}>Clear Search</Button>
 
-    //   search.map((search, i) => <BandCard key={i + "-card"} band={search} />)}
 
    }
    
