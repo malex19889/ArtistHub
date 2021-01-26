@@ -21,6 +21,8 @@ import API from "../utils/API";
 
 import BandCard from "../components/BandCard";
 
+import SearchCard from "../components/SearchCard";
+
 
 export default function Browse() {
     const { isShown, toggle } = useModal();
@@ -36,28 +38,21 @@ export default function Browse() {
 
       e.preventDefault();
       const sortedBands = bands;
-      console.log(state);
       const band = state.search;
-      console.log(" name of the artist " + band); 
-      console.log("sorted bands "+ JSON.stringify(sortedBands));
       const filteredBand = sortedBands.filter((obj) => {
               let bandName = obj.bandName.toLowerCase();
-              console.log("inside the filter " + bandName);
-              console.log("inside the filter and the key " + band);
               if (bandName === band.toLowerCase()) {
                   return obj;
               }
             //   return obj;
-        
-          });
+        });
       
        console.log(" return setSearch " + JSON.stringify(filteredBand));
        setSearch(filteredBand);
-
-       <Button type="submit" variant="outline-info" onClick={handleSearch}>Clear Search</Button>
-
-
-   }
+       setBands(filteredBand);
+       
+      
+    }
    
 
     useEffect(() => {
@@ -100,6 +95,11 @@ export default function Browse() {
                 <div className="align-self-center">
                     <h2 className="justify-content-center" style={{ margin: "20px", alignText: "center" }}>Browse</h2>
                     <Container>
+                    <Form inline>
+                <FormControl onChange = {handleInputChange} name="search" type="text" placeholder="Search For an Artist!" className="mr-sm-2" />
+                <Button type="submit" variant="outline-info" onClick={handleSearch}>Search</Button>
+                {console.log("send out the search value " +JSON.stringify (search))}
+                </Form>
                         {bands.map((band, i) => <BandCard key={i + "-card"} band={band} />)}
                         {/* {search.id ? (<SearchCard search={search} />) : (<div></div>)} */}
                     </Container>
@@ -126,6 +126,12 @@ export default function Browse() {
                 <div className="align-self-center">
                     <h2 className="justify-content-center" style={{ margin: "20px", alignText: "center" }}>Browse</h2>
                     <Container>
+
+                <Form inline>
+                <FormControl onChange = {handleInputChange} name="search" type="text" placeholder="Search For an Artist!" className="mr-sm-2" />
+                <Button type="submit" variant="outline-info" onClick={handleSearch}>Search</Button>
+                {console.log("send out the search value " +JSON.stringify (search))}
+                </Form>
                         {bands.map((band, i) => <BandCard key={i + "-card"} band={band} />)}
                         {/* {search.id ? (<SearchCard search={search} />) : (<div></div>)} */}
                     </Container>
@@ -155,7 +161,6 @@ export default function Browse() {
                 <Form inline>
                 <FormControl onChange = {handleInputChange} name="search" type="text" placeholder="Search For an Artist!" className="mr-sm-2" />
                 <Button type="submit" variant="outline-info" onClick={handleSearch}>Search</Button>
-                {/* {console.log(handleSearch)} */}
                 </Form>
                  
 
