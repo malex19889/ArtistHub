@@ -110,13 +110,12 @@ module.exports = {
   },
 
   getBandMerch: function(req,res){
-    console.log("Looking for merch for band id: " + req.body);
+    console.log("Looking for merch for band id: " + req.params.id);
     db.Merch.findAll({
-      where:{BandUserId:req.params.id},
-      raw: true,})
+      where:{BandUserId:req.params.id}})
       .then(function(dbMerchItems) {
         console.log(dbMerchItems);
-        res.json(dbMerchItems);
+        res.json(dbMerchItems.map(bm => bm.dataValues));
       })
       .catch(err => res.json(err));
   },
