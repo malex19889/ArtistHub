@@ -26,20 +26,23 @@ import SearchCard from "../components/SearchCard";
 import NoMatch from "./NoMatch";
 
 
+
+
 export default function Browse() {
     const { isShown, toggle } = useModal();
     const { state, handleInputChange } = useHandleInputChange();
     const [authState, dispatch] = useAuthContext();
     const [bands, setBands] = useState([]);
     const [search, setSearch] = useState();
+    let showHideButton = false;
 
    
    
-  
+  // this function will find the band search and then render to the page
    const handleSearch = (e) =>{
 
       e.preventDefault();
-      const sortedBands = bands;
+      let sortedBands = bands;
       const band = state.search;
       let found = false;
       const filteredBand = sortedBands.filter((obj) => {
@@ -57,7 +60,14 @@ export default function Browse() {
              console.log("Not found ");
              NoMatch();
             }
+        //   clearSearch.style.display = "none";
+           
       
+  }
+
+  const handleReset = (e) =>{
+     setBands(bands);
+     showHideButton = false;
   }
    
 
@@ -104,7 +114,8 @@ export default function Browse() {
                     <Form inline>
                 <FormControl onChange = {handleInputChange} name="search" type="text" placeholder="Search For an Artist!" className="mr-sm-2" />
                 <Button type="submit" variant="outline-info" onClick={handleSearch}>Search</Button>
-                {console.log("send out the search value " +JSON.stringify (search))}
+                <Button type="clearSearch" variant="outline-info" onClick={handleReset}>Clear Search</Button>
+                
                 </Form>
                         {bands.map((band, i) => <BandCard key={i + "-card"} band={band} />)}
                         {/* {search.id ? (<SearchCard search={search} />) : (<div></div>)} */}
@@ -136,7 +147,7 @@ export default function Browse() {
                 <Form inline>
                 <FormControl onChange = {handleInputChange} name="search" type="text" placeholder="Search For an Artist!" className="mr-sm-2" />
                 <Button type="submit" variant="outline-info" onClick={handleSearch}>Search</Button>
-                {console.log("send out the search value " +JSON.stringify (search))}
+                <Button type="clear search" variant="outline-info" onClick={handleReset}>Clear Search</Button>
                 </Form>
                         {bands.map((band, i) => <BandCard key={i + "-card"} band={band} />)}
                         {/* {search.id ? (<SearchCard search={search} />) : (<div></div>)} */}
@@ -167,6 +178,7 @@ export default function Browse() {
                 <Form inline>
                 <FormControl onChange = {handleInputChange} name="search" type="text" placeholder="Search For an Artist!" className="mr-sm-2" />
                 <Button type="submit" variant="outline-info" onClick={handleSearch}>Search</Button>
+                <Button type="clear search" variant="outline-info" onClick={handleReset}>Clear Search</Button>
                 </Form>
                  
 
