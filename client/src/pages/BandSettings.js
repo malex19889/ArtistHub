@@ -56,7 +56,7 @@ export default function BandSettings() {
                 setUpdateBandBio(res.data.bandBio);
                 setUpdateGenre(res.data.genre);
                 setUpdateContact(res.data.contact);
-                setUpdateYoutube(res.data.contact);
+                setUpdateYoutube(res.data.youtube);
                 setUpdateFacebook(res.data.facebook);
                 setUpdateInsta(res.data.insta);
                 setUpdateTwitter(res.data.twitter);
@@ -90,7 +90,7 @@ export default function BandSettings() {
                 <Container>
                     <Row className="Settings">
                         {/* GENERAL SETTINGS */}
-                        <Col lg={4} style={{ width: "100%", marginTop: "30px", marginBottom: "30px" }}>
+                        <Col lg={3} style={{ width: "100%", marginTop: "30px", marginBottom: "30px" }}>
                             <Form className="bandregister" onSubmit={handleUpdateInfo}>
 
                                 <h2>General Settings</h2>
