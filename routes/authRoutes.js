@@ -20,7 +20,7 @@ router.route("/band")
     res.send(userInfo);
   },
   )
-  .put()
+  .put(auth.updateBandUser)
   .delete(auth.deleteBand);
 
 router.route("/user")

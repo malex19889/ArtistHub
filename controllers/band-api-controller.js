@@ -132,13 +132,10 @@ module.exports = {
   getBandMerch: function(req,res){
     console.log("Looking for merch for band id: " + req.params.id);
     db.Merch.findAll({
-      where:{BandUserId:req.params.id},
-      raw: true,})
+      where:{BandUserId:req.params.id}})
       .then(function(dbMerchItems) {
         console.log(dbMerchItems);
-        res.json(dbMerchItems.map((b) => {
-          return { id: b.id, itemName: b.itemName, description: b.description, price: b.price, image: b.image, quantity: b.quantity, BandUserId: b.BandUserId,};
-        }));
+        res.json(dbMerchItems.map(m => m.dataValues));
       })
       .catch(err => res.json(err));
   },
