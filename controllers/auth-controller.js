@@ -27,5 +27,27 @@ module.exports = {
       .then(function(dbBandUser) {
         res.json(dbBandUser);
       });
+  },
+  updateBandUser: function(req,res){
+    console.log(req.body);
+    db.BandUser.update({
+      bandName: req.body.bandName,
+      bandBio: req.body.bandBio,
+      genre: req.body.genre,
+      contact: req.body.contact,
+      youtube: req.body.youtube,
+      facebook: req.body.facebook,
+      insta: req.body.insta,
+      twitter: req.body.twitter},
+    {where: {id:req.user.id}}
+    )
+      .then(dbBandUser=>{
+        console.log(dbBandUser);
+        res.json(dbBandUser);
+      })
+      .catch(err=>{
+        console.log(err);
+        res.json(err);
+      });
   }
 };

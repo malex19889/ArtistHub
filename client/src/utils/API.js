@@ -15,6 +15,10 @@ export default {
         return axios.post(
             "/api/band/register", bandData);
     },
+    bandUpdate: (bandData) => {
+        return axios.put(
+            "/auth/band", bandData);
+    },
     userLogin: (userData) => {
         return axios.post(
             "/auth/user", userData);
