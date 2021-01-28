@@ -20,7 +20,7 @@ function Navibar(props) {
                 <FormControl name="search" type="text" placeholder="Search For an Artist!" className="mr-sm-2" />
                 <Button type="submit" variant="outline-info" >Search</Button>
             </Form> */}
-        </Navbar>
+        </Navbar>   
     );
 }
 export default Navibar;
