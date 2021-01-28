@@ -11,6 +11,7 @@ import useModal from "../hooks/useModal";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+// import NoMatch from "./NoMatch";
 
 import useHandleInputChange from "../hooks/useHandleInputChange";
 
@@ -22,6 +23,7 @@ import API from "../utils/API";
 import BandCard from "../components/BandCard";
 
 import SearchCard from "../components/SearchCard";
+import NoMatch from "./NoMatch";
 
 
 export default function Browse() {
@@ -39,20 +41,24 @@ export default function Browse() {
       e.preventDefault();
       const sortedBands = bands;
       const band = state.search;
+      let found = false;
       const filteredBand = sortedBands.filter((obj) => {
               let bandName = obj.bandName.toLowerCase();
               if (bandName === band.toLowerCase()) {
+                  found = true;
                   return obj;
-              }
-            //   return obj;
-        });
+                }
+            });
+
+       if( found ) {
+        console.log(" return setSearch " + JSON.stringify(filteredBand));
+        setBands(filteredBand);
+         } else {
+             console.log("Not found ");
+             NoMatch();
+            }
       
-       console.log(" return setSearch " + JSON.stringify(filteredBand));
-       setSearch(filteredBand);
-       setBands(filteredBand);
-       
-      
-    }
+  }
    
 
     useEffect(() => {
