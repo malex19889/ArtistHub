@@ -7,6 +7,8 @@ import { useParams } from "react-router-dom";
 
 import API from "../utils/API";
 import Spinner from "react-bootstrap/Spinner";
+import useModal from "../hooks/useModal";
+
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
@@ -16,9 +18,11 @@ import Nav from "react-bootstrap/Nav";
 import AddTourForm from "../components/AddTourForm";
 import AddMemberForm from "../components/AddMemberForm";
 import AddMerchForm from "../components/AddMerch";
+import SettingsModal from "../components/SettingsModal";
 
 
 export default function BandSettings() {
+    const { isShown, toggle } = useModal();
 
     let { id } = useParams();
 
@@ -140,18 +144,36 @@ export default function BandSettings() {
                         </Col>
 
                         {/* ADD A TOUR DATE */}
-                        <Col lg={4} style={{ width: "100%", marginTop: "30px", marginBottom: "30px" }}>
-                            <AddTourForm />
-                        </Col>
+                    <Col lg={3} style={{ width: "100%", marginTop: "30px", marginBottom: "30px" }}>
+                        <SettingsModal
+                            onClick={toggle}
+                            isShown={isShown}
+                            hide={toggle}
+                            option="Add Tour Date">
+                            <AddTourForm></AddTourForm>
+                        </SettingsModal>
 
-                        {/* ADD A BAND MEMBER */}
-                        <Col lg={4} style={{ width: "100%", marginTop: "30px", marginBottom: "30px" }}>
-                            <AddMemberForm />
-                        </Col>
-                        {/* Add a merch item */}
-                        <Col lg={4} style={{ width: "100%", marginTop: "30px", marginBottom: "30px" }}>
-                            <AddMerchForm />
-                        </Col>
+                    </Col>
+
+                    {/* ADD A BAND MEMBER */}
+                    <Col lg={3} style={{ width: "100%", marginTop: "30px", marginBottom: "30px" }}>
+                    <SettingsModal
+                            onClick={toggle}
+                            isShown={isShown}
+                            hide={toggle}
+                            option="Add Band Member">
+                            <AddMemberForm></AddMemberForm>
+                        </SettingsModal>
+                    </Col>
+                    <Col lg={3} style={{ width: "100%", marginTop: "30px", marginBottom: "30px" }}>
+                    <SettingsModal
+                            onClick={toggle}
+                            isShown={isShown}
+                            hide={toggle}
+                            option="Add Merch">
+                            <AddMerchForm></AddMerchForm>
+                        </SettingsModal>
+                    </Col>
                     </Row>
                 </Container>
 

@@ -45,9 +45,9 @@ export default function AddMerchForm() {
     return (
         <Form className="merch" >
 
-            <h2>Add some merch</h2>
+            <h2>Add a Piece of Merchandise</h2>
 
-            <Button onClick={handleImageUpload}>Upload a pic of the item.</Button>
+            <Button onClick={handleImageUpload}>Upload a Photo</Button>
 
             <Form.Group controlId="formItemName">
                 <Form.Label>Item Name</Form.Label>
