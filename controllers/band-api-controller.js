@@ -120,11 +120,11 @@ module.exports = {
       BandUserId: req.user.id
     })
       .then(function (dbMerchItem) {
-        console.log("dbMerchItem", dbMerchItem),
+        console.log("dbMerchItem: ", dbMerchItem),
         res.json(dbMerchItem);
       })
       .catch(function (err) {
-        console.log("error " + err),
+        console.log("dbMerchItemError: " + err),
         res.json(err);
       });
   },
