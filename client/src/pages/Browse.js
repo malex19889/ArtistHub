@@ -34,7 +34,7 @@ export default function Browse() {
     const [authState, dispatch] = useAuthContext();
     const [bands, setBands] = useState([]);
     const [search, setSearch] = useState();
-    let showHideButton = false;
+    // let showHideButton = false;
 
    
    
@@ -67,7 +67,7 @@ export default function Browse() {
 
   const handleReset = (e) =>{
      setBands(bands);
-     showHideButton = false;
+    //  showHideButton = false;
   }
    
 
@@ -147,7 +147,7 @@ export default function Browse() {
                 <Form inline>
                 <FormControl onChange = {handleInputChange} name="search" type="text" placeholder="Search For an Artist!" className="mr-sm-2" />
                 <Button type="submit" variant="outline-info" onClick={handleSearch}>Search</Button>
-                <Button type="clear search" variant="outline-info" onClick={handleReset}>Clear Search</Button>
+                <Button id="clearSearch" type="clear search" variant="outline-info" onClick={handleReset}>Clear Search</Button>
                 </Form>
                         {bands.map((band, i) => <BandCard key={i + "-card"} band={band} />)}
                         {/* {search.id ? (<SearchCard search={search} />) : (<div></div>)} */}
