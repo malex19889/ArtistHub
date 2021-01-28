@@ -46,7 +46,7 @@ export default function Browse() {
       const band = state.search;
       let found = false;
       showHideButton = null;
-      console.log("in clear function "+ showHideButton);
+    //   console.log("in clear function "+ showHideButton);
       const filteredBand = sortedBands.filter((obj) => {
               let bandName = obj.bandName.toLowerCase();
               if (bandName === band.toLowerCase()) {
@@ -63,17 +63,12 @@ export default function Browse() {
              console.log("Not found ");
              NoMatch();
             }
-           
-           
-      
-  }
-//   Clear Search function 
+    }
+
+//   Clear Search function and rerender the org API
   const handleReset = (e) =>{
-    
-    setBands(bands);
-     
-    
-  }
+     setBands(bands);
+    }
    
 
     useEffect(() => {
