@@ -2,15 +2,14 @@ import React, { useState, useEffect } from "react";
 import Navibar from "../components/Navibar";
 import Footer from "../components/Footer";
 import Logout from "../components/LogoutBtn";
-import { useAuthContext } from "../store/contexts/authContext";
+import Loading from "../components/Loading";
+import BandGeneralSettings from "../components/BandGeneralSettings";
+// import { useAuthContext } from "../store/contexts/authContext";
 import { useParams } from "react-router-dom";
 
 import API from "../utils/API";
-import Spinner from "react-bootstrap/Spinner";
 import useModal from "../hooks/useModal";
 
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -26,8 +25,6 @@ export default function BandSettings() {
 
     let { id } = useParams();
 
-    const [authState, dispatch] = useAuthContext();
-
     const [updateBandname, setUpdateBandname] = useState("");
     const [updateBandBio, setUpdateBandBio] = useState("");
     const [updateGenre, setUpdateGenre] = useState("");
@@ -36,7 +33,7 @@ export default function BandSettings() {
     const [updateFacebook, setUpdateFacebook] = useState("");
     const [updateInsta, setUpdateInsta] = useState("");
     const [updateTwitter, setUpdateTwitter] = useState("");
-    const [band, setBand] = useState()
+    const [band, setBand] = useState();
     const user = {
         bandName: updateBandname,
         bandBio: updateBandBio,
@@ -73,6 +70,8 @@ export default function BandSettings() {
             })
             .catch(err => console.log(err))
     }
+
+    // const [authState, dispatch] = useAuthContext();
     if (band) {
         return (
             <div>
@@ -91,89 +90,47 @@ export default function BandSettings() {
                     <Row className="Settings">
                         {/* GENERAL SETTINGS */}
                         <Col lg={3} style={{ width: "100%", marginTop: "30px", marginBottom: "30px" }}>
-                            <Form className="bandregister" onSubmit={handleUpdateInfo}>
+                            <SettingsModal
+                                onClick={toggle}
+                                isShown={isShown}
+                                hide={toggle}
+                                option="General Settings">
+                                <BandGeneralSettings handleUpdateInfo={handleUpdateInfo} />
+                            </SettingsModal>
 
-                                <h2>General Settings</h2>
-
-                                <Form.Group controlId="formBandName">
-                                    <Form.Label>Band Name</Form.Label>
-                                    <Form.Control onChange={e => setUpdateBandname(e.target.value)} value={updateBandname} type="bandName" placeholder="Existing information, or blank" />
-                                </Form.Group>
-
-                                {/* add a form.file for new cover photo */}
-                                {/* add a form.file for added images to a gallery */}
-
-                                <Form.Group controlId="formBandBio">
-                                    <Form.Label>Band Biography</Form.Label>
-                                    <Form.Control as="textarea" onChange={e => setUpdateBandBio(e.target.value)} value={updateBandBio} type="bandBio" placeholder="Existing information, or blank" />
-                                </Form.Group>
-
-                                <Form.Group controlId="formGenre">
-                                    <Form.Label>Genre</Form.Label>
-                                    <Form.Control onChange={e => setUpdateGenre(e.target.value)} value={updateGenre} type="genre" placeholder="Existing information, or blank" />
-                                </Form.Group>
-
-                                <Form.Group controlId="contact">
-                                    <Form.Label>Phone Number</Form.Label>
-                                    <Form.Control onChange={e => setUpdateContact(e.target.value)} value={updateContact} type="contact" placeholder="Existing information, or blank" />
-                                </Form.Group>
-
-                                <Form.Group controlId="formYoutube">
-                                    <Form.Label>Youtube Channel</Form.Label>
-                                    <Form.Control onChange={e => setUpdateYoutube(e.target.value)} value={updateYoutube} type="youtube" placeholder="Existing information, or blank" />
-                                </Form.Group>
-
-                                <Form.Group controlId="facebook">
-                                    <Form.Label>Facebook</Form.Label>
-                                    <Form.Control onChange={e => setUpdateFacebook(e.target.value)} value={updateFacebook} type="facebook" placeholder="Existing information, or blank" />
-                                </Form.Group>
-                                <Form.Group controlId="insta">
-                                    <Form.Label>Instagram</Form.Label>
-                                    <Form.Control onChange={e => setUpdateInsta(e.target.value)} value={updateInsta} type="insta" placeholder="Existing information, or blank" />
-                                </Form.Group>
-                                <Form.Group controlId="twitter">
-                                    <Form.Label>Twitter</Form.Label>
-                                    <Form.Control onChange={e => setUpdateTwitter(e.target.value)} value={updateTwitter} type="twitter" placeholder="Existing information, or blank" />
-                                </Form.Group>
-
-                                <Button variant="dark" type="submit" handleUpdateInfo={handleUpdateInfo}>
-                                    Submit
-                            </Button>
-
-                            </Form>
                         </Col>
 
                         {/* ADD A TOUR DATE */}
-                    <Col lg={3} style={{ width: "100%", marginTop: "30px", marginBottom: "30px" }}>
-                        <SettingsModal
-                            onClick={toggle}
-                            isShown={isShown}
-                            hide={toggle}
-                            option="Add Tour Date">
-                            <AddTourForm></AddTourForm>
-                        </SettingsModal>
+                        <Col lg={3} style={{ width: "100%", marginTop: "30px", marginBottom: "30px" }}>
+                            <SettingsModal
+                                onClick={toggle}
+                                isShown={isShown}
+                                hide={toggle}
+                                option="Add Tour Date">
+                                <AddTourForm></AddTourForm>
+                            </SettingsModal>
 
-                    </Col>
+                        </Col>
 
-                    {/* ADD A BAND MEMBER */}
-                    <Col lg={3} style={{ width: "100%", marginTop: "30px", marginBottom: "30px" }}>
-                    <SettingsModal
-                            onClick={toggle}
-                            isShown={isShown}
-                            hide={toggle}
-                            option="Add Band Member">
-                            <AddMemberForm></AddMemberForm>
-                        </SettingsModal>
-                    </Col>
-                    <Col lg={3} style={{ width: "100%", marginTop: "30px", marginBottom: "30px" }}>
-                    <SettingsModal
-                            onClick={toggle}
-                            isShown={isShown}
-                            hide={toggle}
-                            option="Add Merch">
-                            <AddMerchForm></AddMerchForm>
-                        </SettingsModal>
-                    </Col>
+                        {/* ADD A BAND MEMBER */}
+                        <Col lg={3} style={{ width: "100%", marginTop: "30px", marginBottom: "30px" }}>
+                            <SettingsModal
+                                onClick={toggle}
+                                isShown={isShown}
+                                hide={toggle}
+                                option="Add Band Member">
+                                <AddMemberForm></AddMemberForm>
+                            </SettingsModal>
+                        </Col>
+                        <Col lg={3} style={{ width: "100%", marginTop: "30px", marginBottom: "30px" }}>
+                            <SettingsModal
+                                onClick={toggle}
+                                isShown={isShown}
+                                hide={toggle}
+                                option="Add Merch">
+                                <AddMerchForm></AddMerchForm>
+                            </SettingsModal>
+                        </Col>
                     </Row>
                 </Container>
 
@@ -182,11 +139,9 @@ export default function BandSettings() {
         );
     } else {
         return (
-            <div>
-
-                <Spinner animation="border" variant="primary" />
-                Loading...
-            </div>
+            <Container style={{ textAlign: "center", marginTop: "50px" }}>
+                <Loading />
+            </Container>
         )
     }
 
