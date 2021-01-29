@@ -35,46 +35,46 @@ export default function Browse() {
     const [authState, dispatch] = useAuthContext();
     const [bands, setBands] = useState([]);
     const [search, setSearch] = useState();
-   
-   
-   
-  // this function will find the band search and then render to the page
-   const handleSearch = (e) =>{
 
-      e.preventDefault();
-      let sortedBands = bands;
-      const band = state.search;
-      let found = false;
-      showHideButton = null;
-      console.log("in clear function "+ showHideButton);
-      const filteredBand = sortedBands.filter((obj) => {
-              let bandName = obj.bandName.toLowerCase();
-              if (bandName === band.toLowerCase()) {
-                  found = true;
-                  return obj;
-                }
-            });
-       
-       if( found ) {
-        console.log(" return setSearch " + JSON.stringify(filteredBand));
-       
-        setBands(filteredBand);
-         } else {
-             console.log("Not found ");
-             NoMatch();
+
+
+    // this function will find the band search and then render to the page
+    const handleSearch = (e) => {
+
+        e.preventDefault();
+        let sortedBands = bands;
+        const band = state.search;
+        let found = false;
+        showHideButton = null;
+        console.log("in clear function " + showHideButton);
+        const filteredBand = sortedBands.filter((obj) => {
+            let bandName = obj.bandName.toLowerCase();
+            if (bandName === band.toLowerCase()) {
+                found = true;
+                return obj;
             }
-           
-           
-      
-  }
-//   Clear Search function 
-  const handleReset = (e) =>{
-    
-    setBands(bands);
-     
-    
-  }
-   
+        });
+
+        if (found) {
+            console.log(" return setSearch " + JSON.stringify(filteredBand));
+
+            setBands(filteredBand);
+        } else {
+            console.log("Not found ");
+            NoMatch();
+        }
+
+
+
+    }
+    //   Clear Search function 
+    const handleReset = (e) => {
+
+        setBands(bands);
+
+
+    }
+
 
     useEffect(() => {
         API.bands()
@@ -82,8 +82,8 @@ export default function Browse() {
             .then(res => {
                 console.log("HEY, A SEARCH: ", res.data)
                 setBands(res.data);
-                
-                
+
+
                 //window.location.href = "/results";
             })
             .catch(err =>
@@ -116,12 +116,12 @@ export default function Browse() {
                 <div className="align-self-center">
                     <h2 className="justify-content-center" style={{ margin: "20px", alignText: "center" }}>Browse</h2>
                     <Container>
-                    <Form inline>
-                <FormControl onChange = {handleInputChange} name="search" type="text" placeholder="Search For an Artist!" className="mr-sm-2" />
-                <Button type="submit" variant="outline-info" onClick={handleSearch}>Search</Button>
-                <Button type="clearSearch"  style= {{display: showHideButton}} variant="outline-info" onClick={handleReset}>Clear Search</Button>
-                {console.log("outside near button " + showHideButton)}
-                </Form>
+                        <Form inline>
+                            <FormControl onChange={handleInputChange} name="search" type="text" placeholder="Search For an Artist!" className="mr-sm-2" />
+                            <Button type="submit" variant="outline-info" onClick={handleSearch}>Search</Button>
+                            <Button type="clearSearch" style={{ display: showHideButton }} variant="outline-info" onClick={handleReset}>Clear Search</Button>
+                            {console.log("outside near button " + showHideButton)}
+                        </Form>
                         {bands.map((band, i) => <BandCard key={i + "-card"} band={band} />)}
                         {/* {search.id ? (<SearchCard search={search} />) : (<div></div>)} */}
                     </Container>
@@ -149,11 +149,11 @@ export default function Browse() {
                     <h2 className="justify-content-center" style={{ margin: "20px", alignText: "center" }}>Browse</h2>
                     <Container>
 
-                <Form inline>
-                <FormControl onChange = {handleInputChange} name="search" type="text" placeholder="Search For an Artist!" className="mr-sm-2" />
-                <Button type="submit" variant="outline-info" onClick={handleSearch}>Search</Button>
-                <Button id="clearSearch"  style= {{display: showHideButton}} variant="outline-info" onClick={handleReset}>Clear Search</Button>
-                </Form>
+                        <Form inline>
+                            <FormControl onChange={handleInputChange} name="search" type="text" placeholder="Search For an Artist!" className="mr-sm-2" />
+                            <Button type="submit" variant="outline-info" onClick={handleSearch}>Search</Button>
+                            <Button id="clearSearch" style={{ display: showHideButton }} variant="outline-info" onClick={handleReset}>Clear Search</Button>
+                        </Form>
                         {bands.map((band, i) => <BandCard key={i + "-card"} band={band} />)}
                         {/* {search.id ? (<SearchCard search={search} />) : (<div></div>)} */}
                     </Container>
@@ -180,12 +180,12 @@ export default function Browse() {
                 <h2 className="justify-content-center" style={{ margin: "20px", alignText: "center" }}>Browse</h2>
                 <Container>
                     {/* Search button and return info */}
-                <Form inline>
-                <FormControl onChange = {handleInputChange} name="search" type="text" placeholder="Search For an Artist!" className="mr-sm-2" />
-                <Button type="submit" variant="outline-info" onClick={handleSearch}>Search</Button>
-                <Button type="clear search"  style= {{display: showHideButton}} variant="outline-info" onClick={handleReset}>Clear Search</Button>
-                </Form>
-                 
+                    <Form inline>
+                        <FormControl onChange={handleInputChange} name="search" type="text" placeholder="Search For an Artist!" className="mr-sm-2" />
+                        <Button type="submit" variant="outline-info" onClick={handleSearch}>Search</Button>
+                        <Button type="clear search" style={{ display: showHideButton }} variant="outline-info" onClick={handleReset}>Clear Search</Button>
+                    </Form>
+
 
                     {bands.map((band, i) => <BandCard key={i + "-card"} band={band} />)}
                     {/* {search.id ? (<SearchCard search={search} />) : (<div></div>)} */}
@@ -195,5 +195,3 @@ export default function Browse() {
         </div>
     )
 }
-
-
