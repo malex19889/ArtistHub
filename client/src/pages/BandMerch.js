@@ -22,6 +22,7 @@ import Nav from "react-bootstrap/Nav";
 
 export default function BandHome() {
     const { isShown, toggle } = useModal();
+    const [noMerch, setNoMerch] = useState(false);
 
     const [authState, dispatch] = useAuthContext();
     const [band, setBand] = useState({
@@ -101,6 +102,12 @@ export default function BandHome() {
         console.log(id)
         API.merchInfoById(id)
             .then((res) => {
+                if(res.data.errors) {
+                    return window.location.href="/"
+                } else if (res.date.length === 0)
+                {
+                    setNoMerch(true);
+                }
                 console.log("res " + res)
                 setMerch(res.data);
             })
@@ -186,6 +193,7 @@ export default function BandHome() {
             <BandJumbotron band={band} />
             <Container fluid>
                 <MerchCard merch={merch} />
+                {noMerch ? <h2>Add some merch <a href={"/band/settings/" + authState.id}>here</a>.</h2> : <div></div>}
             </Container>
 
         </div>

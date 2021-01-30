@@ -2,8 +2,14 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
+import API from "../../utils/API";
+import DeleteMerchBtn from "../DeleteMerchBtn";
 
 export default function MerchCard(props) {
+
+    function handleDeleteMerch(id) {
+        API.deleteMerch(id)
+    }
 
     return (
         <Row className="align-items-center justify-content-center">
@@ -19,6 +25,7 @@ export default function MerchCard(props) {
                             {merch.description}
                         </Card.Text>
                         <Button variant="dark">Purchase</Button>
+                        <DeleteMerchBtn handleDeleteMerch={handleDeleteMerch} id={merch.id} />
                     </Card.Body>
                     <Card.Footer className="text-muted">{merch.quantity}</Card.Footer>
                 </Card>
