@@ -11,7 +11,7 @@ import useModal from "../hooks/useModal";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-// import NoMatch from "./NoMatch";
+
 
 import useHandleInputChange from "../hooks/useHandleInputChange";
 
@@ -22,8 +22,8 @@ import API from "../utils/API";
 
 import BandCard from "../components/BandCard";
 
-import SearchCard from "../components/SearchCard";
-import NoMatch from "./NoMatch";
+
+
 
 
 let showHideButton = "none";
@@ -34,7 +34,7 @@ export default function Browse() {
     const { state, handleInputChange } = useHandleInputChange();
     const [authState, dispatch] = useAuthContext();
     const [bands, setBands] = useState([]);
-    const [search, setSearch] = useState();
+    // const [search, setSearch] = useState();
    
    
    
@@ -56,12 +56,11 @@ export default function Browse() {
             });
        
        if( found ) {
-        console.log(" return setSearch " + JSON.stringify(filteredBand));
-       
+        // console.log(" return setSearch " + JSON.stringify(filteredBand));
         setBands(filteredBand);
          } else {
              console.log("Not found ");
-             NoMatch();
+            
             }
     }
 
