@@ -60,7 +60,7 @@ export default {
     },
     //double check this works
     deleteTourDate: function (id) {
-        return axios.delete("/api/tourdates/" + id);
+        return axios.delete("/api/tourdate/" + id);
     },
     // add band memebrs
     addMember: (data) => {

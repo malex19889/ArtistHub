@@ -65,7 +65,7 @@ module.exports = {
     console.log(req.body);
     db.TourDate.create({
       tourName: req.body.tourName,
-      date: dateformat(req.body.date,"dddd, mmmm d, yyyy"),
+      date: req.body.date, //dateformat(req.body.date,"dddd, mmmm d, yyyy"),
       time: req.body.time,
       location: req.body.location,
       ticketPrice: req.body.ticketPrice,
@@ -89,6 +89,9 @@ module.exports = {
     })
       .then(function (dbTourDate) {
         res.json(dbTourDate);
+      })
+      .catch(function (err) {
+        res.json(err);
       });
   },
 
@@ -137,7 +140,11 @@ module.exports = {
       }
     })
       .then(function (dbMerch) {
+        console.log("dbMerch: " + dbMerch);
         res.json(dbMerch);
+      }).catch(function (err) {
+        console.log("dbMerchError: " + err),
+        res.json(err);
       });
   },
 

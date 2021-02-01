@@ -80,7 +80,7 @@ export default function BandSettings() {
                         <Nav.Link style={{ color: "white" }} href={"/band/home/" + id}>My Band</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link style={{ color: "white" }} href={"/band/merch/" + band.id}>Merch</Nav.Link>
+                        <Nav.Link style={{ color: "white" }} href={"/band/merch/" + band.id}>Shop</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
                         <Nav.Link style={{ color: "white" }} href={"/band/settings/" + id}>Settings</Nav.Link>

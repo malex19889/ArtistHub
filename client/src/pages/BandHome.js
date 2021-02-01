@@ -180,7 +180,7 @@ export default function BandHome() {
                 </Container>
             </div>
         )
-    } else if (!authState.isBand) {
+    } else {
         return (
             <div>
                 <Navibar>

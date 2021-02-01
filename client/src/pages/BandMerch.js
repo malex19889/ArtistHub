@@ -20,9 +20,8 @@ import Container from "react-bootstrap/Container";
 
 import Nav from "react-bootstrap/Nav";
 
-export default function BandHome() {
+export default function BandMerch() {
     const { isShown, toggle } = useModal();
-    const [noMerch, setNoMerch] = useState(false);
 
     const [authState, dispatch] = useAuthContext();
     const [band, setBand] = useState({
@@ -85,15 +84,9 @@ export default function BandHome() {
             }
         ]
     });
-    const [merch, setMerch] = useState([
-        {
-            itemName: "Cool Ass T-Shirt",
-            description: "a shirt",
-            price: "$20",
-            image: "https://via.placeholder.com/80",
-            quantity: "666"
-        }
-    ])
+    const [merch, setMerch] = useState([]);
+
+    const [noMerch, setNoMerch] = useState();
 
     console.log("authState " + authState)
     let { id } = useParams();
@@ -102,11 +95,10 @@ export default function BandHome() {
         console.log(id)
         API.merchInfoById(id)
             .then((res) => {
-                if (res.data.errors) {
-                    return window.location.href = "/"
-                } else if (res.date.length === 0) {
+                if (res.data.length === 0) {
                     setNoMerch(true);
                 }
+                console.log("nomerch " + noMerch)
                 console.log("res " + res)
                 setMerch(res.data);
             })
@@ -149,6 +141,7 @@ export default function BandHome() {
                 <BandJumbotron band={band} />
                 <Container fluid>
                     <MerchCard merch={merch} />
+                    {noMerch ? <h2>No Merchandise Available.</h2> : <></>}
                 </Container>
 
             </div>
@@ -161,9 +154,6 @@ export default function BandHome() {
                         <Nav.Link style={{ color: "white" }} href={"/band/home/" + band.id}>My Band</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                            <Nav.Link style={{ color: "white" }} href={"/band/merch/" + band.id}>Shop</Nav.Link>
-                        </Nav.Item>
-                    <Nav.Item>
                         <Nav.Link style={{ color: "white" }} href={"/band/settings/" + band.id}>Settings</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
@@ -174,6 +164,7 @@ export default function BandHome() {
                 <BandJumbotron band={band} />
                 <Container fluid>
                     <MerchCard merch={merch} />
+                    {noMerch ? <h2>You Dont have any merch yet. Go add some!</h2> : <></>}
                 </Container>
 
             </div>
@@ -181,9 +172,6 @@ export default function BandHome() {
     } else return (
         <div>
             <Navibar>
-                <Nav.Item>
-                    <Nav.Link style={{ color: "white" }} href={"/band/merch/" + band.id}>Shop</Nav.Link>
-                </Nav.Item>
                 <Nav.Item>
                     <Nav.Link style={{ color: "white" }} href={"/user/favorites/" + authState.id}>Favorites</Nav.Link>
                 </Nav.Item>
@@ -198,7 +186,7 @@ export default function BandHome() {
             <BandJumbotron band={band} />
             <Container fluid>
                 <MerchCard merch={merch} />
-                {noMerch ? <h2>Add some merch <a href={"/band/settings/" + authState.id}>here</a>.</h2> : <div></div>}
+                {noMerch ? <h2>No Merchandise Available.</h2> : <></>}
             </Container>
 
         </div>
