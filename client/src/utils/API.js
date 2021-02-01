@@ -58,6 +58,10 @@ export default {
         return axios.post(
             "/api/tourdate", data)
     },
+    //double check this works
+    deleteTourDate: function (id) {
+        return axios.delete("/api/tourdates/" + id);
+    },
     // add band memebrs
     addMember: (data) => {
         return axios.post(
@@ -66,6 +70,9 @@ export default {
     addMerch: (data) => {
         return axios.post(
             "/api/merch", data)
+    },
+    deleteMerch: function (id) {
+        return axios.delete("/api/merch/" + id);
     },
     merchInfoById: (id) => {
         return axios.get(

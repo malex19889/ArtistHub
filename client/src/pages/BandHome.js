@@ -87,9 +87,11 @@ export default function BandHome() {
                 notes: "Open bar. Please bring ID, 21+ show."
             }
         ]
-    })
+    });
+
     console.log(authState)
     let { id } = useParams();
+
     useEffect(() => {
         console.log(id)
         API.bandInfoById(id)
@@ -104,14 +106,7 @@ export default function BandHome() {
         const obj = { band, authState, url: window.location.href }
         API.saveFavorites(obj);
     }
-    
-    if (!band) {
-        return (
-            <Container style={{ textAlign: "center", marginTop: "50px" }}>
-                <Loading />
-            </Container>
-        );
-    } else if (!authState.loggedIn) {
+    if (!authState.loggedIn) {
         return (
             <div>
                 <Navibar>
@@ -148,7 +143,6 @@ export default function BandHome() {
                         </Col>
                     </Row>
                 </Container>
-
             </div>
         );
     } else if (authState.loggedIn && authState.isBand) {
@@ -159,8 +153,12 @@ export default function BandHome() {
                         <Nav.Link style={{ color: "white" }} href={"/band/home/" + band.id}>My Band</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
+                        <Nav.Link style={{ color: "white" }} href={"/band/merch/" + band.id}>Shop</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
                         <Nav.Link style={{ color: "white" }} href={"/band/settings/" + band.id}>Settings</Nav.Link>
                     </Nav.Item>
+
                     <Nav.Item>
                         <Logout>Logout</Logout>
                     </Nav.Item>
@@ -180,39 +178,42 @@ export default function BandHome() {
                         </Col>
                     </Row>
                 </Container>
-
             </div>
         )
-    } else return (
-        <div>
-            <Navibar>
-                <Nav.Item>
-                    <Nav.Link style={{ color: "white" }} href={"/user/favorites/" + authState.id}>Favorites</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link style={{ color: "white" }} href={"/user/settings/" + authState.id}>Settings</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Logout>Logout</Logout>
-                </Nav.Item>
-            </Navibar>
+    } else if (!authState.isBand) {
+        return (
+            <div>
+                <Navibar>
+                    <Nav.Item>
+                        <Nav.Link style={{ color: "white" }} href={"/band/merch/" + band.id}>Shop</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link style={{ color: "white" }} href={"/user/favorites/" + authState.id}>Favorites</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link style={{ color: "white" }} href={"/user/settings/" + authState.id}>Settings</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Logout>Logout</Logout>
+                    </Nav.Item>
+                </Navibar>
 
-            <BandJumbotron band={band} />
-            <Container fluid>
-                <Row>
-                    <Col lg={3} style={{ marginTop: "10px", marginBottom: "10px" }}>
-                        <BandBioCard band={band} />
-                        <FavBtn handleFavorite={handleFavorite} band={band} />
-                    </Col>
-                    <Col lg={5} style={{ marginTop: "10px", marginBottom: "10px" }}>
-                        <EventsGroup band={band} />
-                    </Col>
-                    <Col lg={4} style={{ marginTop: "10px", marginBottom: "10px" }}>
-                        <ContactCard band={band} />
-                    </Col>
-                </Row>
-            </Container>
-
-        </div>
-    )
+                <BandJumbotron band={band} />
+                <Container fluid>
+                    <Row>
+                        <Col lg={3} style={{ marginTop: "10px", marginBottom: "10px" }}>
+                            <BandBioCard band={band} />
+                            <FavBtn handleFavorite={handleFavorite} band={band} />
+                        </Col>
+                        <Col lg={5} style={{ marginTop: "10px", marginBottom: "10px" }}>
+                            <EventsGroup band={band} />
+                        </Col>
+                        <Col lg={4} style={{ marginTop: "10px", marginBottom: "10px" }}>
+                            <ContactCard band={band} />
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
+        );
+    }
 }

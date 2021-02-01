@@ -4,9 +4,12 @@ import Card from "react-bootstrap/Card";
 import EventsCard from "../EventsCard";
 import DeleteTourBtn from "../DeleteTourBtn";
 import API from "../../utils/API";
+import {useAuthContext} from "../../store/contexts/authContext";
 
 //logic needed for these to pull from the last 3 artists added to the site
 function EventsGroup(props) {
+
+    const [authState, dispatch] = useAuthContext();
 
     function handleDeleteTourDate(id) {
         API.deleteTourDate(id);
@@ -19,7 +22,7 @@ function EventsGroup(props) {
                     {props.band.tour.map((band, i) =>
                         <div>
                             <EventsCard key={i + "-card"} band={band} />
-                            <DeleteTourBtn handleDeleteTourDate={handleDeleteTourDate} id={band.tour.id}/>
+                            {/* {authState.loggedIn && authState.isBand ? <DeleteTourBtn handleDeleteTourDate={handleDeleteTourDate} id={band.tour.id}/> : <div></div>} */}
                      </div>
                      )}
                 </Card>

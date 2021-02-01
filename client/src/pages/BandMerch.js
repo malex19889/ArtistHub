@@ -102,10 +102,9 @@ export default function BandHome() {
         console.log(id)
         API.merchInfoById(id)
             .then((res) => {
-                if(res.data.errors) {
-                    return window.location.href="/"
-                } else if (res.date.length === 0)
-                {
+                if (res.data.errors) {
+                    return window.location.href = "/"
+                } else if (res.date.length === 0) {
                     setNoMerch(true);
                 }
                 console.log("res " + res)
@@ -162,6 +161,9 @@ export default function BandHome() {
                         <Nav.Link style={{ color: "white" }} href={"/band/home/" + band.id}>My Band</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
+                            <Nav.Link style={{ color: "white" }} href={"/band/merch/" + band.id}>Shop</Nav.Link>
+                        </Nav.Item>
+                    <Nav.Item>
                         <Nav.Link style={{ color: "white" }} href={"/band/settings/" + band.id}>Settings</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
@@ -179,6 +181,9 @@ export default function BandHome() {
     } else return (
         <div>
             <Navibar>
+                <Nav.Item>
+                    <Nav.Link style={{ color: "white" }} href={"/band/merch/" + band.id}>Shop</Nav.Link>
+                </Nav.Item>
                 <Nav.Item>
                     <Nav.Link style={{ color: "white" }} href={"/user/favorites/" + authState.id}>Favorites</Nav.Link>
                 </Nav.Item>

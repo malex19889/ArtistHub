@@ -129,6 +129,18 @@ module.exports = {
       });
   },
 
+  deleteMerch: function (req, res) {
+    console.log(req.body);
+    db.Merch.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(function (dbMerch) {
+        res.json(dbMerch);
+      });
+  },
+
   getBandMerch: function(req,res){
     console.log("Looking for merch for band id: " + req.params.id);
     db.Merch.findAll({
