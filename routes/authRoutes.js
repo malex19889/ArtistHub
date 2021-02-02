@@ -18,7 +18,9 @@ router.route("/band")
       sessionId: req.sessionID,
       id: req.user.id
     };
-    res.send(userInfo);
+    const token = jwt.sign({user:userInfo},process.env.JWT_SECRET);
+    console.log(token);
+    res.send(token);
   },
   )
   .put(auth.updateBandUser)
