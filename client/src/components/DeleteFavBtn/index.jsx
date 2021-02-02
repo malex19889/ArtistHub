@@ -3,7 +3,7 @@ import "./style.css";
 import API from "../../utils/API"
 // The ...props means, spread all of the passed props onto this element
 // That way we don't have to define them all individually
-function DeleteBtn(props) {
+function DeleteFavBtn(props) {
 
   function handleDeleteFavorite(id) {
     console.log("hey",props)
@@ -17,4 +17,4 @@ function DeleteBtn(props) {
   );
 }
 
-export default DeleteBtn;
+export default DeleteFavBtn;

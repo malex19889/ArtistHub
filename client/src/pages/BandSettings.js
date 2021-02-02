@@ -80,6 +80,9 @@ export default function BandSettings() {
                         <Nav.Link style={{ color: "white" }} href={"/band/home/" + id}>My Band</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
+                        <Nav.Link style={{ color: "white" }} href={"/band/merch/" + band.id}>Shop</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
                         <Nav.Link style={{ color: "white" }} href={"/band/settings/" + id}>Settings</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
@@ -87,9 +90,10 @@ export default function BandSettings() {
                     </Nav.Item>
                 </Navibar>
                 <Container>
+                    <h1 style={{ marginTop: "20px", textAlign: "center" }}>Choose a Settings Option Below</h1>
                     <Row className="Settings">
                         {/* GENERAL SETTINGS */}
-                        <Col lg={3} style={{ width: "100%", marginTop: "30px", marginBottom: "30px" }}>
+                        <Col lg={3} style={{ textAlign: "center", width: "100%", marginTop: "30px", marginBottom: "30px" }}>
                             <SettingsModal
                                 onClick={toggle}
                                 isShown={isShown}
@@ -101,7 +105,7 @@ export default function BandSettings() {
                         </Col>
 
                         {/* ADD A TOUR DATE */}
-                        <Col lg={3} style={{ width: "100%", marginTop: "30px", marginBottom: "30px" }}>
+                        <Col lg={3} style={{ textAlign: "center", width: "100%", marginTop: "30px", marginBottom: "30px" }}>
                             <SettingsModal
                                 onClick={toggle}
                                 isShown={isShown}
@@ -113,7 +117,7 @@ export default function BandSettings() {
                         </Col>
 
                         {/* ADD A BAND MEMBER */}
-                        <Col lg={3} style={{ width: "100%", marginTop: "30px", marginBottom: "30px" }}>
+                        <Col lg={3} style={{ textAlign: "center", width: "100%", marginTop: "30px", marginBottom: "30px" }}>
                             <SettingsModal
                                 onClick={toggle}
                                 isShown={isShown}
@@ -122,7 +126,9 @@ export default function BandSettings() {
                                 <AddMemberForm></AddMemberForm>
                             </SettingsModal>
                         </Col>
-                        <Col lg={3} style={{ width: "100%", marginTop: "30px", marginBottom: "30px" }}>
+
+                        {/* ADD MERCH */}
+                        <Col lg={3} style={{ textAlign: "center", width: "100%", marginTop: "30px", marginBottom: "30px" }}>
                             <SettingsModal
                                 onClick={toggle}
                                 isShown={isShown}
@@ -144,5 +150,4 @@ export default function BandSettings() {
             </Container>
         )
     }
-
 }
