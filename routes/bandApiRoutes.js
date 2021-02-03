@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const bandApi = require("../controllers/band-api-controller");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
-
+const passport = require("../config/middleware/jwtAuthenticated");
 router.route("/band/register")
   .post(bandApi.createBand);
 
@@ -16,7 +16,7 @@ router.route("/tourdate/:id")
   .delete(bandApi.deleteTourDate);
 
 router.route("/bands")
-  .get(bandApi.getAllBands);
+  .get(passport.authenticate("jwt", {session:false}) ,bandApi.getAllBands);
 
 router.route("/bands/:id")
   .get(bandApi.getBandById);

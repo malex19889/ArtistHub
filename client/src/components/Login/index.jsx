@@ -37,9 +37,10 @@ function Login() {
     e.preventDefault();
     API.bandLogin(state)
       .then((res) => {
-        console.log(res);
-        dispatch({ type: "BAND_LOGIN_SUCCESS", user: res.data });
-        window.location.href="/band/home/"+res.data.id;
+        console.log(res.data.userInfo);
+        console.log(res.data.token);
+        dispatch({ type: "BAND_LOGIN_SUCCESS", user: res.data.userInfo });
+        window.location.href="/band/home/"+res.data.userInfo.id;
         // history.push("/band/home/1");
       })
       .catch((err) => {

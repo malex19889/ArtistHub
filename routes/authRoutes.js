@@ -5,24 +5,52 @@ const auth = require("../controllers/auth-controller");
 
 
 router.route("/band")
-  .post( function (req, res, next) {
-    console.log("routes/user.js, login, req.body: ");
-    console.log(req.body);
-    next();
-  },
-  passport.authenticate("band-local"),
-  (req, res) => {
-    console.log("logged in", req.user.userName);
-    var userInfo = {
-      username: req.user.userName,
-      sessionId: req.sessionID,
-      id: req.user.id
-    };
-    const token = jwt.sign({user:userInfo},process.env.JWT_SECRET);
-    console.log(token);
-    res.send(token);
-  },
-  )
+  .post(function (req, res, next) {
+
+    passport.authenticate("band-local", (err, user, info) => {
+      console.log(err);
+      if (err || !user) {
+        return res.status(400).json({
+          message: info ? info.message : "Login failed",
+          user   : user
+        });
+      }
+
+      req.login(user, {session: false}, (err) => {
+        if (err) {
+          res.send(err);
+        }
+        var userInfo = {
+          username: req.user.userName,
+          sessionId: req.sessionID,
+          id: req.user.id
+        };
+        const token = jwt.sign({user:userInfo},process.env.JWT_SECRET);
+
+        return res.json({userInfo, token});
+      });
+    })
+    (req, res);
+
+  })
+//  function (req, res, next) {
+//     console.log("routes/user.js, login, req.body: ");
+//     console.log(req.body);
+//     next();
+//   },
+//   passport.authenticate("band-local"),
+//   (req, res) => {
+//     console.log("logged in", req.user.userName);
+//     var userInfo = {
+//       username: req.user.userName,
+//       sessionId: req.sessionID,
+//       id: req.user.id
+//     };
+//     const token = jwt.sign({user:userInfo},process.env.JWT_SECRET);
+//     console.log(token);
+//     res.send(token);
+//   },
+//   )
   .put(auth.updateBandUser)
   .delete(auth.deleteBand);
 
