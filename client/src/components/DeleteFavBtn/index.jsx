@@ -6,12 +6,13 @@ import API from "../../utils/API"
 function DeleteFavBtn(props) {
 
   function handleDeleteFavorite(id) {
-    console.log("hey",props)
-        API.deleteFavorites(id)
-}
+    console.log("hey", props)
+    API.deleteFavorites(id)
+    window.location.reload();
+  }
   return (
-    <button className="delete-btn btn btn-dark" 
-    onClick={()=>handleDeleteFavorite(props.id)}>
+    <button className="delete-btn btn btn-dark"
+      onClick={() => handleDeleteFavorite(props.id)}>
       Delete
     </button>
   );
