@@ -18,20 +18,25 @@ function Login() {
 
   // handler for login submit
   const handleUserLogin = (e) => {
-      console.log("user login")
+    console.log("user login")
     e.preventDefault();
     API.userLogin(state)
       .then((res) => {
-        console.log(res);
-        dispatch({ type: "LOGIN_SUCCESS", user: res.data });
-        window.location.reload()
+        console.log(res.data)
+        if (res.data.errors) {
+          alert(res.data.errors.message)
+        } else if (!res.data.errors) {
+          console.log(res);
+          dispatch({ type: "LOGIN_SUCCESS", user: res.data });
+          window.location.reload()
+        }
       })
       .catch((err) => {
         console.log(err);
         dispatch({ type: "LOGIN_FAILED" });
       });
   };
-  
+
   const handleBandLogin = (e) => {
     console.log("band login")
     e.preventDefault();
@@ -39,7 +44,7 @@ function Login() {
       .then((res) => {
         console.log(res);
         dispatch({ type: "BAND_LOGIN_SUCCESS", user: res.data });
-        window.location.href="/band/home/"+res.data.id;
+        window.location.href = "/band/home/" + res.data.id;
         // history.push("/band/home/1");
       })
       .catch((err) => {

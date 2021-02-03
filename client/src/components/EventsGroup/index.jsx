@@ -28,7 +28,6 @@ function EventsGroup(props) {
                                 <ListGroup.Item style={{ fontWeight: "bold" }}>Price: <br />{tour.ticketPrice}</ListGroup.Item>
                                 {authState.loggedIn && authState.isBand ? <DeleteTourBtn id={tour.id} /> : <div></div>}
                             </ListGroup>
-
                         </div>
                     )}
                 </Card>

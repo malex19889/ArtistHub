@@ -15,8 +15,13 @@ export default function AddMemberForm() {
         let insert = { ...state, ...authState }
         API.addMember(insert)
             .then(res => {
-                console.log(res)
-                window.location.href = "/band/home/" + authState.id
+                console.log(res.data);
+                if (res.data.errors) {
+                    alert(res.data.errors[0].message)
+                } else if (!res.data.errors) {
+                    console.log(res);
+                    window.location.href="/band/home/" + authState.id
+                }
             })
             .catch(err => console.log(err))
     }
