@@ -27,6 +27,7 @@ router.route("/merch")
   .delete();
 
 router.route("/merch/:id")
-  .get(bandApi.getBandMerch);
-module.exports = router;
+  .get(bandApi.getBandMerch)
+  .delete(bandApi.deleteMerch);
 
+module.exports = router;

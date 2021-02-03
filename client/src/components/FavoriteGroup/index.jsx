@@ -4,7 +4,7 @@ import React from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import Container from "react-bootstrap/Container";
 import FavoriteCard from "../FavoriteCard";
-import DeleteBtn from "../DeleteBtn";
+import DeleteFavBtn from "../DeleteFavBtn";
 
 import API from "../../utils/API"
 
@@ -21,7 +21,7 @@ function FavoriteGroup(props) {
                     {props.favorites.map((favorites, i) =>
                         <div>
                             <FavoriteCard key={i + "-favorite"} favorites={favorites} />
-                            <DeleteBtn handleDeleteFavorite={handleDeleteFavorite} id={favorites.id} />
+                            <DeleteFavBtn handleDeleteFavorite={handleDeleteFavorite} id={favorites.id} />
                         </div>
                     )}
                 </ListGroup>
