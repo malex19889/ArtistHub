@@ -12,6 +12,7 @@ import FavBtn from "../components/FavBtn";
 import ModalA from "../components/Modal";
 import Login from "../components/Login";
 import Register from "../components/Register";
+import Loading from "../components/Loading";
 
 import useModal from "../hooks/useModal";
 
@@ -103,8 +104,14 @@ export default function BandHome() {
         const obj = { band, authState, url: window.location.href }
         API.saveFavorites(obj);
     }
-
-    if (!authState.loggedIn) {
+    
+    if (!band) {
+        return (
+            <Container style={{ textAlign: "center", marginTop: "50px" }}>
+                <Loading />
+            </Container>
+        );
+    } else if (!authState.loggedIn) {
         return (
             <div>
                 <Navibar>
