@@ -4,6 +4,7 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import DeleteTourBtn from "../DeleteTourBtn";
 import { useAuthContext } from "../../store/contexts/authContext";
+const dateFormat = require("dateformat");
 
 //logic needed for these to pull from the last 3 artists added to the site
 function EventsGroup(props) {
@@ -22,7 +23,7 @@ function EventsGroup(props) {
                             <ListGroup key={i + "-card"} tour={tour} horizontal style={{ marginBottom: "5px", minWidth: "460px", paddingTop:"10px" }}>
                                 {/* style these item fields to be the same size all the way across/fit to card */}
                                 <ListGroup.Item style={{ fontWeight: "bold" }}>{tour.tourName} <br /> {authState.loggedIn && authState.isBand ? <DeleteTourBtn id={tour.id} /> : <div></div>}</ListGroup.Item>
-                                <ListGroup.Item style={{ fontWeight: "bold" }}>Date: <br />{tour.date} @ {tour.time}</ListGroup.Item>
+                                <ListGroup.Item style={{ fontWeight: "bold" }}>Date: <br />{dateFormat(tour.date, "dddd, mmmm dS, yyyy")} @ {tour.time}</ListGroup.Item>
                                 <ListGroup.Item style={{ fontWeight: "bold" }}>Location: <br />{tour.location}</ListGroup.Item>
                                 <ListGroup.Item style={{ fontWeight: "bold" }}>Notes: <br />{tour.notes}</ListGroup.Item>
                                 <ListGroup.Item style={{ fontWeight: "bold" }}>Price: <br />{tour.ticketPrice}</ListGroup.Item>
