@@ -21,12 +21,12 @@ function EventsGroup(props) {
                         <div>
                             <ListGroup key={i + "-card"} tour={tour} horizontal style={{ marginBottom: "5px", minWidth: "460px", paddingTop:"10px" }}>
                                 {/* style these item fields to be the same size all the way across/fit to card */}
-                                <ListGroup.Item style={{ fontWeight: "bold" }}>{tour.tourName}</ListGroup.Item>
-                                <ListGroup.Item style={{ fontWeight: "bold" }}>Date: <br />{tour.date} @ {props.band.time}</ListGroup.Item>
+                                <ListGroup.Item style={{ fontWeight: "bold" }}>{tour.tourName} <br /> {authState.loggedIn && authState.isBand ? <DeleteTourBtn id={tour.id} /> : <div></div>}</ListGroup.Item>
+                                <ListGroup.Item style={{ fontWeight: "bold" }}>Date: <br />{tour.date} @ {tour.time}</ListGroup.Item>
                                 <ListGroup.Item style={{ fontWeight: "bold" }}>Location: <br />{tour.location}</ListGroup.Item>
                                 <ListGroup.Item style={{ fontWeight: "bold" }}>Notes: <br />{tour.notes}</ListGroup.Item>
                                 <ListGroup.Item style={{ fontWeight: "bold" }}>Price: <br />{tour.ticketPrice}</ListGroup.Item>
-                                {authState.loggedIn && authState.isBand ? <DeleteTourBtn id={tour.id} /> : <div></div>}
+                                
                             </ListGroup>
                         </div>
                     )}

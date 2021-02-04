@@ -11,8 +11,7 @@ function FavoriteCard(props) {
             <Row>
                 <Col style={{ padding: "10px" }}>
                     <ListGroup.Item>
-                        <a href={props.favorites.url}>{props.favorites.band}</a>
-
+                        <a style={{color:"black", textDecoration:"underline"}}href={props.favorites.url}>{props.favorites.band}</a>
                     </ListGroup.Item>
                 </Col>
                 <Col style={{ margin: "10px", marginTop:"15px" }}>
