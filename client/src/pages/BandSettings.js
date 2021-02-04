@@ -90,7 +90,7 @@ export default function BandSettings() {
                     </Nav.Item>
                 </Navibar>
                 <Container>
-                    <h1 style={{ marginTop: "20px", textAlign: "center" }}>Choose a Settings Option Below</h1>
+                    <h1 style={{ marginTop: "30px", textAlign: "center", marginBottom:"30px"}}>Choose a Settings Option Below</h1>
                     <Row className="Settings">
                         {/* GENERAL SETTINGS */}
                         <Col lg={3} style={{ textAlign: "center", width: "100%", marginTop: "30px", marginBottom: "30px" }}>
@@ -101,7 +101,7 @@ export default function BandSettings() {
                                 option="General Settings">
                                 <BandGeneralSettings handleUpdateInfo={handleUpdateInfo} />
                             </SettingsModal>
-
+                            <p style={{marginTop:"10px"}}>Change your general settings here, including your band name, biography, genre, and contact information.</p>
                         </Col>
 
                         {/* ADD A TOUR DATE */}
@@ -113,7 +113,7 @@ export default function BandSettings() {
                                 option="Add Tour Date">
                                 <AddTourForm></AddTourForm>
                             </SettingsModal>
-
+                            <p style={{marginTop:"10px"}}>Add tour dates here to keep your fans up to date on when and where they can see you perform.</p>
                         </Col>
 
                         {/* ADD A BAND MEMBER */}
@@ -125,6 +125,7 @@ export default function BandSettings() {
                                 option="Add Band Member">
                                 <AddMemberForm></AddMemberForm>
                             </SettingsModal>
+                            <p style={{marginTop:"10px"}}>Add your other band members here! Be sure to include a name, role, contact information, and social media.</p>
                         </Col>
 
                         {/* ADD MERCH */}
@@ -136,6 +137,7 @@ export default function BandSettings() {
                                 option="Add Merch">
                                 <AddMerchForm></AddMerchForm>
                             </SettingsModal>
+                            <p style={{marginTop:"10px"}}>Here you can add merchandise! Make sure to include a photo, title, description, price, and quantity of your stock for each item.</p>
                         </Col>
                     </Row>
                 </Container>

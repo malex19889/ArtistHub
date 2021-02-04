@@ -51,7 +51,7 @@ export default function BandSettings() {
                     <Nav.Link style={{ color: "white" }} href={"/user/favorites/" + authState.id}>Favorites</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link style={{ color: "white" }} href={"/user/settings" + authState.id}>Settings</Nav.Link>
+                    <Nav.Link style={{ color: "white" }} href={"/user/settings/" + authState.id}>Settings</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                     <Logout>Logout</Logout>

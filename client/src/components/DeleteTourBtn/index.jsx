@@ -11,7 +11,7 @@ function DeleteTourBtn(props) {
   }
 
   return (
-    <button className="delete-btn btn btn-dark"
+    <button className="delete-btn btn btn-dark" style={{height:"40px", marginTop:"10px", marginRight:"10px", float:"left"}}
       onClick={() => handleDeleteTourDate(props.id)}>
       Delete
     </button>
