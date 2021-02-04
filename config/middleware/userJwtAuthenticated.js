@@ -10,16 +10,21 @@ passport.use(new JWTStrategy({
   secretOrKey   : process.env.JWT_SECRET
 },
 function (jwtPayload, cb) {
-  console.log("jwt auth hit");
+  console.log("jwt auth hit",jwtPayload);
   //find the user in db if needed
-  return db.BandUser.findById(jwtPayload.id)
-    .then(user => {
-      console.log("jwt test: ");
-      return cb(null, user);
-    })
-    .catch(err => {
-      return cb(err);
-    });
+  if(jwtPayload.isFan){
+    return db.User.findByPk(jwtPayload.user.id)
+      .then(user => {
+      // console.log("jwt test: ",user);
+        return cb(null, user);
+      })
+      .catch(err => {
+        return cb(err);
+      });
+  }else{
+    return cb(err);
+  }
+
 }
 ));
 

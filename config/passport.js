@@ -69,13 +69,13 @@ passport.use("band-local",
 
 // need logic to handle bot kids of user
 passport.serializeUser((user, cb) => {
-  console.log("passport serialize function check",user);
+  // console.log("passport serialize function check",user);
   let userData = {id: user.id, isFan: user.isFan, isBand: user.isBand};
   cb(null, userData);
 });
 
 passport.deserializeUser((obj, cb) => {
-  console.log("passport deserialize function check",obj);
+  // console.log("passport deserialize function check",obj);
   cb(null, obj);
 });
 

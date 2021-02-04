@@ -3,6 +3,7 @@ export const AuthReducer=(state,action)=>{
         case "LOGIN_SUCCESS":
             console.log("user",action)
             localStorage.setItem("sessionId", action.user.sessionId)
+            localStorage.setItem("token", action.token)
             localStorage.setItem("userName", action.user.username)
             localStorage.setItem("id", action.user.id)
             return{
@@ -15,6 +16,7 @@ export const AuthReducer=(state,action)=>{
         case "BAND_LOGIN_SUCCESS":
             console.log("band",action)
             localStorage.setItem("sessionId", action.user.sessionId)
+            localStorage.setItem("token", action.token)
             localStorage.setItem("userName", action.user.username)
             localStorage.setItem("id", action.user.id)
             localStorage.setItem("isBand", true)
@@ -34,6 +36,7 @@ export const AuthReducer=(state,action)=>{
             }            
         case "LOGOUT":
             localStorage.removeItem("sessionId");
+            localStorage.removeItem("token")
             localStorage.removeItem("userName");
             localStorage.removeItem("id");
             localStorage.removeItem("isBand");

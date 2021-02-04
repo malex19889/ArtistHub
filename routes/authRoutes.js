@@ -5,6 +5,7 @@ const auth = require("../controllers/auth-controller");
 
 
 router.route("/band")
+  // eslint-disable-next-line no-unused-vars
   .post(function (req, res, next) {
 
     passport.authenticate("band-local", (err, user, info) => {
@@ -16,14 +17,15 @@ router.route("/band")
         });
       }
 
-      req.login(user, {session: false}, (err) => {
+      req.login(user, (err) => {
         if (err) {
           res.send(err);
         }
         var userInfo = {
-          username: req.user.userName,
+          username: user.userName,
           sessionId: req.sessionID,
-          id: req.user.id
+          isBand: user.isBand,
+          id: user.id
         };
         const token = jwt.sign({user:userInfo},process.env.JWT_SECRET);
 
@@ -33,44 +35,42 @@ router.route("/band")
     (req, res);
 
   })
-//  function (req, res, next) {
-//     console.log("routes/user.js, login, req.body: ");
-//     console.log(req.body);
-//     next();
-//   },
-//   passport.authenticate("band-local"),
-//   (req, res) => {
-//     console.log("logged in", req.user.userName);
-//     var userInfo = {
-//       username: req.user.userName,
-//       sessionId: req.sessionID,
-//       id: req.user.id
-//     };
-//     const token = jwt.sign({user:userInfo},process.env.JWT_SECRET);
-//     console.log(token);
-//     res.send(token);
-//   },
-//   )
   .put(auth.updateBandUser)
   .delete(auth.deleteBand);
 
 router.route("/user")
-  .post( function (req, res, next) {
-    console.log("routes/user.js, login, req.body: ");
-    console.log(req.body);
-    next();
-  },
-  passport.authenticate("user-local"),
-  (req, res) => {
-    console.log("logged in",req.user.userName);
-    var userInfo = {
-      username: req.user.userName,
-      sessionId: req.sessionID,
-      id: req.user.id
-    };
-    res.send(userInfo);
-  }
-  )
+  // eslint-disable-next-line no-unused-vars
+  .post(function (req, res, next) {
+
+    passport.authenticate("user-local", (err, user, info) => {
+      console.log(err);
+      if (err || !user) {
+        return res.status(400).json({
+          message: info ? info.message : "Login failed",
+          user   : user
+        });
+      }
+
+      req.login(user, (err) => {
+        if (err) {
+          res.send(err);
+        }
+        console.log(user);
+        var userInfo = {
+          username: user.userName,
+          sessionId: req.sessionID,
+          isFan: user.isFan,
+          id: user.id
+        };
+        console.log(userInfo);
+        const token = jwt.sign({user:userInfo},process.env.JWT_SECRET);
+
+        return res.json({userInfo, token});
+      });
+    })
+    (req, res);
+
+  })
   .put()
   .delete(auth.deleteUser);
 

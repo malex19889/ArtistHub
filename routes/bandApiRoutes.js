@@ -1,28 +1,27 @@
 const router = require("express").Router();
 const bandApi = require("../controllers/band-api-controller");
-const isAuthenticated = require("../config/middleware/isAuthenticated");
-const passport = require("../config/middleware/jwtAuthenticated");
+const passport = require("../config/middleware/bandJwtAuthenticated");
 router.route("/band/register")
   .post(bandApi.createBand);
 
 router.route("/bandmember")
-  .post(bandApi.addBandMember);
+  .post(passport.authenticate("jwt", {session:false}) ,bandApi.addBandMember);
 
 router.route("/tourdate")
-  .post(isAuthenticated, bandApi.addTourDate)
-  .put(bandApi.updateTourDate);
+  .post(passport.authenticate("jwt", {session:false}), bandApi.addTourDate)
+  .put(passport.authenticate("jwt", {session:false}),bandApi.updateTourDate);
 
 router.route("/tourdate/:id")
-  .delete(bandApi.deleteTourDate);
+  .delete(passport.authenticate("jwt", {session:false}),bandApi.deleteTourDate);
 
 router.route("/bands")
-  .get(passport.authenticate("jwt", {session:false}) ,bandApi.getAllBands);
+  .get(bandApi.getAllBands);
 
 router.route("/bands/:id")
   .get(bandApi.getBandById);
 
 router.route("/merch")
-  .post(bandApi.addMerch)
+  .post(passport.authenticate("jwt", {session:false}),bandApi.addMerch)
   .put()
   .delete();
 

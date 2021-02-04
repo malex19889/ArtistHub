@@ -1,5 +1,6 @@
 import axios from "axios";
-
+const token = localStorage.getItem("token")
+axios.defaults.headers["Authorization"] = "Bearer "+ token
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
     logout: () => {

@@ -23,7 +23,7 @@ function Login() {
     API.userLogin(state)
       .then((res) => {
         console.log(res);
-        dispatch({ type: "LOGIN_SUCCESS", user: res.data });
+        dispatch({ type: "LOGIN_SUCCESS", user: res.data.userInfo, token:res.data.token  });
         window.location.reload()
       })
       .catch((err) => {
@@ -39,7 +39,7 @@ function Login() {
       .then((res) => {
         console.log(res.data.userInfo);
         console.log(res.data.token);
-        dispatch({ type: "BAND_LOGIN_SUCCESS", user: res.data.userInfo });
+        dispatch({ type: "BAND_LOGIN_SUCCESS", user: res.data.userInfo, token:res.data.token });
         window.location.href="/band/home/"+res.data.userInfo.id;
         // history.push("/band/home/1");
       })
