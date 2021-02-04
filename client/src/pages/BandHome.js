@@ -28,7 +28,6 @@ export default function BandHome() {
 
     const [authState, dispatch] = useAuthContext();
     const [band, setBand] = useState({
-i
         bandMembers: [],
         tour: []
     });
