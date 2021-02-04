@@ -12,14 +12,19 @@ passport.use(new JWTStrategy({
 function (jwtPayload, cb) {
   console.log("jwt auth hit",jwtPayload);
   //find the user in db if needed
-  return db.BandUser.findByPk(jwtPayload.user.id)
-    .then(user => {
+  if(jwtPayload.user.isBand){
+    return db.BandUser.findByPk(jwtPayload.user.id)
+      .then(user => {
       // console.log("jwt test: ",user);
-      return cb(null, user);
-    })
-    .catch(err => {
-      return cb(err);
-    });
+        return cb(null, user);
+      })
+      .catch(err => {
+        return cb(err);
+      });
+  } else{
+    return cb(err);
+  }
+
 }
 ));
 

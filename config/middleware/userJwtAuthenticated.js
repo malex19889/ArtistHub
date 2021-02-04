@@ -12,7 +12,7 @@ passport.use(new JWTStrategy({
 function (jwtPayload, cb) {
   console.log("jwt auth hit",jwtPayload);
   //find the user in db if needed
-  if(jwtPayload.isFan){
+  if(jwtPayload.user.isFan){
     return db.User.findByPk(jwtPayload.user.id)
       .then(user => {
       // console.log("jwt test: ",user);

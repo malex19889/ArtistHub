@@ -18,7 +18,7 @@ function Login() {
 
   // handler for login submit
   const handleUserLogin = (e) => {
-      console.log("user login")
+    console.log("user login")
     e.preventDefault();
     API.userLogin(state)
       .then((res) => {
@@ -31,7 +31,7 @@ function Login() {
         dispatch({ type: "LOGIN_FAILED" });
       });
   };
-  
+
   const handleBandLogin = (e) => {
     console.log("band login")
     e.preventDefault();
