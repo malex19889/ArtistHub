@@ -65,7 +65,7 @@ module.exports = {
     console.log(req.body);
     db.TourDate.create({
       tourName: req.body.tourName,
-      date: req.body.date, //dateformat(req.body.date,"dddd, mmmm d, yyyy"),
+      date: req.body.date,
       time: req.body.time,
       location: req.body.location,
       ticketPrice: req.body.ticketPrice,
