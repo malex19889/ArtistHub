@@ -31,13 +31,13 @@ export default function UserRegister() {
         console.log(user)
         API.userRegister(user)
             .then(res => {
+                console.log(res.data);
                 if (res.data.errors) {
                    alert(res.data.errors[0].message)
                 } else if (!res.data.errors) {
                     console.log(res);
                     window.location.href = "/home";
                 }
-
             })
             .catch(err => console.log(err))
     }
