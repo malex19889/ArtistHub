@@ -38,7 +38,7 @@ export default function AddMerchForm() {
         API.addMerch(insert)
             .then(res => {
                 console.log(res)
-                window.location.href = "/band/home/" + authState.id
+                window.location.href = "/band/merch/" + authState.id
             })
             .catch(err => console.log(err))
     }

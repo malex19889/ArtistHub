@@ -51,7 +51,7 @@ export default function Favorites() {
             </Navibar>
             <div>
                 <FavoriteGroup favorites={favorites} />
-                {noFaves ? <h2>You Dont have any favorites yet. Go add some!</h2> : <></>}
+                {noFaves ? <h2 style={{textAlign:"center", margin:"10px"}}>You don't have any favorites yet. <a style={{color:"grey", textDecoration:"underline"}}href="/browse">Browse</a> for some new music!</h2> : <></>}
             </div>
             <Footer />
         </div>

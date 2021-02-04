@@ -140,8 +140,8 @@ export default function BandMerch() {
 
                 <BandJumbotron band={band} />
                 <Container fluid>
+                    {noMerch ? <h2>No Merchandise Available.</h2> : <h2 style={{textAlign:"center"}}>Merchandise</h2>}
                     <MerchCard merch={merch} />
-                    {noMerch ? <h2>No Merchandise Available.</h2> : <></>}
                 </Container>
 
             </div>
@@ -163,8 +163,8 @@ export default function BandMerch() {
 
                 <BandJumbotron band={band} />
                 <Container fluid>
+                    {noMerch ? <h2>You Dont have any merch yet. Go add some!</h2> : <h2 style={{textAlign:"center"}}>Merchandise</h2>}
                     <MerchCard merch={merch} />
-                    {noMerch ? <h2>You Dont have any merch yet. Go add some!</h2> : <></>}
                 </Container>
 
             </div>
@@ -185,8 +185,8 @@ export default function BandMerch() {
 
             <BandJumbotron band={band} />
             <Container fluid>
+                {noMerch ? <h2>No Merchandise Available.</h2> : <h2 style={{textAlign:"center"}}>Merchandise</h2>}
                 <MerchCard merch={merch} />
-                {noMerch ? <h2>No Merchandise Available.</h2> : <></>}
             </Container>
 
         </div>

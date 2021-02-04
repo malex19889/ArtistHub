@@ -56,10 +56,11 @@ export default function BandRegister() {
             .then(res => {
                 console.log(res.data);
                 if (res.data.errors){
-                   
-                    console.log(res.data.errors)
-                }
-                window.location.href="/home"
+                   alert(res.data.errors[0].message)
+                } else if (!res.data.errors) {
+                    console.log(res)
+                    window.location.href="/home"
+                }                
             })
             .catch(err => console.log(err))
     };

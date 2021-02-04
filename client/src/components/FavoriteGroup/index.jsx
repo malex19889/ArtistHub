@@ -6,22 +6,17 @@ import Container from "react-bootstrap/Container";
 import FavoriteCard from "../FavoriteCard";
 import DeleteFavBtn from "../DeleteFavBtn";
 
-import API from "../../utils/API"
-
 function FavoriteGroup(props) {
-    function handleDeleteFavorite(id) {
-        API.deleteFavorites(id)
-    }
 
     return (
         <div>
             <Container className="align-self-center" style={{ maxWidth: "500px" }}>
-                <h1 style={{ marginBottom: "20px", marginTop: "10px" }}>My Favorites</h1>
+                <h1 style={{ marginBottom: "20px", marginTop: "10px", textAlign:"center" }}>My Favorites</h1>
                 <ListGroup>
                     {props.favorites.map((favorites, i) =>
                         <div>
                             <FavoriteCard key={i + "-favorite"} favorites={favorites} />
-                            <DeleteFavBtn handleDeleteFavorite={handleDeleteFavorite} id={favorites.id} />
+                            {/* <DeleteFavBtn id={favorites.id} /> */}
                         </div>
                     )}
                 </ListGroup>

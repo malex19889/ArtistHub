@@ -11,19 +11,11 @@ import useModal from "../hooks/useModal";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-
-
 import useHandleInputChange from "../hooks/useHandleInputChange";
-
-
 import { useAuthContext } from "../store/contexts/authContext";
-
 import API from "../utils/API";
-
 import BandCard from "../components/BandCard";
-
-
-
+import NoMatch from "./NoMatch";
 
 
 let showHideButton = "none";
@@ -108,9 +100,9 @@ export default function Browse() {
                     </ModalA>
                 </Navibar>
                 <div className="align-self-center">
-                    <h2 className="justify-content-center" style={{ margin: "20px", alignText: "center" }}>Browse</h2>
                     <Container>
-                        <Form inline>
+                        <h2 className="justify-content-center" style={{ marginTop:"20px", marginBottom: "20px", alignText: "center" }}>Browse</h2>
+                        <Form inline style={{ marginBottom: "10px" }}>
                             <FormControl onChange={handleInputChange} name="search" type="text" placeholder="Search For an Artist!" className="mr-sm-2" />
                             <Button type="submit" variant="outline-info" onClick={handleSearch}>Search</Button>
                             <Button type="clearSearch" style={{ display: showHideButton }} variant="outline-info" onClick={handleReset}>Clear Search</Button>
@@ -140,16 +132,14 @@ export default function Browse() {
                     </Nav.Item>
                 </Navibar>
                 <div className="align-self-center">
-                    <h2 className="justify-content-center" style={{ margin: "20px", alignText: "center" }}>Browse</h2>
                     <Container>
-
-                        <Form inline>
+                    <h2 className="justify-content-center" style={{ marginTop:"20px", marginBottom: "20px", alignText: "center" }}>Browse</h2>
+                        <Form inline style={{ marginBottom: "10px" }}>
                             <FormControl onChange={handleInputChange} name="search" type="text" placeholder="Search For an Artist!" className="mr-sm-2" />
                             <Button type="submit" variant="outline-info" onClick={handleSearch}>Search</Button>
                             <Button id="clearSearch" style={{ display: showHideButton }} variant="outline-info" onClick={handleReset}>Clear Search</Button>
                         </Form>
                         {bands.map((band, i) => <BandCard key={i + "-card"} band={band} />)}
-                        {/* {search.id ? (<SearchCard search={search} />) : (<div></div>)} */}
                     </Container>
                 </div>
                 <Footer />
@@ -171,10 +161,10 @@ export default function Browse() {
                 </Nav.Item>
             </Navibar>
             <div className="align-self-center">
-                <h2 className="justify-content-center" style={{ margin: "20px", alignText: "center" }}>Browse</h2>
                 <Container>
+                <h2 className="justify-content-center" style={{ marginTop:"20px", marginBottom: "20px", alignText: "center" }}>Browse</h2>
                     {/* Search button and return info */}
-                    <Form inline>
+                    <Form inline style={{ marginBottom: "10px" }}>
                         <FormControl onChange={handleInputChange} name="search" type="text" placeholder="Search For an Artist!" className="mr-sm-2" />
                         <Button type="submit" variant="outline-info" onClick={handleSearch}>Search</Button>
                         <Button type="clear search" style={{ display: showHideButton }} variant="outline-info" onClick={handleReset}>Clear Search</Button>
